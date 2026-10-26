@@ -84,6 +84,10 @@ struct Template {
     translated: Vec<Part>,
     /// The length of its fixed text, to try the most specific first.
     fixed: usize,
+    /// Its fixed text ends a sentence or introduces one, as in "Couldn't
+    /// start {device}: {why}", so a part may hold whole sentences. A pattern
+    /// such as "{} and {}" joins names, not sentences.
+    holds_sentences: bool,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -136,10 +140,15 @@ impl Catalog {
                     Part::Slot(_) => 0,
                 })
                 .sum();
+            let holds_sentences = english_parts.iter().any(|p| match p {
+                Part::Text(t) => t.contains(['.', ':', '?', '!']),
+                Part::Slot(_) => false,
+            });
             catalog.templates.push(Template {
                 english: english_parts,
                 translated: parts(&translated),
                 fixed,
+                holds_sentences,
             });
         }
         catalog.templates.sort_by_key(|t| std::cmp::Reverse(t.fixed));
@@ -315,6 +324,13 @@ impl Catalog {
             let Some(values) = fill(&template.english, text) else {
                 continue;
             };
+            if !template.holds_sentences
+                && values
+                    .values()
+                    .any(|v| [". ", "? ", "! ", "\n"].iter().any(|end| v.contains(end)))
+            {
+                continue;
+            }
             let mut out = String::new();
             for part in &template.translated {
                 match part {
@@ -774,6 +790,18 @@ msgstr "Ligne un\n"
         assert_eq!(
             c.translate("Warning: Android has started. 18 processor threads, 64 GB. Devices get 4 cores."),
             "Avertissement\u{a0}: Android a démarré. 18 processeurs logiques, 64 GB. Les appareils utilisent 4 cœurs."
+        );
+    }
+
+    #[test]
+    fn joining_names_never_takes_sentences() {
+        let c = catalog(
+            "msgid \"{} and {}\"\nmsgstr \"{} et {}\"\n\nmsgid \"Android has started.\"\nmsgstr \"Android a démarré.\"\n",
+        );
+        assert_eq!(c.translate("Test and Pixel"), "Test et Pixel");
+        assert_eq!(
+            c.translate("Up and away. Android has started."),
+            "Up et away. Android a démarré."
         );
     }
 
