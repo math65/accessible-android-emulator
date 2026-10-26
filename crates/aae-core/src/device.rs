@@ -198,6 +198,18 @@ pub struct DeviceMeta {
     /// graphics adapter for it.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub software_graphics: bool,
+    /// The emulator starts the device with UWB off and NFC on. By default it
+    /// turns UWB on and NFC off, and Android 17 expects the opposite: its
+    /// UWB service can't open the emulator's UWB port and restarts every 5
+    /// seconds, and its NFC app waits for an NFC chip and restarts every 3
+    /// seconds, which keeps an idle device busy. A snapshot only loads with
+    /// the emulator features it was saved with, so this is turned on, for
+    /// good, only when the device has no named snapshots (see
+    /// [`Device::use_uwb_off_nfc_on`]). The quick-boot snapshot from before
+    /// doesn't load, and the emulator starts Android from its disk instead,
+    /// once.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub uwb_off_nfc_on: bool,
     /// Accessibility services AAE turns back on after every boot and install,
     /// as `package/class`. Includes the screen reader.
     #[serde(default)]
@@ -285,6 +297,28 @@ impl Device {
 
     pub fn save_meta(&self) -> Result<()> {
         write_toml(&self.dir.join(META_FILE), &self.meta)
+    }
+
+    /// Turns on [`DeviceMeta::uwb_off_nfc_on`] if the device has no named
+    /// snapshots, which would no longer load with it. Kept on from then.
+    pub fn use_uwb_off_nfc_on(&mut self) -> Result<()> {
+        if self.meta.uwb_off_nfc_on
+            || self.meta.kind == DeviceKind::Googlebook
+            || self.has_named_snapshots()
+        {
+            return Ok(());
+        }
+        self.meta.uwb_off_nfc_on = true;
+        self.save_meta()
+    }
+
+    /// Whether the device has snapshots besides the quick-boot one.
+    fn has_named_snapshots(&self) -> bool {
+        std::fs::read_dir(self.dir.join("snapshots")).is_ok_and(|entries| {
+            entries
+                .flatten()
+                .any(|entry| entry.file_name() != "default_boot" && entry.path().is_dir())
+        })
     }
 
     /// Rereads the metadata from disk, for a copy held while the apps, aae
@@ -423,6 +457,7 @@ impl DeviceStore {
             speech_log_engine: None,
             playback_volume: None,
             software_graphics: false,
+            uwb_off_nfc_on: true,
             audio_output: None,
             keyboard_layout: None,
             cores: None,
@@ -488,6 +523,8 @@ impl DeviceStore {
             speech_log_engine: None,
             playback_volume: None,
             software_graphics: false,
+            // Googlebook OS runs in its own virtual machine, not the emulator.
+            uwb_off_nfc_on: false,
             audio_output: None,
             keyboard_layout: None,
             cores: None,
@@ -818,6 +855,34 @@ mod tests {
             Some("fyi.quin.backtalk/.Service")
         );
         assert!(reread.meta.speech_bridge);
+        let _ = std::fs::remove_dir_all(&store.root);
+    }
+
+    #[test]
+    fn uwb_off_nfc_on_spares_named_snapshots() {
+        let store = temp_store("radios");
+        let new = store.create("New", &image(), Profile::Phone).unwrap();
+        assert!(new.meta.uwb_off_nfc_on);
+
+        // A device from before, with only its quick-boot snapshot.
+        let mut quick_boot_only = store
+            .create("Quick boot", &image(), Profile::Phone)
+            .unwrap();
+        quick_boot_only.meta.uwb_off_nfc_on = false;
+        std::fs::create_dir_all(quick_boot_only.dir.join("snapshots/default_boot")).unwrap();
+        quick_boot_only.use_uwb_off_nfc_on().unwrap();
+        assert!(store.get("Quick boot").unwrap().meta.uwb_off_nfc_on);
+
+        // One with a named snapshot keeps the emulator's defaults while it has it.
+        let mut named = store.create("Named", &image(), Profile::Phone).unwrap();
+        named.meta.uwb_off_nfc_on = false;
+        let snapshot = named.dir.join("snapshots/signed-in");
+        std::fs::create_dir_all(&snapshot).unwrap();
+        named.use_uwb_off_nfc_on().unwrap();
+        assert!(!named.meta.uwb_off_nfc_on);
+        std::fs::remove_dir_all(&snapshot).unwrap();
+        named.use_uwb_off_nfc_on().unwrap();
+        assert!(store.get("Named").unwrap().meta.uwb_off_nfc_on);
         let _ = std::fs::remove_dir_all(&store.root);
     }
 
