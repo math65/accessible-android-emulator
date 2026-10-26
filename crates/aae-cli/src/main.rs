@@ -3,6 +3,21 @@
 //! Every message is a full sentence, printed on its own line, so a screen reader
 //! reads it as it arrives. Errors say what went wrong and what to do.
 
+// What aae prints is English text in the user's language (see
+// aae_core::l10n): these shadow the standard macros in this crate. The MCP
+// server stays in English, for the AI agents that read it.
+macro_rules! println {
+    () => { std::println!() };
+    ($($arg:tt)*) => { std::println!("{}", aae_core::l10n::tr(&format!($($arg)*))) };
+}
+macro_rules! eprintln {
+    () => { std::eprintln!() };
+    ($($arg:tt)*) => { std::eprintln!("{}", aae_core::l10n::tr(&format!($($arg)*))) };
+}
+macro_rules! print {
+    ($($arg:tt)*) => { std::print!("{}", aae_core::l10n::tr(&format!($($arg)*))) };
+}
+
 mod attach;
 
 use std::collections::HashMap;
@@ -881,6 +896,11 @@ async fn main() {
     // Only the command's name: its arguments can be text to type.
     let command = std::env::args().nth(1).unwrap_or_default();
     tracing::info!("aae {} {command}", env!("CARGO_PKG_VERSION"));
+    if command != "mcp"
+        && let Some(language) = aae_core::l10n::language_from_env()
+    {
+        aae_core::l10n::set_language(&language);
+    }
     if let Err(e) = run(Cli::parse()).await {
         eprintln!("Error: {e:#}");
         std::process::exit(1);
