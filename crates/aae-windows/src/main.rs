@@ -28,6 +28,8 @@ mod speech_bridge;
 #[cfg(windows)]
 mod tools;
 #[cfg(windows)]
+mod touch;
+#[cfg(windows)]
 mod ui;
 #[cfg(windows)]
 mod updates;

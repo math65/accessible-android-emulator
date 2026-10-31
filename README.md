@@ -153,6 +153,7 @@ Announcements go to NVDA (controller client, with braille), JAWS (`FreedomSci.Ja
 
 - Mac shortcuts with Control for Command and Alt for Option. Rename is F2, Delete is Delete.
 - Device mode: the Windows key is Meta. Alt-Tab, the Windows key and Alt-F4 go to Android; Control-Alt-Delete and Windows-L can't. Keys held with Insert or Caps Lock go to the host screen reader. Control-Windows-Escape or the Return to Windows button exits; Settings offers Control-Shift-Windows-Escape or Control-Alt-Windows-Escape.
+- Touch screen in device and gesture mode: while AAE's window is in front, touches and pen contacts on a touch screen go to the device's touchscreen, scaled to its screen and turned with it, multi-finger gestures included. A transparent window covers each touch screen; Windows' edge swipes are off over it. A mouse click there hides it until AAE's window is activated again. Screen reader touch interaction (NVDA: NVDA-Control-Alt-T) and Windows' three- and four-finger touch gestures (Settings, Bluetooth & devices, Touch) take touches first and must be off.
 - Device, Audio Output; `aae audio-output <device> <name>`. Falls back to the system default when the output is missing.
 - Tool windows as on the Mac: Tab moves, F5 refreshes, Escape closes.
 - In a device's own window, menu shortcuts act on that device; device and gesture mode run in the main window.

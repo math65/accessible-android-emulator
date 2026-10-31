@@ -1901,13 +1901,14 @@ fn enter_device_mode(gestures: bool) {
         }
         run_on_ui(move || {
             *TOUCH.lock().unwrap() = Touch::default();
-            if !keyboard::enter(session, gestures) {
+            if !keyboard::enter(session.clone(), gestures) {
                 announce(
                     "Couldn't give the keyboard to Android. Windows wouldn't let AAE watch the keyboard.",
                     Tone::Failure,
                 );
                 return;
             }
+            crate::touch::start(session);
             let return_button = with(|app| {
                 app.device_mode = Some(id);
                 app.gesture_mode = gestures;
@@ -1947,6 +1948,7 @@ fn leave_device_mode(quietly: bool) {
     // Lifts any held touch, while the session is still there to lift it.
     let actions = keyboard::leave();
     gesture_actions(actions);
+    crate::touch::stop();
     if gesture_mode && let Some(session) = session_if_open(&id) {
         queue_gesture(session, |s| {
             Box::pin(async move { s.use_helper(false).await })

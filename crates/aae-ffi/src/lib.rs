@@ -697,6 +697,25 @@ pub struct ScreenPoint {
     pub y: i32,
 }
 
+/// A finger on the computer's touch screen, passed through to the device:
+/// `x` and `y` from 0 to 1 across and down the screen as the user sees it.
+#[derive(Clone, Copy, Debug)]
+pub struct ScreenTouch {
+    pub id: i32,
+    pub x: f64,
+    pub y: f64,
+    /// False lifts the finger.
+    pub down: bool,
+}
+
+/// Fingers down from `screen_touches`, and the screen as it was when the
+/// first went down.
+#[derive(Default)]
+struct Touching {
+    screen: Option<gestures::Screen>,
+    down: HashSet<i32>,
+}
+
 /// Something on the screen that can be touched.
 #[derive(uniffi::Record, Clone)]
 pub struct TouchTarget {
@@ -1856,6 +1875,8 @@ pub struct Session {
     screen: tokio::sync::Mutex<Option<gestures::Screen>>,
     /// The touches that lift fingers a held gesture left down.
     held: tokio::sync::Mutex<Option<Vec<aae_core::control::TouchPoint>>>,
+    /// Fingers down from the computer's touch screen.
+    touching: tokio::sync::Mutex<Touching>,
     /// The keyboard layout in use, and characters being typed with it.
     typing: Mutex<Typing>,
 }
@@ -1918,6 +1939,45 @@ impl Session {
 
     pub fn adb(&self) -> Adb {
         self.adb.clone()
+    }
+
+    /// Moves, puts down or lifts fingers from the computer's touch screen,
+    /// each by its id, in one event. Which way the device is turned is read
+    /// when the first finger goes down. Call one at a time, in order.
+    pub async fn screen_touches(self: Arc<Self>, touches: Vec<ScreenTouch>) -> Result<(), AaeError> {
+        on_runtime(async move {
+            let mut touching = self.touching.lock().await;
+            let screen = match touching.screen {
+                Some(screen) => screen,
+                None => self.screen().await?,
+            };
+            let (width, height) = gestures::user_size(&screen);
+            let points: Vec<_> = touches
+                .iter()
+                .map(|t| {
+                    let x = (t.x.clamp(0.0, 1.0) * width).min(width - 1.0);
+                    let y = (t.y.clamp(0.0, 1.0) * height).min(height - 1.0);
+                    let (x, y) = gestures::to_touchscreen(&screen, x, y);
+                    aae_core::control::TouchPoint {
+                        id: t.id,
+                        x,
+                        y,
+                        down: t.down,
+                    }
+                })
+                .collect();
+            let sent = self.controller.touch_points(&points).await;
+            for t in &touches {
+                if t.down {
+                    touching.down.insert(t.id);
+                } else {
+                    touching.down.remove(&t.id);
+                }
+            }
+            touching.screen = (!touching.down.is_empty()).then_some(screen);
+            Ok(sent?)
+        })
+        .await
     }
 
     pub fn device_id(&self) -> String {
@@ -2034,6 +2094,7 @@ impl Session {
             bridge: Mutex::new(None),
             screen: tokio::sync::Mutex::new(None),
             held: tokio::sync::Mutex::new(None),
+            touching: tokio::sync::Mutex::new(Touching::default()),
             typing: Mutex::new(Typing {
                 chosen: device_meta.keyboard_layout.is_some(),
                 ..Typing::new(keyboard_layouts::for_device(&device_meta))

@@ -419,7 +419,7 @@ pub fn user_size(screen: &Screen) -> (f64, f64) {
 /// Turns a point on the screen as the user sees it into touchscreen pixels.
 /// The touchscreen doesn't turn with the device: Android turns its touches
 /// to match the display.
-fn to_touchscreen(screen: &Screen, x: f64, y: f64) -> (i32, i32) {
+pub fn to_touchscreen(screen: &Screen, x: f64, y: f64) -> (i32, i32) {
     let (w, h) = user_size(screen);
     let (tx, ty) = match screen.orientation {
         Orientation::Portrait => (x, y),
