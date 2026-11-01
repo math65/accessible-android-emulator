@@ -5,12 +5,22 @@
 //! out, in the apps and in `aae`. A catalog, such as `translations/fr.po`,
 //! pairs each English text with its translation. Text with parts filled in,
 //! such as "{device} is ready.", is found as a pattern, and its parts are put
-//! in their place in the translation, translated too when they're text AAE
-//! knows. Text with no translation stays in English.
+//! in their place in the translation as they are: names of devices, apps,
+//! files and snapshots never change. Only a part the catalog marks as a
+//! message of its own, such as `{why}` or `{e}`, is translated too.
+//! Text with no translation stays in English.
+//!
+//! A part holds a message when what fills it in the code is named as one,
+//! such as `e`, `why`, `error` or `status.detail`: translations/extract.py
+//! finds these and marks them in the catalog ("#. messages: e"). For a line
+//! that mixes AAE's words with names or the device's own text, translate its
+//! format with [`tr_format`], which keeps the values as they are. Text that
+//! isn't AAE's, such as what the device shows or JSON for programs, isn't
+//! passed to either.
 //!
 //! The MCP server stays in English: AI agents read it.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::sync::{LazyLock, RwLock};
 
 /// The languages with a catalog, by their two-letter code.
@@ -65,6 +75,39 @@ pub fn tr(text: &str) -> String {
     }
 }
 
+/// A format string such as "{}: {} ({})." in the language in use, with its
+/// parts filled in, in order, by values kept exactly as they are: names, or
+/// text already translated with [`tr`]. For a line that mixes AAE's words
+/// with a device's, such as an app's label and whether it's on.
+pub fn tr_format(format: &str, values: &[&str]) -> String {
+    tr_format_from(language().and_then(|code| PARSED.get(code)), format, values)
+}
+
+fn tr_format_from(catalog: Option<&Catalog>, format: &str, values: &[&str]) -> String {
+    // Looked up without the spaces around it, which are kept, as in tr.
+    let trimmed = format.trim();
+    let start = format.len() - format.trim_start().len();
+    let translated = catalog
+        .and_then(|catalog| catalog.formats.get(trimmed))
+        .map(|t| format!("{}{t}{}", &format[..start], &format[start + trimmed.len()..]));
+    let mut by_key = HashMap::new();
+    let mut next = values.iter();
+    for part in parts(format) {
+        if let Part::Slot(key) = part
+            && !by_key.contains_key(&key)
+        {
+            by_key.insert(key, *next.next().unwrap_or(&""));
+        }
+    }
+    parts(translated.as_deref().unwrap_or(format))
+        .into_iter()
+        .map(|part| match part {
+            Part::Text(text) => text,
+            Part::Slot(key) => by_key.get(&key).copied().unwrap_or("").to_string(),
+        })
+        .collect()
+}
+
 /// As `tr`, for a word with more than one meaning in English, such as
 /// "Watch" (a button) and "Watch" (a device): the catalog's entry with this
 /// context (msgctxt), or else the text's usual translation.
@@ -78,6 +121,122 @@ pub fn tr_in(context: &str, text: &str) -> String {
     }
 }
 
+/// The catalog of a language as an Apple Localizable.strings file, for the
+/// labels written in the Mac app's views, such as `Button("Cold Boot")`,
+/// which SwiftUI translates itself. macos/build.sh writes it with
+/// `aae localizable-strings`. Entries without a translation are left out, so
+/// they stay in English.
+pub fn localizable_strings(code: &str) -> Option<String> {
+    let (_, po) = CATALOGS.iter().find(|(c, _)| *c == code)?;
+    let mut out = String::new();
+    let mut seen = HashSet::new();
+    for (english, translated, _) in po_entries(po) {
+        // SwiftUI has no contexts; those entries are for tr(_:context:).
+        if english.is_empty() || translated.is_empty() || english.contains('\u{4}') {
+            continue;
+        }
+        for (key, value) in swiftui_keys(&english, &translated) {
+            if seen.insert(key.clone()) {
+                out.push_str(&format!("{} = {};\n", strings_quote(&key), strings_quote(&value)));
+            }
+        }
+    }
+    Some(out)
+}
+
+/// The parts filled in, `{name}`, `{}` or `{0}`, as SwiftUI keys see them:
+/// each one's place in the text and its key, a name, or "#" and its
+/// position among the unnamed ones ("#0" for `{0}` too).
+fn swift_slots(text: &str) -> Vec<(std::ops::Range<usize>, String)> {
+    let bytes = text.as_bytes();
+    let mut slots = Vec::new();
+    let mut unnamed = 0;
+    let mut i = 0;
+    while i < bytes.len() {
+        if bytes[i] != b'{' || (i > 0 && bytes[i - 1] == b'{') {
+            i += 1;
+            continue;
+        }
+        let mut j = i + 1;
+        while j < bytes.len() && (bytes[j].is_ascii_alphanumeric() || bytes[j] == b'_') {
+            j += 1;
+        }
+        let name = &text[i + 1..j];
+        if j < bytes.len() && bytes[j] == b':' {
+            while j < bytes.len() && bytes[j] != b'}' {
+                j += 1;
+            }
+        }
+        if j >= bytes.len() || bytes[j] != b'}' || bytes.get(j + 1) == Some(&b'}') {
+            i += 1;
+            continue;
+        }
+        let key = if name.is_empty() {
+            unnamed += 1;
+            format!("#{}", unnamed - 1)
+        } else if name.bytes().all(|b| b.is_ascii_digit()) {
+            format!("#{name}")
+        } else {
+            name.to_string()
+        };
+        slots.push((i..j + 1, key));
+        i = j + 1;
+    }
+    slots
+}
+
+/// The keys SwiftUI looks up for a label with parts, such as
+/// Text("Apps on \(name)"): "Apps on %@" for text, "%lld" for a number, with
+/// the translation's parts by position.
+fn swiftui_keys(english: &str, translated: &str) -> Vec<(String, String)> {
+    if swift_slots(english).is_empty() {
+        return vec![(english.to_string(), translated.to_string())];
+    }
+    // In a format, a percent sign of the text itself is written %%.
+    let english = english.replace('%', "%%");
+    let translated = translated.replace('%', "%%");
+    let english_slots = swift_slots(&english);
+    if english_slots.len() > 3 {
+        return Vec::new();
+    }
+    let mut position: HashMap<&str, usize> = HashMap::new();
+    for (i, (_, key)) in english_slots.iter().enumerate() {
+        position.entry(key.as_str()).or_insert(i + 1);
+    }
+    let translated_slots = swift_slots(&translated);
+    if translated_slots.iter().any(|(_, key)| !position.contains_key(key.as_str())) {
+        return Vec::new();
+    }
+    let replace = |text: &str, slots: &[(std::ops::Range<usize>, String)], with: &dyn Fn(&str) -> String| {
+        let mut out = String::new();
+        let mut last = 0;
+        for (range, key) in slots {
+            out.push_str(&text[last..range.start]);
+            out.push_str(&with(key));
+            last = range.end;
+        }
+        out.push_str(&text[last..]);
+        out
+    };
+    let mut keys = Vec::new();
+    // Each part as text or as a number, the last part changing first.
+    for kinds in 0..1usize << english_slots.len() {
+        let mut kind_of: HashMap<&str, &str> = HashMap::new();
+        for (i, (_, key)) in english_slots.iter().enumerate() {
+            let bit = english_slots.len() - 1 - i;
+            kind_of.entry(key.as_str()).or_insert(if kinds >> bit & 1 == 0 { "@" } else { "lld" });
+        }
+        let key = replace(&english, &english_slots, &|k| format!("%{}", kind_of[k]));
+        let value = replace(&translated, &translated_slots, &|k| format!("%{}${}", position[k], kind_of[k]));
+        keys.push((key, value));
+    }
+    keys
+}
+
+fn strings_quote(text: &str) -> String {
+    format!("\"{}\"", text.replace('\\', "\\\\").replace('"', "\\\"").replace('\n', "\\n"))
+}
+
 /// One English text and its translation, as parts.
 struct Template {
     english: Vec<Part>,
@@ -88,6 +247,9 @@ struct Template {
     /// start {device}: {why}", so a part may hold whole sentences. A pattern
     /// such as "{} and {}" joins names, not sentences.
     holds_sentences: bool,
+    /// The parts that hold a message of their own, translated too. Others,
+    /// such as names, are kept as they are.
+    messages: HashSet<String>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -101,12 +263,28 @@ enum Part {
 struct Catalog {
     exact: HashMap<String, String>,
     templates: Vec<Template>,
+    /// Words that start a text as a label, as "Warning" in "Warning: {}".
+    /// Only these are translated before a colon, so a device named "Phone"
+    /// keeps its name in "Phone: Android 17, Phone".
+    labels: HashSet<String>,
+    /// The most sentences and lines in one English text, the longest run
+    /// worth looking up.
+    longest: usize,
+    /// Each English text with parts and its translation, as written, for
+    /// [`tr_format`].
+    formats: HashMap<String, String>,
 }
+
+/// Text longer than this, or with more sentences and lines than
+/// MAX_PIECES, isn't AAE's message but something it shows, such as an
+/// inspector dump: it's looked up only as a whole.
+const MAX_LEN: usize = 16 * 1024;
+const MAX_PIECES: usize = 200;
 
 impl Catalog {
     fn parse(po: &str) -> Catalog {
         let mut catalog = Catalog::default();
-        for (english, translated) in po_entries(po) {
+        for (english, translated, messages) in po_entries(po) {
             // Text is looked up without the spaces around it, which are
             // kept as they are (see translate_whole).
             let (english, translated) = (english.trim().to_string(), translated.trim().to_string());
@@ -115,11 +293,23 @@ impl Catalog {
             if english.is_empty() || translated.is_empty() || translated == english {
                 continue;
             }
+            if !english.contains('\u{4}') {
+                catalog.longest = catalog.longest.max(split_sentences(&english).len());
+                if let Some((label, after)) = english.split_once(':')
+                    && (after.is_empty() || after.starts_with(' '))
+                    && !label.is_empty()
+                    && label.len() <= 40
+                    && !label.contains(['{', '%', '.', '\n'])
+                {
+                    catalog.labels.insert(label.to_string());
+                }
+            }
             let english_parts = parts(&english);
             if !english_parts.iter().any(|p| matches!(p, Part::Slot(_))) {
                 catalog.exact.insert(english, translated);
                 continue;
             }
+            catalog.formats.insert(english.clone(), translated.clone());
             // Two parts filled in side by side can't be told apart, and a
             // pattern with no words of its own, such as "{kind}: {title}",
             // would match almost any text.
@@ -149,6 +339,7 @@ impl Catalog {
                 translated: parts(&translated),
                 fixed,
                 holds_sentences,
+                messages: messages.into_iter().collect(),
             });
         }
         catalog.templates.sort_by_key(|t| std::cmp::Reverse(t.fixed));
@@ -156,6 +347,9 @@ impl Catalog {
     }
 
     fn translate(&self, text: &str) -> String {
+        if text.len() > MAX_LEN {
+            return text.to_string();
+        }
         match self.translate_any(text, 0) {
             Some(found) => found,
             None => {
@@ -173,17 +367,20 @@ impl Catalog {
         }
         let pieces = split_sentences(text);
         let count = pieces.len();
-        if count < 2 {
+        if !(2..=MAX_PIECES).contains(&count) {
             return None;
         }
         // From the left, the longest run of sentences AAE knows as one
-        // text, as a message of two sentences after a label.
+        // text, as a message of two sentences after a label. No run is
+        // longer than the catalog's longest text, so this grows with the
+        // text's length, not its square.
+        let longest = self.longest.max(1);
         let mut out = String::new();
         let mut any = false;
         let mut start = 0;
         while start < count {
             let mut found = None;
-            for end in (start + 1..=count).rev() {
+            for end in (start + 1..=count.min(start + longest)).rev() {
                 if start == 0 && end == count {
                     continue; // The whole text, tried above.
                 }
@@ -304,7 +501,7 @@ impl Catalog {
             return Some(found);
         }
         if let Some(label) = text.strip_suffix(':')
-            && !label.ends_with([' ', '\u{a0}'])
+            && self.labels.contains(label)
             && let Some(found) = find(label)
         {
             return Some(format!("{found}\u{a0}:"));
@@ -338,8 +535,8 @@ impl Catalog {
                     Part::Slot(name) => {
                         let value = values.get(name).map(String::as_str).unwrap_or("");
                         // A part may be a message of its own, such as why
-                        // something failed.
-                        let value = if depth < 2 {
+                        // something failed. Names stay as they are.
+                        let value = if depth < 2 && template.messages.contains(name) {
                             self.translate_any(value, depth + 1)
                                 .unwrap_or_else(|| value.to_string())
                         } else {
@@ -559,41 +756,62 @@ fn note_missing(text: &str) {
     }
 }
 
-/// The msgid and msgstr of each entry of a gettext PO file. An entry with a
-/// msgctxt has "context\u{4}msgid" as its msgid, as gettext does.
-fn po_entries(po: &str) -> Vec<(String, String)> {
+/// The msgid and msgstr of each entry of a gettext PO file, and the parts it
+/// marks as messages of their own, in a "#. messages: why, 1" comment that
+/// translations/extract.py writes from the code. An entry with a msgctxt has
+/// "context\u{4}msgid" as its msgid, as gettext does.
+fn po_entries(po: &str) -> Vec<(String, String, Vec<String>)> {
     let mut entries = Vec::new();
     let mut context: Option<String> = None;
     let mut id = String::new();
     let mut translated = String::new();
+    // The messages comment before an entry, and the entry's own.
+    let mut pending: Vec<String> = Vec::new();
+    let mut messages: Vec<String> = Vec::new();
     // 0: msgctxt, 1: msgid, 2: msgstr.
     let mut field: Option<u8> = None;
-    let mut flush = |context: &mut Option<String>, id: &mut String, translated: &mut String| {
+    let flush = |entries: &mut Vec<(String, String, Vec<String>)>,
+                 context: &mut Option<String>,
+                 id: &mut String,
+                 translated: &mut String,
+                 messages: &mut Vec<String>| {
         if !id.is_empty() || !translated.is_empty() {
             let id = std::mem::take(id);
             let id = match context.take() {
                 Some(c) => format!("{c}\u{4}{id}"),
                 None => id,
             };
-            entries.push((id, std::mem::take(translated)));
+            entries.push((id, std::mem::take(translated), std::mem::take(messages)));
         }
         *context = None;
+        messages.clear();
     };
     for line in po.lines().map(str::trim) {
-        if line.is_empty() || line.starts_with('#') {
-            if line.is_empty() {
-                flush(&mut context, &mut id, &mut translated);
-                field = None;
+        if line.is_empty() {
+            flush(&mut entries, &mut context, &mut id, &mut translated, &mut messages);
+            field = None;
+            continue;
+        }
+        if line.starts_with('#') {
+            if let Some(list) = line.strip_prefix("#. messages:") {
+                pending = list
+                    .split(',')
+                    .map(str::trim)
+                    .filter(|k| !k.is_empty())
+                    .map(str::to_string)
+                    .collect();
             }
             continue;
         }
         if let Some(rest) = line.strip_prefix("msgctxt ") {
-            flush(&mut context, &mut id, &mut translated);
+            flush(&mut entries, &mut context, &mut id, &mut translated, &mut messages);
+            messages = std::mem::take(&mut pending);
             context = Some(unquote(rest));
             field = Some(0);
         } else if let Some(rest) = line.strip_prefix("msgid ") {
             if field != Some(0) {
-                flush(&mut context, &mut id, &mut translated);
+                flush(&mut entries, &mut context, &mut id, &mut translated, &mut messages);
+                messages = std::mem::take(&mut pending);
             }
             id = unquote(rest);
             field = Some(1);
@@ -613,7 +831,7 @@ fn po_entries(po: &str) -> Vec<(String, String)> {
             }
         }
     }
-    flush(&mut context, &mut id, &mut translated);
+    flush(&mut entries, &mut context, &mut id, &mut translated, &mut messages);
     entries
 }
 
@@ -658,6 +876,7 @@ msgstr "Démarrage à froid"
 msgid "{device} is ready. {reader} is on."
 msgstr "L'appareil {device} est prêt. {reader} est activé."
 
+#. messages: why
 msgid "Couldn't start {device}: {why}"
 msgstr "Impossible de démarrer l'appareil {device} : {why}"
 
@@ -682,6 +901,15 @@ msgstr "Installation de l'app auxiliaire d'AAE"
 msgid "Warning"
 msgstr "Avertissement"
 
+msgid "Warning: {} is old."
+msgstr "Avertissement : {} est ancien."
+
+msgid "Opened {name}."
+msgstr "{name} est ouvert."
+
+msgid "{} plays audio at the right speed."
+msgstr "{} lit le son à la bonne vitesse."
+
 msgid "full speed"
 msgstr "pleine vitesse"
 
@@ -694,6 +922,7 @@ msgstr "L'appareil est en marche{}."
 msgid "{} installed."
 msgstr "Installées : {}."
 
+#. messages: 0
 msgid "Problem: {}"
 msgstr "Problème : {}"
 
@@ -806,6 +1035,62 @@ msgstr "Ligne un\n"
     }
 
     #[test]
+    fn names_stay_as_they_are() {
+        let c = catalog(PO);
+        // A part not marked as a message is a name, even one AAE knows.
+        assert_eq!(c.translate("Opened Watch."), "Watch est ouvert.");
+        assert_eq!(c.translate("Phone plays audio at the right speed."), "Phone lit le son à la bonne vitesse.");
+        // So is a device's name before a colon: only known labels change.
+        assert_eq!(
+            c.translate("Phone: Android 17 (API 37.2), 16 KB pages, Phone"),
+            "Phone: Android 17 (API 37.2), pages de 16 Ko, Téléphone"
+        );
+        // A part marked as a message is translated.
+        assert_eq!(
+            c.translate("Couldn't start Watch: The emulator isn't running."),
+            "Impossible de démarrer l'appareil Watch : L'émulateur ne tourne pas."
+        );
+    }
+
+    #[test]
+    fn tr_format_keeps_its_values() {
+        let c = catalog(PO);
+        // A format the catalog has, with a name that is also a word it knows.
+        assert_eq!(tr_format_from(Some(&c), "Opened {name}.", &["Watch"]), "Watch est ouvert.");
+        assert_eq!(tr_format_from(Some(&c), "%@ of %@", &["3", "5"]), "5 sur 3");
+        assert_eq!(tr_format_from(Some(&c), "  Opened {name}.", &["Pixel"]), "  Pixel est ouvert.");
+        // One it doesn't have, as it is.
+        assert_eq!(tr_format_from(Some(&c), "{} ({})", &["Phone", "com.example"]), "Phone (com.example)");
+        // In English.
+        assert_eq!(tr_format_from(None, "Opened {name}.", &["Watch"]), "Opened Watch.");
+    }
+
+    #[test]
+    fn messages_comment_marks_its_own_entry() {
+        let entries = po_entries(
+            "#. messages: why, 1\nmsgid \"A {why} {}\"\nmsgstr \"B\"\n\nmsgid \"C {}\"\nmsgstr \"D\"\n",
+        );
+        assert_eq!(entries[0].2, vec!["why".to_string(), "1".to_string()]);
+        assert!(entries[1].2.is_empty());
+    }
+
+    #[test]
+    fn a_large_dump_is_looked_up_quickly() {
+        // An inspector dump: thousands of lines, none of them AAE's.
+        let fr = Catalog::parse(CATALOGS[0].1);
+        let dump: String = (0..5000)
+            .map(|i| format!("  Button {i}, \"Item {i}\", clickable, at 10, {i}. Settings\n"))
+            .collect();
+        let started = std::time::Instant::now();
+        assert_eq!(fr.translate(&dump), dump);
+        // Under the limits, a long text is still looked up line by line, and
+        // its cost grows with its length.
+        let text: String = (0..150).map(|i| format!("Line {i} of nothing known.\n")).collect();
+        assert_eq!(fr.translate(&text), text);
+        assert!(started.elapsed() < std::time::Duration::from_secs(5), "{:?}", started.elapsed());
+    }
+
+    #[test]
     fn a_value_shown_with_a_capital() {
         let c = catalog(PO);
         assert_eq!(c.translate("Full speed"), "Pleine vitesse");
@@ -882,7 +1167,7 @@ msgstr "Ligne un\n"
             names
         };
         for (code, po) in CATALOGS {
-            for (english, translated) in po_entries(po) {
+            for (english, translated, _) in po_entries(po) {
                 if english.is_empty() || translated.is_empty() {
                     continue;
                 }

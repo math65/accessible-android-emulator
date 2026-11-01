@@ -25,6 +25,7 @@ msgstr ""
 ""
 
 #: crates/aae-cli/src/attach.rs:127
+#. messages: e
 msgid "The keyboard connection to {} stopped: {e}"
 msgstr "La connexion du clavier à l'appareil {} s'est interrompue : {e}"
 
@@ -44,963 +45,987 @@ msgstr " Le son a mis en moyenne {} millisecondes pour arriver depuis l'appareil
 msgid "Stopped. {} packets received, loudest {:.0}%, {} gaps, {} samples dropped to keep up.{delay}"
 msgstr "Arrêté. Paquets reçus : {}, niveau maximal : {:.0} %, interruptions : {}, échantillons abandonnés pour suivre le rythme : {}.{delay}"
 
-#: crates/aae-cli/src/main.rs:492
+#: crates/aae-cli/src/main.rs:505
 msgid "Instead of an APK: backtalk downloads Backtalk's latest development build; an installed screen reader's name, such as talkback, switches to it."
 msgstr "À la place d'un APK : backtalk télécharge la dernière version de test de Backtalk ; le nom d'un lecteur d'écran installé, comme talkback, bascule sur ce lecteur."
 
-#: crates/aae-cli/src/main.rs:905
+#: crates/aae-cli/src/main.rs:918
+#. messages: e
 msgid "Error: {e:#}"
 msgstr "Erreur : {e:#}"
 
-#: crates/aae-cli/src/main.rs:965
+#: crates/aae-cli/src/main.rs:928 crates/aae-cli/src/main.rs:1064
+msgid "{}: {}"
+msgstr "{} : {}"
+
+#: crates/aae-cli/src/main.rs:972
+msgid "AAE has no translation for {language}."
+msgstr "AAE n'a pas de traduction pour {language}."
+
+#: crates/aae-cli/src/main.rs:996
 msgid "Pairing code: {code}. Enter it in AAE Remote; it works once, for {minutes} minutes."
 msgstr "Code d'association : {code}. Saisissez-le dans AAE Remote ; il est valable une seule fois, pendant {minutes} minutes."
 
-#: crates/aae-cli/src/main.rs:968
+#: crates/aae-cli/src/main.rs:999
 msgid "Nothing is serving yet: run aae serve, or aae daemon install."
 msgstr "Aucun partage n'est encore en cours : lancez aae serve ou aae daemon install."
 
-#: crates/aae-cli/src/main.rs:993
+#: crates/aae-cli/src/main.rs:1024
 msgid "AAE serves devices whenever you log in."
 msgstr "AAE partage les appareils à chaque ouverture de session."
 
-#: crates/aae-cli/src/main.rs:995
+#: crates/aae-cli/src/main.rs:1026
 msgid "AAE isn't set to serve at login."
 msgstr "AAE n'est pas configuré pour partager les appareils à l'ouverture de session."
 
-#: crates/aae-cli/src/main.rs:998
+#: crates/aae-cli/src/main.rs:1029
 msgid "It's serving now."
 msgstr "Le partage est en cours."
 
-#: crates/aae-cli/src/main.rs:1000
+#: crates/aae-cli/src/main.rs:1031
 msgid "Nothing is serving now."
 msgstr "Aucun partage n'est en cours."
 
-#: crates/aae-cli/src/main.rs:1022
+#: crates/aae-cli/src/main.rs:1053
 msgid "Unpaired {id}. It can't connect until it pairs again."
 msgstr "Le téléphone {id} est dissocié. Il ne pourra plus se connecter avant d'être associé à nouveau."
 
-#: crates/aae-cli/src/main.rs:1024
+#: crates/aae-cli/src/main.rs:1055
 msgid "No phone with the id {id} is paired."
 msgstr "Aucun téléphone associé n'a l'identifiant {id}."
 
-#: crates/aae-cli/src/main.rs:1030
+#: crates/aae-cli/src/main.rs:1061
 msgid "No phones are paired. Run aae serve to pair one."
 msgstr "Aucun téléphone n'est associé. Lancez aae serve pour en associer un."
 
-#: crates/aae-cli/src/main.rs:1051
+#: crates/aae-cli/src/main.rs:1082
+#. messages: 1
 msgid "{label}: {}. {}"
 msgstr "{label} : {}. {}"
 
-#: crates/aae-cli/src/main.rs:1062
+#: crates/aae-cli/src/main.rs:1093
 msgid "{} checks: {} passed, {warned} warnings, {failed} problems."
 msgstr "Vérifications : {0}. Réussies : {1}, avertissements : {warned}, problèmes : {failed}."
 
-#: crates/aae-cli/src/main.rs:1067
+#: crates/aae-cli/src/main.rs:1098
 msgid "The self-test found {failed} problems."
 msgstr "Problèmes détectés par l'autodiagnostic : {failed}."
 
-#: crates/aae-cli/src/main.rs:1079
+#: crates/aae-cli/src/main.rs:1110
 msgid "{}: playback volume {}%."
 msgstr "Volume de lecture de l'appareil {} : {} %."
 
-#: crates/aae-cli/src/main.rs:1085
+#: crates/aae-cli/src/main.rs:1116
 msgid "{} plays at {}%."
 msgstr "Volume de lecture de l'appareil {} : {} %."
 
-#: crates/aae-cli/src/main.rs:1112
+#: crates/aae-cli/src/main.rs:1143
 msgid "There's no output called {name}. The outputs are: {}."
 msgstr "Aucune sortie ne s'appelle {name}. Les sorties disponibles sont : {}."
 
-#: crates/aae-cli/src/main.rs:1121 crates/aae-cli/src/main.rs:1128
+#: crates/aae-cli/src/main.rs:1152 crates/aae-cli/src/main.rs:1159
 msgid "{}: audio output {}."
 msgstr "{0} : sortie audio {1}."
 
-#: crates/aae-cli/src/main.rs:1123 crates/aae-cli/src/main.rs:1134
+#: crates/aae-cli/src/main.rs:1154 crates/aae-cli/src/main.rs:1165
 msgid "system default"
 msgstr "par défaut du système"
 
-#: crates/aae-cli/src/main.rs:1136
+#: crates/aae-cli/src/main.rs:1167
 msgid "Outputs: {}."
 msgstr "Sorties : {}."
 
-#: crates/aae-cli/src/main.rs:1148
+#: crates/aae-cli/src/main.rs:1179
 msgid "{}'s sound is reaching AAE."
 msgstr "Le son de l'appareil {} parvient bien à AAE."
 
-#: crates/aae-cli/src/main.rs:1153
+#: crates/aae-cli/src/main.rs:1184
 msgid "{} (aae command)"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:1162
+#: crates/aae-cli/src/main.rs:1193
 msgid "Saved the report to {}, as plain text."
 msgstr "Rapport enregistré en texte brut dans {}."
 
-#: crates/aae-cli/src/main.rs:1173
+#: crates/aae-cli/src/main.rs:1204
 msgid "Google offers no Android versions for this computer's processor."
 msgstr "Google ne propose aucune version d'Android pour le processeur de cet ordinateur."
 
-#: crates/aae-cli/src/main.rs:1184
+#: crates/aae-cli/src/main.rs:1215
 msgid "{} to download with --api {}"
 msgstr "{} à télécharger avec --api {}"
 
-#: crates/aae-cli/src/main.rs:1189 crates/aae-cli/src/main.rs:1315
+#: crates/aae-cli/src/main.rs:1220
 msgid "{}, {state}."
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:1192
+#: crates/aae-cli/src/main.rs:1223
 msgid "Add --previews to include previews of upcoming Android releases."
 msgstr "Ajoutez --previews pour inclure les préversions des prochaines versions d'Android."
 
-#: crates/aae-cli/src/main.rs:1202
+#: crates/aae-cli/src/main.rs:1233
 msgid "{image} is installed."
 msgstr "Installation de {image} terminée."
 
-#: crates/aae-cli/src/main.rs:1209
+#: crates/aae-cli/src/main.rs:1240
 msgid "No Android versions are installed yet."
 msgstr "Aucune version d'Android n'est encore installée."
 
-#: crates/aae-cli/src/main.rs:1214
+#: crates/aae-cli/src/main.rs:1245
 msgid "{image}. {size}. {}"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:1224
+#: crates/aae-cli/src/main.rs:1255
 msgid "{RELEASE}, virtual machine. {size}. {}"
 msgstr "{RELEASE}, machine virtuelle. {size}. {}"
 
-#: crates/aae-cli/src/main.rs:1239
+#: crates/aae-cli/src/main.rs:1270
 msgid "{RELEASE} isn't installed."
 msgstr "{RELEASE} n'est pas installé."
 
-#: crates/aae-cli/src/main.rs:1244
+#: crates/aae-cli/src/main.rs:1275
 msgid "{RELEASE} can't be deleted while devices use it: {}. Delete those devices first."
 msgstr "Impossible de supprimer {RELEASE} tant que des appareils l'utilisent : {0}. Supprimez d'abord ces appareils."
 
-#: crates/aae-cli/src/main.rs:1250
+#: crates/aae-cli/src/main.rs:1281
 msgid "Delete {RELEASE} and its {size} of files? You can download it again later."
 msgstr "Supprimer {RELEASE} et ses fichiers ({size}) ? Vous pourrez le télécharger à nouveau plus tard."
 
-#: crates/aae-cli/src/main.rs:1252 crates/aae-cli/src/main.rs:1297 crates/aae-cli/src/main.rs:1426
+#: crates/aae-cli/src/main.rs:1283 crates/aae-cli/src/main.rs:1328 crates/aae-cli/src/main.rs:1457
 msgid "Nothing was deleted."
 msgstr "Rien n'a été supprimé."
 
-#: crates/aae-cli/src/main.rs:1256
+#: crates/aae-cli/src/main.rs:1287
 msgid "Deleted {RELEASE}. Freed {}."
 msgstr "Suppression terminée : {RELEASE}. Espace libéré : {0}."
 
-#: crates/aae-cli/src/main.rs:1268
+#: crates/aae-cli/src/main.rs:1299
 msgid "No Android version {api} is installed. Use the images command to see what is."
 msgstr "Aucune version d'Android {api} n'est installée. La commande images affiche celles qui le sont."
 
-#: crates/aae-cli/src/main.rs:1272
+#: crates/aae-cli/src/main.rs:1303
 msgid "More than one kind of Android version {api} is installed: {}. Choose one with --kind."
 msgstr "Plusieurs types de la version d'Android {api} sont installés : {}. Choisissez-en un avec --kind."
 
-#: crates/aae-cli/src/main.rs:1283
+#: crates/aae-cli/src/main.rs:1314
 msgid "{image} can't be deleted while devices use it: {}. Delete those devices first."
 msgstr "Impossible de supprimer {image} tant que des appareils l'utilisent : {0}. Supprimez d'abord ces appareils."
 
-#: crates/aae-cli/src/main.rs:1288
+#: crates/aae-cli/src/main.rs:1319
 msgid "Delete {image} and its {size} of files?"
 msgstr "Supprimer {image} et ses fichiers ({size}) ?"
 
-#: crates/aae-cli/src/main.rs:1295
+#: crates/aae-cli/src/main.rs:1326
 msgid " You can download it again later."
 msgstr " Vous pourrez la télécharger à nouveau plus tard."
 
-#: crates/aae-cli/src/main.rs:1301
+#: crates/aae-cli/src/main.rs:1332
 msgid "Deleted {image}. Freed {}."
 msgstr "Suppression terminée : {image}. Espace libéré : {0}."
 
-#: crates/aae-cli/src/main.rs:1307
+#: crates/aae-cli/src/main.rs:1338
 msgid "You have no devices yet. Create one with: aae create \"My phone\""
 msgstr "Vous n'avez encore aucun appareil. Créez-en un avec : aae create \"Mon téléphone\""
 
-#: crates/aae-cli/src/main.rs:1395
+#: crates/aae-cli/src/main.rs:1426
 msgid "Renamed {old} to {}."
 msgstr "{old} renommé en {0}."
 
-#: crates/aae-cli/src/main.rs:1403
+#: crates/aae-cli/src/main.rs:1434
 msgid "Wipe {name}? Its apps, data and snapshots are deleted, and it's set up again with its screen reader. This can't be undone."
 msgstr "Réinitialiser l'appareil {name} ? Ses apps, ses données et ses instantanés seront supprimés, puis il sera reconfiguré avec son lecteur d'écran. Cette action est irréversible."
 
-#: crates/aae-cli/src/main.rs:1407
+#: crates/aae-cli/src/main.rs:1438
 msgid "Nothing was wiped."
 msgstr "Rien n'a été réinitialisé."
 
-#: crates/aae-cli/src/main.rs:1410
+#: crates/aae-cli/src/main.rs:1441
 msgid "Wiping {name}."
 msgstr "Réinitialisation de l'appareil {name}."
 
-#: crates/aae-cli/src/main.rs:1422
+#: crates/aae-cli/src/main.rs:1453
 msgid "Delete {} and its {size} of files? This can't be undone."
 msgstr "Supprimer l'appareil {} et ses fichiers ({size}) ? Cette action est irréversible."
 
-#: crates/aae-cli/src/main.rs:1430
+#: crates/aae-cli/src/main.rs:1461
 msgid "Deleted {}. Freed {}."
 msgstr "Suppression terminée : {0}. Espace libéré : {1}."
 
-#: crates/aae-cli/src/main.rs:1457 crates/aae-cli/src/main.rs:1721
+#: crates/aae-cli/src/main.rs:1488 crates/aae-cli/src/main.rs:1752
 msgid "Stopping {}."
 msgstr "Arrêt de l'appareil {}."
 
-#: crates/aae-cli/src/main.rs:1489
+#: crates/aae-cli/src/main.rs:1520
 msgid "Nothing at {x}, {y}."
 msgstr "Aucun élément aux coordonnées {x}, {y}."
 
-#: crates/aae-cli/src/main.rs:1512
+#: crates/aae-cli/src/main.rs:1525
+msgid "{} (at {}, {})"
+msgstr "{} (aux coordonnées {}, {})"
+
+#: crates/aae-cli/src/main.rs:1543
 msgid "No problems found on this screen."
 msgstr "Aucun problème détecté sur cet écran."
 
-#: crates/aae-cli/src/main.rs:1525
+#: crates/aae-cli/src/main.rs:1556
+#. messages: 0
 msgid "{severity}: {} Element: {}{id}."
 msgstr "{severity} : {} Élément : {}{id}."
 
-#: crates/aae-cli/src/main.rs:1538
+#: crates/aae-cli/src/main.rs:1569
 msgid "{} plays audio at the right speed."
 msgstr "L'appareil {} lit le son à la bonne vitesse."
 
-#: crates/aae-cli/src/main.rs:1541
+#: crates/aae-cli/src/main.rs:1572
 msgid "{} plays audio at {:.1}% speed, which lowers its pitch. AAE corrects it when playing."
 msgstr "L'appareil {} lit le son à {:.1} % de sa vitesse, ce qui baisse le ton. AAE le corrige à la lecture."
 
-#: crates/aae-cli/src/main.rs:1546
+#: crates/aae-cli/src/main.rs:1577
 msgid "The audio couldn't be measured. Try again with AAE_LOG=info for details."
 msgstr "Impossible de mesurer le son. Réessayez avec AAE_LOG=info pour en savoir plus."
 
-#: crates/aae-cli/src/main.rs:1564
+#: crates/aae-cli/src/main.rs:1595
 msgid "\"{name}\" is not a log level. Use verbose, debug, info, warning, error or fatal."
 msgstr "« {name} » n'est pas un niveau de journal. Utilisez verbose, debug, info, warning, error ou fatal."
 
-#: crates/aae-cli/src/main.rs:1634
+#: crates/aae-cli/src/main.rs:1665
 msgid "The speech log is already {} for {}."
 msgstr "Journal de la parole de l'appareil {1} : déjà {0}."
 
-#: crates/aae-cli/src/main.rs:1643
+#: crates/aae-cli/src/main.rs:1674
 msgid "The speech log is {}."
 msgstr "Journal de la parole : {}."
 
-#: crates/aae-cli/src/main.rs:1649
+#: crates/aae-cli/src/main.rs:1680
 msgid "Nothing has been said{}."
 msgstr "Rien n'a été énoncé{}."
 
-#: crates/aae-cli/src/main.rs:1653
+#: crates/aae-cli/src/main.rs:1684
 msgid " since the log was cleared"
 msgstr " depuis l'effacement du journal"
 
-#: crates/aae-cli/src/main.rs:1663
+#: crates/aae-cli/src/main.rs:1694
 msgid "Showing what {} says. Press Control-C to stop."
 msgstr "Affichage de ce qu'énonce l'appareil {}. Appuyez sur Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:1683
+#: crates/aae-cli/src/main.rs:1714
 msgid "Cleared the speech log."
 msgstr "Journal de la parole effacé."
 
-#: crates/aae-cli/src/main.rs:1694
+#: crates/aae-cli/src/main.rs:1725
 msgid "{}: text-to-speech works, with {}."
 msgstr "Appareil {} : la synthèse vocale fonctionne, avec {}."
 
-#: crates/aae-cli/src/main.rs:1700
+#: crates/aae-cli/src/main.rs:1731
+#. messages: 1
 msgid "{}: text-to-speech failed: {}. Repairing it."
 msgstr "Appareil {} : la synthèse vocale a échoué ({}). Réparation en cours."
 
-#: crates/aae-cli/src/main.rs:1704
+#: crates/aae-cli/src/main.rs:1735
 msgid "Speech works now."
 msgstr "La parole fonctionne maintenant."
 
-#: crates/aae-cli/src/main.rs:1709
+#: crates/aae-cli/src/main.rs:1740
 msgid "Restarting Android on {}."
 msgstr "Redémarrage d'Android sur l'appareil {}."
 
-#: crates/aae-cli/src/main.rs:1723
+#: crates/aae-cli/src/main.rs:1754
 msgid "{} is stopped."
 msgstr "L'appareil {} est arrêté."
 
-#: crates/aae-cli/src/main.rs:1761
+#: crates/aae-cli/src/main.rs:1792
 msgid "\"{name}\" is not a key name. {}"
 msgstr "« {name} » n'est pas un nom de touche. {}"
 
-#: crates/aae-cli/src/main.rs:1773
+#: crates/aae-cli/src/main.rs:1804
 msgid "Gestures, named with hyphens or spaces:"
 msgstr "Gestes, nommés avec des tirets ou des espaces :"
 
-#: crates/aae-cli/src/main.rs:1784
+#: crates/aae-cli/src/main.rs:1815
 msgid "\"{name}\" is not a gesture. Run aae gesture with only a device to list them."
 msgstr "« {name} » n'est pas un geste. Lancez aae gesture avec seulement un appareil pour les lister."
 
-#: crates/aae-cli/src/main.rs:1834
+#: crates/aae-cli/src/main.rs:1865
 msgid "Installing {} on {}."
 msgstr "Installation de {0} sur l'appareil {1}."
 
-#: crates/aae-cli/src/main.rs:1837
+#: crates/aae-cli/src/main.rs:1868
 msgid "Installed {}."
 msgstr "Installation de {0} terminée."
 
-#: crates/aae-cli/src/main.rs:1862
+#: crates/aae-cli/src/main.rs:1893
 msgid "Turning on"
 msgstr "Activation"
 
-#: crates/aae-cli/src/main.rs:1862
+#: crates/aae-cli/src/main.rs:1893
 msgid "Leaving off"
 msgstr "Reste désactivé"
 
-#: crates/aae-cli/src/main.rs:1863
-msgid "{state} {}, {}."
-msgstr "{state} : {}, {}."
+#: crates/aae-cli/src/main.rs:1894
+msgid "{} {}, {}."
+msgstr "{} : {}, {}."
 
-#: crates/aae-cli/src/main.rs:1879
+#: crates/aae-cli/src/main.rs:1910
 msgid "{} doesn't exist."
 msgstr "{} n'existe pas."
 
-#: crates/aae-cli/src/main.rs:1882
+#: crates/aae-cli/src/main.rs:1913
 msgid "Watching {} for new builds. Press Control-C to stop."
 msgstr "Surveillance des nouvelles versions dans {}. Appuyez sur Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:1895
+#: crates/aae-cli/src/main.rs:1926
 msgid "New build: {}."
 msgstr "Nouvelle version : {}."
 
-#: crates/aae-cli/src/main.rs:1908
+#: crates/aae-cli/src/main.rs:1939
 msgid "Installed {} on {}."
 msgstr "Installation de {0} terminée sur l'appareil {1}."
 
-#: crates/aae-cli/src/main.rs:1913
+#: crates/aae-cli/src/main.rs:1944
+#. messages: e
 msgid "{name}: {e:#}"
 msgstr "{name} : {e:#}"
 
-#: crates/aae-cli/src/main.rs:1947
+#: crates/aae-cli/src/main.rs:1978
+#. messages: e
 msgid "\"{e}\" isn't key=value."
 msgstr "« {e} » n'est pas de la forme clé=valeur."
 
-#: crates/aae-cli/src/main.rs:1969
+#: crates/aae-cli/src/main.rs:2001
 msgid "No apps are installed."
 msgstr "Aucune app n'est installée."
 
-#: crates/aae-cli/src/main.rs:1974
+#: crates/aae-cli/src/main.rs:2006
 msgid ", version {}"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:1977
+#: crates/aae-cli/src/main.rs:2009
 msgid ", turned off"
 msgstr ", désactivée"
 
-#: crates/aae-cli/src/main.rs:2001
+#: crates/aae-cli/src/main.rs:2033
 msgid "No app called \"{app}\" is installed. aae apps lists them."
 msgstr "Aucune app nommée « {app} » n'est installée. La commande aae apps les liste."
 
-#: crates/aae-cli/src/main.rs:2007
+#: crates/aae-cli/src/main.rs:2039
 msgid "Opened {name}."
 msgstr "Ouvert : {name}."
 
-#: crates/aae-cli/src/main.rs:2016
+#: crates/aae-cli/src/main.rs:2048
 msgid "Opened {component}."
 msgstr "Ouvert : {component}."
 
-#: crates/aae-cli/src/main.rs:2020
+#: crates/aae-cli/src/main.rs:2052
 msgid "Stopped {name}."
 msgstr "Arrêté : {name}."
 
-#: crates/aae-cli/src/main.rs:2024
+#: crates/aae-cli/src/main.rs:2056
 msgid "Cleared {name}'s data."
 msgstr "Données de l'app {name} effacées."
 
-#: crates/aae-cli/src/main.rs:2028
+#: crates/aae-cli/src/main.rs:2060
 msgid "Uninstalled {name}."
 msgstr "Désinstallé : {name}."
 
-#: crates/aae-cli/src/main.rs:2033
+#: crates/aae-cli/src/main.rs:2065
 msgid "{name} asks for no permissions."
 msgstr "L'app {name} ne demande aucune autorisation."
 
-#: crates/aae-cli/src/main.rs:2036
+#: crates/aae-cli/src/main.rs:2068
 msgid "not granted"
 msgstr "non accordée"
 
-#: crates/aae-cli/src/main.rs:2037
-msgid "{}: {state} ({})."
-msgstr "{} : {state} ({})."
+#: crates/aae-cli/src/main.rs:2069 crates/aae-cli/src/main.rs:2219
+msgid "{}: {} ({})."
+msgstr "{} : {} ({})."
 
-#: crates/aae-cli/src/main.rs:2050
+#: crates/aae-cli/src/main.rs:2073
+msgid "{}: {}."
+msgstr "{} : {}."
+
+#: crates/aae-cli/src/main.rs:2082
 msgid "Granted {n} permissions to {name}."
 msgstr "Autorisations accordées à l'app {name} : {n}."
 
-#: crates/aae-cli/src/main.rs:2054
+#: crates/aae-cli/src/main.rs:2086
 msgid "Granted {permission} to {name}."
 msgstr "Autorisation {permission} accordée à l'app {name}."
 
-#: crates/aae-cli/src/main.rs:2058
+#: crates/aae-cli/src/main.rs:2090
 msgid "Revoked {permission} from {name}."
 msgstr "Autorisation {permission} retirée à l'app {name}."
 
-#: crates/aae-cli/src/main.rs:2063
+#: crates/aae-cli/src/main.rs:2095
 msgid "{name}: {} allowed."
 msgstr "{name} : accès « {} » autorisé."
 
-#: crates/aae-cli/src/main.rs:2068
+#: crates/aae-cli/src/main.rs:2100
 msgid "{name}: {} not allowed."
 msgstr "{name} : accès « {} » non autorisé."
 
-#: crates/aae-cli/src/main.rs:2095
+#: crates/aae-cli/src/main.rs:2127
 msgid "{} has no screen reader called \"{apk}\", and there's no file by that name. aae services lists what's installed."
 msgstr "L'appareil {} n'a aucun lecteur d'écran nommé « {apk} », et aucun fichier ne porte ce nom. La commande aae services liste ce qui est installé."
 
-#: crates/aae-cli/src/main.rs:2101
+#: crates/aae-cli/src/main.rs:2133
 msgid "{} is now the screen reader on {}."
 msgstr "{} est maintenant le lecteur d'écran de l'appareil {}."
 
-#: crates/aae-cli/src/main.rs:2126
+#: crates/aae-cli/src/main.rs:2158
 msgid "No device uses {package} as its screen reader."
 msgstr "Aucun appareil n'utilise {package} comme lecteur d'écran."
 
-#: crates/aae-cli/src/main.rs:2142 crates/aae-cli/src/main.rs:3050
+#: crates/aae-cli/src/main.rs:2174 crates/aae-cli/src/main.rs:3082
 msgid "Getting Backtalk's latest development build."
 msgstr "Téléchargement de la dernière version de test de Backtalk."
 
-#: crates/aae-cli/src/main.rs:2158
+#: crates/aae-cli/src/main.rs:2190
 msgid "{package} is installed and on, on {name}."
 msgstr "{package} est installé et activé sur l'appareil {name}."
 
-#: crates/aae-cli/src/main.rs:2175
+#: crates/aae-cli/src/main.rs:2207
 msgid "No accessibility service called \"{name}\" is installed. aae services lists them."
 msgstr "Aucun service d'accessibilité nommé « {name} » n'est installé. La commande aae services les liste."
 
-#: crates/aae-cli/src/main.rs:2183
+#: crates/aae-cli/src/main.rs:2215
 msgid ", the device's screen reader"
 msgstr ", le lecteur d'écran de l'appareil"
 
-#: crates/aae-cli/src/main.rs:2185
+#: crates/aae-cli/src/main.rs:2217
 msgid ", a screen reader"
 msgstr ", un lecteur d'écran"
 
-#: crates/aae-cli/src/main.rs:2187
-msgid "{line} ({})."
-msgstr ""
-
-#: crates/aae-cli/src/main.rs:2199
+#: crates/aae-cli/src/main.rs:2231
 msgid "Turned on {}, and AAE keeps it on."
 msgstr "{} est activé, et AAE le maintient activé."
 
-#: crates/aae-cli/src/main.rs:2205
+#: crates/aae-cli/src/main.rs:2237
 msgid "Turned off {}."
 msgstr "{} est désactivé."
 
-#: crates/aae-cli/src/main.rs:2219
+#: crates/aae-cli/src/main.rs:2251
 msgid "{} has no snapshot called \"{name}\". Use aae snapshot \"{}\" list to see them."
 msgstr "L'appareil {} n'a aucun instantané nommé « {name} ». Utilisez aae snapshot \"{}\" list pour les voir."
 
-#: crates/aae-cli/src/main.rs:2228
+#: crates/aae-cli/src/main.rs:2260
 msgid "{} has no snapshots."
 msgstr "L'appareil {} n'a aucun instantané."
 
-#: crates/aae-cli/src/main.rs:2233
+#: crates/aae-cli/src/main.rs:2265
 msgid ", taken {taken}"
 msgstr ", créé le {taken}"
 
-#: crates/aae-cli/src/main.rs:2237
+#: crates/aae-cli/src/main.rs:2269
 msgid ", restored last"
 msgstr ", dernier restauré"
 
-#: crates/aae-cli/src/main.rs:2240
+#: crates/aae-cli/src/main.rs:2272
 msgid ", can't be restored by this emulator"
 msgstr ", impossible à restaurer avec cet émulateur"
 
-#: crates/aae-cli/src/main.rs:2256
+#: crates/aae-cli/src/main.rs:2288
 msgid "Restored snapshot {}."
 msgstr "Instantané {} restauré."
 
-#: crates/aae-cli/src/main.rs:2268
+#: crates/aae-cli/src/main.rs:2300
 msgid "Renamed snapshot {} to {new_name}."
 msgstr "L'instantané {} s'appelle maintenant {new_name}."
 
-#: crates/aae-cli/src/main.rs:2273
+#: crates/aae-cli/src/main.rs:2305
 msgid "Deleted snapshot {}."
 msgstr "Instantané {} supprimé."
 
-#: crates/aae-cli/src/main.rs:2306
+#: crates/aae-cli/src/main.rs:2338
 msgid "Microphone peak over 1.5 seconds: {heard} of 32767."
 msgstr "Crête du micro sur 1,5 seconde : {heard} sur 32767."
 
-#: crates/aae-cli/src/main.rs:2314
+#: crates/aae-cli/src/main.rs:2346
 msgid "{} seconds of audio. It plays when an app on the device records. Control-C cancels."
 msgstr "Durée du son : {} secondes. Il sera lu quand une app de l'appareil enregistrera. Contrôle + C pour annuler."
 
-#: crates/aae-cli/src/main.rs:2319
+#: crates/aae-cli/src/main.rs:2351
 msgid "Played the whole file into the microphone."
 msgstr "Le fichier a été lu en entier dans le micro."
 
-#: crates/aae-cli/src/main.rs:2321
+#: crates/aae-cli/src/main.rs:2353
 msgid "The app stopped recording {:.1} seconds in."
 msgstr "L'app a arrêté d'enregistrer au bout de {:.1} secondes."
 
-#: crates/aae-cli/src/main.rs:2325
+#: crates/aae-cli/src/main.rs:2357
 msgid "Cancelled."
 msgstr "Annulé."
 
-#: crates/aae-cli/src/main.rs:2330
+#: crates/aae-cli/src/main.rs:2362
 msgid "Microphone on: {}. Control-C stops."
 msgstr "Micro activé : {}. Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:2345
+#: crates/aae-cli/src/main.rs:2377
 msgid "Use on or off, not {other}."
 msgstr "Utilisez on ou off, pas {other}."
 
-#: crates/aae-cli/src/main.rs:2350
+#: crates/aae-cli/src/main.rs:2382
 msgid "{} needs a value, such as on or off."
 msgstr "{} a besoin d'une valeur, comme on ou off."
 
-#: crates/aae-cli/src/main.rs:2358
+#: crates/aae-cli/src/main.rs:2390
 msgid "Speeds are full, lte, 3g, slow-3g, edge and gprs."
 msgstr "Les vitesses possibles sont full, lte, 3g, slow-3g, edge et gprs."
 
-#: crates/aae-cli/src/main.rs:2363
+#: crates/aae-cli/src/main.rs:2395
 msgid "{other} isn't a network setting: use airplane, wifi, data or speed."
 msgstr "{other} n'est pas un réglage réseau : utilisez airplane, wifi, data ou speed."
 
-#: crates/aae-cli/src/main.rs:2396
+#: crates/aae-cli/src/main.rs:2428
 msgid "Battery at {}%, {}, health {}."
 msgstr "Batterie à {} %, {}, état : {}."
 
-#: crates/aae-cli/src/main.rs:2405
+#: crates/aae-cli/src/main.rs:2437
 msgid "Fingers are numbered from 1 to 10."
 msgstr "Les doigts sont numérotés de 1 à 10."
 
-#: crates/aae-cli/src/main.rs:2427
+#: crates/aae-cli/src/main.rs:2459
 msgid "Give each setting a value, such as: language en-GB font-size 130"
 msgstr "Donnez une valeur à chaque réglage, par exemple : language en-GB font-size 130"
 
-#: crates/aae-cli/src/main.rs:2448
-msgid "  {value}: {label}"
-msgstr "  {value} : {label}"
+#: crates/aae-cli/src/main.rs:2478
+msgid "{} ({}):"
+msgstr "{} ({}) :"
 
-#: crates/aae-cli/src/main.rs:2452
+#: crates/aae-cli/src/main.rs:2480
+msgid "  {}: {}"
+msgstr "  {} : {}"
+
+#: crates/aae-cli/src/main.rs:2484
 msgid "The language also takes any language tags, such as fr-CA or fr-FR,en-US."
 msgstr "La langue accepte aussi n'importe quels codes de langue, comme fr-CA ou fr-FR,en-US."
 
-#: crates/aae-cli/src/main.rs:2458
+#: crates/aae-cli/src/main.rs:2490
 msgid "Give each setting a value, such as: font-size 150 dark-theme on"
 msgstr "Donnez une valeur à chaque réglage, par exemple : font-size 150 dark-theme on"
 
-#: crates/aae-cli/src/main.rs:2488
+#: crates/aae-cli/src/main.rs:2520
 msgid "Recording into {} for up to {limit} seconds. Press Control-C to stop."
 msgstr "Enregistrement dans {}, pendant {limit} secondes au maximum. Appuyez sur Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:2498
+#: crates/aae-cli/src/main.rs:2530
 msgid "Saved {}, {} seconds."
 msgstr "Enregistré : {0}, {1} secondes."
 
-#: crates/aae-cli/src/main.rs:2511
+#: crates/aae-cli/src/main.rs:2543
 msgid "{} can't be read"
 msgstr "Impossible de lire {}"
 
-#: crates/aae-cli/src/main.rs:2515
+#: crates/aae-cli/src/main.rs:2547
 msgid "{} points, taking {:.0} seconds. Press Control-C to stop."
 msgstr "Itinéraire de {} points, d'une durée de {:.0} secondes. Appuyez sur Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:2534
+#: crates/aae-cli/src/main.rs:2566
 msgid "{}: {} megabytes of memory, {} processor cores, {} megabytes of storage, a {} by {} screen at {} dots per inch, {}."
 msgstr "Appareil {} : {} mégaoctets de mémoire, {} cœurs de processeur, {} mégaoctets de stockage, un écran de {} sur {} à {} points par pouce, {}."
 
-#: crates/aae-cli/src/main.rs:2551
+#: crates/aae-cli/src/main.rs:2583
 msgid "Give each setting a value, such as: memory 4096 cores 6"
 msgstr "Donnez une valeur à chaque réglage, par exemple : memory 4096 cores 6"
 
-#: crates/aae-cli/src/main.rs:2558
+#: crates/aae-cli/src/main.rs:2590
 msgid "{name} takes a number, not {value}."
 msgstr "{name} attend un nombre, pas {value}."
 
-#: crates/aae-cli/src/main.rs:2579
+#: crates/aae-cli/src/main.rs:2611
 msgid "The screen is width x height, such as 1080x2400."
 msgstr "Indiquez l'écran sous la forme largeur x hauteur, par exemple 1080x2400."
 
-#: crates/aae-cli/src/main.rs:2589
+#: crates/aae-cli/src/main.rs:2621
 msgid "graphics is adapter or software, not {value}."
 msgstr "graphics vaut adapter ou software, pas {value}."
 
-#: crates/aae-cli/src/main.rs:2593
+#: crates/aae-cli/src/main.rs:2625
 msgid "\"{other}\" isn't hardware AAE changes. Use memory, cores, storage, screen, density or graphics."
 msgstr "AAE ne modifie pas « {other} ». Utilisez memory, cores, storage, screen, density ou graphics."
 
-#: crates/aae-cli/src/main.rs:2611
+#: crates/aae-cli/src/main.rs:2643
 msgid "Exported {} to {}, {:.1} gigabytes."
 msgstr "Appareil {0} exporté dans {1}, {2} Go."
 
-#: crates/aae-cli/src/main.rs:2645
+#: crates/aae-cli/src/main.rs:2677
 msgid "The speech bridge is {} for {}. The speech log is {}."
 msgstr "Voix de l'ordinateur de l'appareil {1} : {0}. Journal de la parole : {2}."
 
-#: crates/aae-cli/src/main.rs:2656
+#: crates/aae-cli/src/main.rs:2688
 msgid "Listening. Press Control-C to stop."
 msgstr "Écoute en cours. Appuyez sur Contrôle + C pour arrêter."
 
-#: crates/aae-cli/src/main.rs:2664
+#: crates/aae-cli/src/main.rs:2696
 msgid "{:7.2}s speak {id} [{language} rate {rate} pitch {pitch}] {text}"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:2674
+#: crates/aae-cli/src/main.rs:2706
 msgid "{:7.2}s stop"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:2680
+#: crates/aae-cli/src/main.rs:2712
 msgid "{:7.2}s done {id}"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:2721
+#: crates/aae-cli/src/main.rs:2753
 msgid "Location set to {latitude}, {longitude}."
 msgstr "Position définie sur {latitude}, {longitude}."
 
-#: crates/aae-cli/src/main.rs:2727
+#: crates/aae-cli/src/main.rs:2759
 msgid "Sent a text from {from}."
 msgstr "SMS envoyé à l'appareil depuis le numéro {from}."
 
-#: crates/aae-cli/src/main.rs:2738
+#: crates/aae-cli/src/main.rs:2770
 msgid "Ended the call from {number}."
 msgstr "Appel du numéro {number} terminé."
 
-#: crates/aae-cli/src/main.rs:2741
+#: crates/aae-cli/src/main.rs:2773
 msgid "{number} is calling."
 msgstr "Le numéro {number} appelle l'appareil."
 
-#: crates/aae-cli/src/main.rs:2750
+#: crates/aae-cli/src/main.rs:2782
 msgid "Copied to the device's clipboard."
 msgstr "Copié dans le presse-papiers de l'appareil."
 
-#: crates/aae-cli/src/main.rs:2772
+#: crates/aae-cli/src/main.rs:2804
 msgid "The screen reader's volume on {} is now {percent}%, step {index}."
 msgstr "Le volume du lecteur d'écran de l'appareil {} est maintenant à {percent} %, niveau {index}."
 
-#: crates/aae-cli/src/main.rs:2783
+#: crates/aae-cli/src/main.rs:2815
 msgid "Saved the screenshot as {}."
 msgstr "Capture d'écran enregistrée sous {}."
 
-#: crates/aae-cli/src/main.rs:2815
+#: crates/aae-cli/src/main.rs:2847
 msgid "Google offers no Android version {api} for this computer. aae available lists those it does."
 msgstr "Google ne propose pas de version d'Android {api} pour cet ordinateur. La commande aae available liste celles qui sont proposées."
 
-#: crates/aae-cli/src/main.rs:2819
+#: crates/aae-cli/src/main.rs:2851
 msgid "Google doesn't offer that kind of Android version {api}. It offers: {}."
 msgstr "Google ne propose pas ce type de version d'Android {api}. Types proposés : {}."
 
-#: crates/aae-cli/src/main.rs:2838
+#: crates/aae-cli/src/main.rs:2870
 msgid "{} is under Google's licence \"{}\", which you haven't accepted yet. Read it in {}, then run this again with --accept-licence to accept it."
 msgstr "La licence de Google « {1} » s'applique à {0}, et vous ne l'avez pas encore acceptée. Lisez-la dans {2}, puis relancez cette commande avec --accept-licence pour l'accepter."
 
-#: crates/aae-cli/src/main.rs:2846
+#: crates/aae-cli/src/main.rs:2878
 msgid "Accepted Google's licence {}."
 msgstr "Licence de Google {} acceptée."
 
-#: crates/aae-cli/src/main.rs:2851
+#: crates/aae-cli/src/main.rs:2883
 msgid "Warning: {} needs emulator version {needed} or later, and this one is {have}. Run aae setup --update to update it."
 msgstr "Avertissement : {} nécessite l'émulateur {needed} ou une version ultérieure, mais la version installée est la {have}. Lancez aae setup --update pour le mettre à jour."
 
-#: crates/aae-cli/src/main.rs:2858
+#: crates/aae-cli/src/main.rs:2890
 msgid "Downloading {}, {}."
 msgstr "Téléchargement en cours : {}, {}."
 
-#: crates/aae-cli/src/main.rs:2870 crates/aae-cli/src/main.rs:3363
+#: crates/aae-cli/src/main.rs:2902 crates/aae-cli/src/main.rs:3395
 msgid "Downloaded {last}%."
 msgstr "Téléchargement : {last} %."
 
-#: crates/aae-cli/src/main.rs:2901
+#: crates/aae-cli/src/main.rs:2933
 msgid "Android version {api}"
 msgstr "La version d'Android {api}"
 
-#: crates/aae-cli/src/main.rs:2902
+#: crates/aae-cli/src/main.rs:2934
 msgid "a suitable Android version"
 msgstr "Une version d'Android adaptée"
 
-#: crates/aae-cli/src/main.rs:2905
+#: crates/aae-cli/src/main.rs:2937
 msgid "{wanted} is not installed, and no Android versions are installed yet."
 msgstr "{wanted} n'est pas installée, et aucune version d'Android n'est encore installée."
 
-#: crates/aae-cli/src/main.rs:2909
+#: crates/aae-cli/src/main.rs:2941
 msgid "{wanted} is not installed. Installed versions are: {}."
 msgstr "{wanted} n'est pas installée. Versions installées : {}."
 
-#: crates/aae-cli/src/main.rs:2944
+#: crates/aae-cli/src/main.rs:2976
 msgid "Name a device, or use --list."
 msgstr "Indiquez un appareil, ou utilisez --list."
 
-#: crates/aae-cli/src/main.rs:2950
+#: crates/aae-cli/src/main.rs:2982
 msgid "{}, chosen for {}."
 msgstr "{}, choisie pour l'appareil {}."
 
-#: crates/aae-cli/src/main.rs:2955
+#: crates/aae-cli/src/main.rs:2987
 msgid "{} follows the computer's keyboard in the apps, and the terminal's language in aae attach."
 msgstr "L'appareil {} suit le clavier de l'ordinateur dans les apps, et la langue du terminal dans aae attach."
 
-#: crates/aae-cli/src/main.rs:2964
+#: crates/aae-cli/src/main.rs:2996
 msgid "{} follows the computer's keyboard."
 msgstr "L'appareil {} suit le clavier de l'ordinateur."
 
-#: crates/aae-cli/src/main.rs:2968
+#: crates/aae-cli/src/main.rs:3000
 msgid "\"{layout}\" isn't a layout. aae keyboard --list lists them."
 msgstr "« {layout} » n'est pas une disposition de clavier. La commande aae keyboard --list les liste."
 
-#: crates/aae-cli/src/main.rs:2975
+#: crates/aae-cli/src/main.rs:3007
 msgid "{} uses {}."
 msgstr "L'appareil {} utilise la disposition {}."
 
-#: crates/aae-cli/src/main.rs:2995
+#: crates/aae-cli/src/main.rs:3027
 msgid "{name} has no screen reader. Add one with: aae screen-reader \"{name}\" backtalk, or aae screen-reader \"{name}\" followed by the path to an APK."
 msgstr "L'appareil {name} n'a pas de lecteur d'écran. Ajoutez-en un avec : aae screen-reader \"{name}\" backtalk, ou aae screen-reader \"{name}\" suivi du chemin d'un APK."
 
-#: crates/aae-cli/src/main.rs:3000
+#: crates/aae-cli/src/main.rs:3032
 msgid "{name} has no screen reader, and Backtalk needs Android 8 or later. Add one made for this Android version, such as an older TalkBack, with: aae screen-reader \"{name}\" followed by the path to its APK."
 msgstr "L'appareil {name} n'a pas de lecteur d'écran, et Backtalk nécessite Android 8 ou une version ultérieure. Ajoutez-en un conçu pour cette version d'Android, comme un ancien TalkBack, avec : aae screen-reader \"{name}\" suivi du chemin de son APK."
 
-#: crates/aae-cli/src/main.rs:3010
+#: crates/aae-cli/src/main.rs:3042
 msgid "{name} has no screen reader. Choose:"
 msgstr "L'appareil {name} n'a pas de lecteur d'écran. Choisissez :"
 
-#: crates/aae-cli/src/main.rs:3011
+#: crates/aae-cli/src/main.rs:3043
 msgid "Download and install Backtalk."
 msgstr "Télécharger et installer Backtalk."
 
-#: crates/aae-cli/src/main.rs:3014
+#: crates/aae-cli/src/main.rs:3046
 msgid "{name} has no screen reader, and Backtalk needs Android 8 or later. You can install one made for this Android version, such as an older TalkBack."
 msgstr "L'appareil {name} n'a pas de lecteur d'écran, et Backtalk nécessite Android 8 ou une version ultérieure. Vous pouvez en installer un conçu pour cette version d'Android, comme un ancien TalkBack."
 
-#: crates/aae-cli/src/main.rs:3018
+#: crates/aae-cli/src/main.rs:3050
 msgid "Install a screen reader APK from this computer."
 msgstr "Installer l'APK d'un lecteur d'écran depuis cet ordinateur."
 
-#: crates/aae-cli/src/main.rs:3020
+#: crates/aae-cli/src/main.rs:3052
 msgid "Continue without a screen reader, and don't ask again."
 msgstr "Continuer sans lecteur d'écran, et ne plus demander."
 
-#: crates/aae-cli/src/main.rs:3024
+#: crates/aae-cli/src/main.rs:3056
 msgid "{}. {text}"
 msgstr ""
 
-#: crates/aae-cli/src/main.rs:3028
+#: crates/aae-cli/src/main.rs:3060
 msgid "Type {} or {}: "
 msgstr "Tapez {} ou {} : "
 
-#: crates/aae-cli/src/main.rs:3054
+#: crates/aae-cli/src/main.rs:3086
 msgid "Type the path to the APK: "
 msgstr "Tapez le chemin de l'APK : "
 
-#: crates/aae-cli/src/main.rs:3064
+#: crates/aae-cli/src/main.rs:3096
 msgid "{name} has no screen reader. AAE won't ask again."
 msgstr "L'appareil {name} n'a pas de lecteur d'écran. AAE ne posera plus la question."
 
-#: crates/aae-cli/src/main.rs:3097
+#: crates/aae-cli/src/main.rs:3129
 msgid "Testing {}'s keyboard. The keys go to AAE's helper, not to any app."
 msgstr "Test du clavier de l'appareil {}. Les touches sont envoyées à l'app auxiliaire d'AAE, et à aucune autre app."
 
-#: crates/aae-cli/src/main.rs:3117
+#: crates/aae-cli/src/main.rs:3149
 msgid "{}: works."
 msgstr "{} : fonctionne."
 
-#: crates/aae-cli/src/main.rs:3119
+#: crates/aae-cli/src/main.rs:3151
 msgid "{}: doesn't work. Android received {}."
 msgstr "{} : ne fonctionne pas. Android a reçu {}."
 
-#: crates/aae-cli/src/main.rs:3124
+#: crates/aae-cli/src/main.rs:3156
 msgid "AAE's helper received no keys at all. Android stops sending keys to it after it is updated while the device runs. Restart Android with aae restart, then test again."
 msgstr "L'app auxiliaire d'AAE n'a reçu aucune touche. Android cesse de lui envoyer les touches quand elle est mise à jour pendant que l'appareil est en marche. Redémarrez Android avec aae restart, puis refaites le test."
 
-#: crates/aae-cli/src/main.rs:3129
+#: crates/aae-cli/src/main.rs:3161
 msgid "All {} keys work."
 msgstr "Les {} touches fonctionnent toutes."
 
-#: crates/aae-cli/src/main.rs:3132
+#: crates/aae-cli/src/main.rs:3164
 msgid "{failed} of {} keys don't work."
 msgstr "Touches qui ne fonctionnent pas : {failed} sur {}."
 
-#: crates/aae-cli/src/main.rs:3141
+#: crates/aae-cli/src/main.rs:3173
 msgid "\"{k}\" is not a key name. {}"
 msgstr "« {k} » n'est pas un nom de touche. {}"
 
-#: crates/aae-cli/src/main.rs:3146
+#: crates/aae-cli/src/main.rs:3178
 msgid "Pressing {names} on {} {trials} times, and timing each response."
 msgstr "Appui {trials} fois sur {names} sur l'appareil {}, avec mesure du temps de chaque réponse."
 
-#: crates/aae-cli/src/main.rs:3171
+#: crates/aae-cli/src/main.rs:3203
 msgid "Trial {}: {} milliseconds."
 msgstr "Essai {} : {} millisecondes."
 
-#: crates/aae-cli/src/main.rs:3172
+#: crates/aae-cli/src/main.rs:3204
 msgid "Trial {}: no audio detected."
 msgstr "Essai {} : aucun son détecté."
 
-#: crates/aae-cli/src/main.rs:3176
+#: crates/aae-cli/src/main.rs:3208
 msgid "No audio detected. Check the screen reader is on and text-to-speech works."
 msgstr "Aucun son détecté. Vérifiez que le lecteur d'écran est activé et que la synthèse vocale fonctionne."
 
-#: crates/aae-cli/src/main.rs:3180
+#: crates/aae-cli/src/main.rs:3212
 msgid "Fastest {}, median {}, slowest {} milliseconds.{}"
 msgstr "Plus rapide : {}, médiane : {}, plus lent : {} millisecondes.{}"
 
-#: crates/aae-cli/src/main.rs:3185
+#: crates/aae-cli/src/main.rs:3217
 msgid " {silent} presses had no response."
 msgstr " Appuis sans réponse : {silent}."
 
-#: crates/aae-cli/src/main.rs:3191
+#: crates/aae-cli/src/main.rs:3223
 msgid "This is the time until the sound leaves the device. Playback adds about 30 milliseconds plus the Mac's own output delay."
 msgstr "Ce temps est mesuré jusqu'à la sortie du son de l'appareil. La lecture ajoute environ 30 millisecondes, plus le délai de sortie du Mac lui-même."
 
-#: crates/aae-cli/src/main.rs:3200
+#: crates/aae-cli/src/main.rs:3232
 msgid "Installing Googlebook OS: about {} to download, {} on disk."
 msgstr "Installation de Googlebook OS : environ {} à télécharger, {} sur le disque."
 
-#: crates/aae-cli/src/main.rs:3212
+#: crates/aae-cli/src/main.rs:3244
 msgid "Downloading {what}: {}%."
 msgstr "Téléchargement : {what}, {0} %."
 
-#: crates/aae-cli/src/main.rs:3225
+#: crates/aae-cli/src/main.rs:3257
 msgid "It is stopped."
 msgstr "L'appareil est arrêté."
 
-#: crates/aae-cli/src/main.rs:3232
+#: crates/aae-cli/src/main.rs:3264
 msgid "It is running{}."
 msgstr "L'appareil est en marche{}."
 
-#: crates/aae-cli/src/main.rs:3233
+#: crates/aae-cli/src/main.rs:3265
 msgid " and still starting"
 msgstr " et encore en cours de démarrage"
 
-#: crates/aae-cli/src/main.rs:3239
+#: crates/aae-cli/src/main.rs:3271
 msgid "The screen reader, {reader}, is on."
 msgstr "Le lecteur d'écran, {reader}, est activé."
 
-#: crates/aae-cli/src/main.rs:3242
+#: crates/aae-cli/src/main.rs:3274
 msgid "The screen reader, {reader}, is off. Start the device again, or run aae services to turn it on."
 msgstr "Le lecteur d'écran, {reader}, est désactivé. Démarrez à nouveau l'appareil, ou lancez aae services pour l'activer."
 
-#: crates/aae-cli/src/main.rs:3249
+#: crates/aae-cli/src/main.rs:3281
 msgid "adb serial {}, gRPC port {}."
 msgstr "Numéro de série adb {}, port gRPC {}."
 
-#: crates/aae-cli/src/main.rs:3260
+#: crates/aae-cli/src/main.rs:3292
 msgid "AAE's own"
 msgstr "propre à AAE"
 
-#: crates/aae-cli/src/main.rs:3264
+#: crates/aae-cli/src/main.rs:3296
 msgid "Using {own} Android SDK at {}."
 msgstr "Utilisation du SDK Android {own}, dans {}."
 
-#: crates/aae-cli/src/main.rs:3294
+#: crates/aae-cli/src/main.rs:3326
 msgid "Updates are available: {}. Run aae setup --update to install them."
 msgstr "Des mises à jour sont disponibles : {}. Lancez aae setup --update pour les installer."
 
-#: crates/aae-cli/src/main.rs:3299
+#: crates/aae-cli/src/main.rs:3331
 msgid "Everything AAE needs is installed."
 msgstr "Tout ce dont AAE a besoin est installé."
 
-#: crates/aae-cli/src/main.rs:3328
+#: crates/aae-cli/src/main.rs:3360
 msgid "The tools are under Google's licence \"{id}\", which you haven't accepted yet. Read it in {}, then run this again with --accept-licence to accept it."
 msgstr "Les outils sont soumis à la licence de Google « {id} », que vous n'avez pas encore acceptée. Lisez-la dans {}, puis relancez cette commande avec --accept-licence pour l'accepter."
 
-#: crates/aae-cli/src/main.rs:3334
+#: crates/aae-cli/src/main.rs:3366
 msgid "Accepted Google's licence {id}."
 msgstr "Licence de Google {id} acceptée."
 
-#: crates/aae-cli/src/main.rs:3339
+#: crates/aae-cli/src/main.rs:3371
 msgid "Downloading {} tools, {} in all."
 msgstr "Téléchargement de {} outils, {} au total."
 
-#: crates/aae-cli/src/main.rs:3349
+#: crates/aae-cli/src/main.rs:3381
 msgid "Downloading {} {}, {}."
 msgstr "Téléchargement en cours : {} {}, {}."
 
-#: crates/aae-cli/src/main.rs:3371
+#: crates/aae-cli/src/main.rs:3403
 msgid "{name} is installed."
 msgstr "Installation de {name} terminée."
 
-#: crates/aae-cli/src/main.rs:3375
+#: crates/aae-cli/src/main.rs:3407
 msgid "AAE is ready. Next, download an Android version with aae available and aae download."
 msgstr "AAE est prêt. Téléchargez maintenant une version d'Android avec aae available et aae download."
 
-#: crates/aae-cli/src/main.rs:3382
+#: crates/aae-cli/src/main.rs:3414
 msgid "Android SDK: {}."
 msgstr "SDK Android : {}."
 
-#: crates/aae-cli/src/main.rs:3385
+#: crates/aae-cli/src/main.rs:3417
 msgid "Problem: {how}"
 msgstr "Problème : {how}"
 
-#: crates/aae-cli/src/main.rs:3389
+#: crates/aae-cli/src/main.rs:3421
 msgid "Emulator: version {}."
 msgstr "Émulateur : version {}."
 
-#: crates/aae-cli/src/main.rs:3394 crates/aae-cli/src/main.rs:3398
+#: crates/aae-cli/src/main.rs:3426 crates/aae-cli/src/main.rs:3430
+#. messages: e
 msgid "Problem: {e}"
 msgstr "Problème : {e}"
 
-#: crates/aae-cli/src/main.rs:3397
+#: crates/aae-cli/src/main.rs:3429
 msgid "adb: {}."
 msgstr "adb : {}."
 
-#: crates/aae-cli/src/main.rs:3401
+#: crates/aae-cli/src/main.rs:3433
 msgid "Build tools: {}."
 msgstr "Outils de compilation : {}."
 
-#: crates/aae-cli/src/main.rs:3403
+#: crates/aae-cli/src/main.rs:3435
 msgid "Problem: no build tools. AAE needs them to read app packages. Run aae setup to install them."
 msgstr "Problème : aucun outil de compilation. AAE en a besoin pour lire les paquets des apps. Lancez aae setup pour les installer."
 
-#: crates/aae-cli/src/main.rs:3413
+#: crates/aae-cli/src/main.rs:3445
 msgid "{} Android versions installed that run at full speed here."
 msgstr "Versions d'Android installées qui tournent à pleine vitesse sur cet ordinateur : {}."
 
-#: crates/aae-cli/src/main.rs:3417
+#: crates/aae-cli/src/main.rs:3449
 msgid "Default screen reader: {}."
 msgstr "Lecteur d'écran par défaut : {}."
 
-#: crates/aae-cli/src/main.rs:3419
+#: crates/aae-cli/src/main.rs:3451
 msgid "No default screen reader. Pass --screen-reader when creating a device, or put an APK at {}."
 msgstr "Aucun lecteur d'écran par défaut. Ajoutez --screen-reader en créant un appareil, ou placez un APK à l'emplacement {}."
 
-#: crates/aae-cli/src/main.rs:3425
+#: crates/aae-cli/src/main.rs:3457
 msgid "Devices are stored in {}."
 msgstr "Les appareils sont stockés dans {}."
 
-#: crates/aae-cli/src/main.rs:3440
+#: crates/aae-cli/src/main.rs:3472
 msgid "No app called \"{name}\" is installed. aae apps lists them."
 msgstr "Aucune app nommée « {name} » n'est installée. La commande aae apps les liste."
 
-#: crates/aae-cli/src/main.rs:3454
+#: crates/aae-cli/src/main.rs:3486
 msgid "{package} has {}, {}. Turn it on? [{hint}] "
 msgstr "{package} contient {}, {}. L'activer ? [{hint}] "
 
-#: crates/aae-cli/src/main.rs:3476
+#: crates/aae-cli/src/main.rs:3508
 msgid "\"{text}\" is not a point. Give it as X,Y, such as 540,1200."
 msgstr "« {text} » n'est pas un point. Indiquez-le sous la forme X,Y, par exemple 540,1200."
 
-#: crates/aae-cli/src/main.rs:3482
+#: crates/aae-cli/src/main.rs:3514
 msgid "Memory is megabytes or a size, such as 4096 or 4G, not {text}."
 msgstr "La mémoire s'indique en mégaoctets ou avec une unité, par exemple 4096 ou 4G, pas {text}."
 
-#: crates/aae-cli/src/main.rs:3487
+#: crates/aae-cli/src/main.rs:3519
 msgid "Storage is a size, such as 16G or 8192M, not {text}."
 msgstr "Le stockage s'indique avec une unité, par exemple 16G ou 8192M, pas {text}."
 
-#: crates/aae-cli/src/main.rs:3507
+#: crates/aae-cli/src/main.rs:3539
 msgid "Used by other emulator devices: {}"
 msgstr "Utilisée par d'autres appareils d'émulateur : {}"
 
-#: crates/aae-cli/src/main.rs:3512
+#: crates/aae-cli/src/main.rs:3544
 msgid "No devices use it."
 msgstr "Aucun appareil ne l'utilise."
 
-#: crates/aae-cli/src/main.rs:3520
+#: crates/aae-cli/src/main.rs:3552
 msgid "{question} Type yes to confirm: "
 msgstr "{question} Tapez yes pour confirmer : "
 
-#: crates/aae-cli/src/main.rs:3539
+#: crates/aae-cli/src/main.rs:3571
 msgid "AAE is already serving this computer's devices (process {pid}), as at login. Use aae pair for a pairing code."
 msgstr "AAE partage déjà les appareils de cet ordinateur (processus {pid}), comme à l'ouverture de session. Utilisez aae pair pour obtenir un code d'association."
 
-#: crates/aae-cli/src/main.rs:3545
+#: crates/aae-cli/src/main.rs:3577
 msgid "Already serving."
 msgstr "Partage déjà en cours."
 
-#: crates/aae-cli/src/main.rs:3558 crates/aae-cli/src/main.rs:3560
+#: crates/aae-cli/src/main.rs:3590 crates/aae-cli/src/main.rs:3592
+#. messages: e
 msgid "Couldn't announce this computer on the network ({e}); phones will need its address."
 msgstr "Impossible d'annoncer cet ordinateur sur le réseau ({e}) ; les téléphones devront saisir son adresse."
 
-#: crates/aae-cli/src/main.rs:3573
+#: crates/aae-cli/src/main.rs:3605
 msgid ""
 "Serving {name}'s devices to AAE's Android app, on port {port}.\n"
 "Its certificate's fingerprint starts {}."
@@ -1008,27 +1033,28 @@ msgstr ""
 "Partage des appareils de l'ordinateur {name} avec l'app Android d'AAE, sur le port {port}.\n"
 "L'empreinte de son certificat commence par {}."
 
-#: crates/aae-cli/src/main.rs:3583
+#: crates/aae-cli/src/main.rs:3615
 msgid "To pair a phone, enter this code in AAE on it: {code}. It works once, for {minutes} minutes."
 msgstr "Pour associer un téléphone, saisissez ce code dans AAE sur le téléphone : {code}. Il est valable une seule fois, pendant {minutes} minutes."
 
-#: crates/aae-cli/src/main.rs:3594
+#: crates/aae-cli/src/main.rs:3626
 msgid "Press P and Enter for a new pairing code, or Q and Enter to stop."
 msgstr "Appuyez sur P puis Entrée pour obtenir un nouveau code d'association, ou sur Q puis Entrée pour arrêter."
 
-#: crates/aae-cli/src/main.rs:3633
+#: crates/aae-cli/src/main.rs:3665
 msgid "Waiting for {} to stop."
 msgstr "Attente de l'arrêt des appareils : {}."
 
-#: crates/aae-cli/src/main.rs:3643
+#: crates/aae-cli/src/main.rs:3675
+#. messages: e
 msgid "Serving stopped: {e}"
 msgstr "Partage arrêté : {e}"
 
-#: crates/aae-cli/src/main.rs:3692
+#: crates/aae-cli/src/main.rs:3724
 msgid "AAE's helper isn't running on the device, so it can't follow the screen."
 msgstr "L'app auxiliaire d'AAE n'est pas en marche sur l'appareil. Impossible de suivre l'écran."
 
-#: crates/aae-cli/src/main.rs:3703
+#: crates/aae-cli/src/main.rs:3735
 msgid ""
 "\n"
 "The screen changed:"
@@ -1041,6 +1067,7 @@ msgid "the device didn't answer within {} seconds ({})"
 msgstr "l'appareil n'a pas répondu en {} secondes ({})"
 
 #: crates/aae-core/src/adb.rs:54 crates/aae-core/src/adb.rs:80 crates/aae-core/src/adb.rs:117 crates/aae-core/src/logcat.rs:436
+#. messages: e
 msgid "adb could not run: {e}"
 msgstr "impossible de lancer adb : {e}"
 
@@ -1107,6 +1134,7 @@ msgid "a device administrator"
 msgstr "un administrateur de l'appareil"
 
 #: crates/aae-core/src/apk.rs:88
+#. messages: e
 msgid "aapt2 could not run: {e}"
 msgstr "impossible de lancer aapt2 : {e}"
 
@@ -1159,10 +1187,12 @@ msgid "AAE's helper sent no answer."
 msgstr "L'app auxiliaire d'AAE n'a envoyé aucune réponse."
 
 #: crates/aae-core/src/apps.rs:110 crates/aae-core/src/services.rs:60
+#. messages: e
 msgid "AAE's helper sent a list AAE can't read: {e}"
 msgstr "L'app auxiliaire d'AAE a envoyé une liste illisible : {e}"
 
 #: crates/aae-core/src/apps.rs:120
+#. messages: e
 msgid "AAE's helper sent permissions AAE can't read: {e}"
 msgstr "L'app auxiliaire d'AAE a envoyé des autorisations illisibles : {e}"
 
@@ -1239,10 +1269,12 @@ msgid "Beta"
 msgstr ""
 
 #: crates/aae-core/src/catalog.rs:367
+#. messages: e
 msgid "Could not reach Google's list of Android versions: {e}"
 msgstr "Impossible d'accéder à la liste des versions d'Android de Google : {e}"
 
 #: crates/aae-core/src/catalog.rs:374
+#. messages: e
 msgid "Google's list of Android versions didn't download: {e}"
 msgstr "Impossible de télécharger la liste des versions d'Android de Google : {e}"
 
@@ -1275,10 +1307,12 @@ msgid "{} was installed but can't be read."
 msgstr "{} a été installé, mais AAE ne peut pas le lire."
 
 #: crates/aae-core/src/catalog.rs:532
+#. messages: e
 msgid "Could not download {what}: {e}"
 msgstr "Impossible de télécharger {what} : {e}"
 
 #: crates/aae-core/src/catalog.rs:550
+#. messages: e
 msgid "The download of {what} stopped: {e}"
 msgstr "Le téléchargement s'est interrompu ({what}) : {e}"
 
@@ -1287,10 +1321,12 @@ msgid "The download of {what} was damaged on the way, so it wasn't installed. Tr
 msgstr "Le fichier téléchargé ({what}) a été endommagé en route et n'a pas été installé. Réessayez."
 
 #: crates/aae-core/src/catalog.rs:585
+#. messages: e
 msgid "The download is not a valid archive: {e}"
 msgstr "Le fichier téléchargé n'est pas une archive valide : {e}"
 
 #: crates/aae-core/src/catalog.rs:588
+#. messages: e
 msgid "The download couldn't be unpacked: {e}"
 msgstr "Impossible de décompresser le fichier téléchargé : {e}"
 
@@ -1873,6 +1909,7 @@ msgid "\"{name}\" isn't a setting AAE changes."
 msgstr "« {name} » n'est pas un paramètre qu'AAE peut modifier."
 
 #: crates/aae-core/src/device_settings.rs:498 crates/aae-core/src/hardware.rs:264 crates/aae-core/src/transfer.rs:110
+#. messages: e
 msgid "{} can't be written: {e}"
 msgstr "Impossible d'écrire {} : {e}"
 
@@ -1901,6 +1938,7 @@ msgid "Virtualisation: {}"
 msgstr ""
 
 #: crates/aae-core/src/diagnostics.rs:103
+#. messages: why
 msgid "missing. {why}"
 msgstr ""
 
@@ -1981,6 +2019,7 @@ msgid "  Last lines of its emulator log:"
 msgstr ""
 
 #: crates/aae-core/src/diagnostics.rs:217
+#. messages: e
 msgid "couldn't be read: {e}"
 msgstr ""
 
@@ -1992,7 +2031,7 @@ msgstr ""
 msgid "Virtualisation"
 msgstr "Virtualisation"
 
-#: crates/aae-core/src/diagnostics.rs:270 crates/aae-cli/src/main.rs:3267
+#: crates/aae-core/src/diagnostics.rs:270 crates/aae-cli/src/main.rs:3299
 msgid "The emulator can use this computer's hardware virtualisation."
 msgstr "L'émulateur peut utiliser la virtualisation matérielle de cet ordinateur."
 
@@ -2125,6 +2164,7 @@ msgid "Speaking with {}."
 msgstr "Moteur utilisé : {}."
 
 #: crates/aae-core/src/diagnostics.rs:416
+#. messages: e
 msgid "Couldn't check: {e}"
 msgstr "Vérification impossible : {e}"
 
@@ -2263,10 +2303,12 @@ msgstr ""
 "{tail}"
 
 #: crates/aae-core/src/emulator.rs:252
+#. messages: e
 msgid "connecting failed: {e}"
 msgstr "échec de la connexion : {e}"
 
 #: crates/aae-core/src/emulator.rs:263
+#. messages: e
 msgid "it refused a request: {e}"
 msgstr "il a refusé une requête : {e}"
 
@@ -2347,6 +2389,7 @@ msgid "adb failed: {0}"
 msgstr "Échec d'adb : {0}"
 
 #: crates/aae-core/src/error.rs:73
+#. messages: reason
 msgid "Could not read the app package {path}: {reason}"
 msgstr "Impossible de lire le paquet d'app {path} : {reason}"
 
@@ -2375,6 +2418,7 @@ msgid "{context}: {source}"
 msgstr "{context} : {source}"
 
 #: crates/aae-core/src/error.rs:103
+#. messages: reason
 msgid "Could not read {path}: {reason}"
 msgstr "Impossible de lire {path} : {reason}"
 
@@ -2391,6 +2435,7 @@ msgid "Unfolded."
 msgstr "Déplié."
 
 #: crates/aae-core/src/geocode.rs:41
+#. messages: e
 msgid "Couldn't look up the place: {e}"
 msgstr "Impossible de trouver le lieu : {e}"
 
@@ -2419,10 +2464,12 @@ msgid "Google's Cuttlefish image can't be read: {}"
 msgstr "Impossible de lire l'image Cuttlefish de Google : {}"
 
 #: crates/aae-core/src/googlebook/cuttlefish.rs:171
+#. messages: e
 msgid "Couldn't reach Android CI for Google's Cuttlefish image: {e}"
 msgstr "Impossible de joindre Android CI pour obtenir l'image Cuttlefish de Google : {e}"
 
 #: crates/aae-core/src/googlebook/cuttlefish.rs:176
+#. messages: e
 msgid "Couldn't read Android CI's page: {e}"
 msgstr "Impossible de lire la page d'Android CI : {e}"
 
@@ -2475,6 +2522,7 @@ msgid "Moving {}"
 msgstr "Déplacement de {}"
 
 #: crates/aae-core/src/googlebook/cuttlefish.rs:454
+#. messages: e
 msgid "{name}: {e}"
 msgstr "{name} : {e}"
 
@@ -2507,6 +2555,7 @@ msgid "no inode number for {path}"
 msgstr "aucun numéro d'inode pour {path}"
 
 #: crates/aae-core/src/googlebook/image.rs:121 crates/aae-core/src/googlebook/image.rs:138 crates/aae-core/src/googlebook/image.rs:160
+#. messages: e
 msgid "a compressed part is damaged: {e}"
 msgstr "une partie compressée est endommagée : {e}"
 
@@ -2719,14 +2768,17 @@ msgid "copy QEMU from UTM"
 msgstr "copier QEMU depuis UTM"
 
 #: crates/aae-core/src/googlebook/install.rs:346
+#. messages: e
 msgid "Google's recovery image isn't a valid archive: {e}"
 msgstr "L'image de récupération de Google n'est pas une archive valide : {e}"
 
 #: crates/aae-core/src/googlebook/install.rs:350
+#. messages: e
 msgid "Google's recovery image is missing its disk: {e}"
 msgstr "Il manque le disque dans l'image de récupération de Google : {e}"
 
 #: crates/aae-core/src/googlebook/install.rs:359
+#. messages: e
 msgid "Google's recovery image couldn't be unpacked: {e}"
 msgstr "Impossible de décompresser l'image de récupération de Google : {e}"
 
@@ -2739,10 +2791,12 @@ msgid "copy a download"
 msgstr "copier un téléchargement"
 
 #: crates/aae-core/src/googlebook/install.rs:436
+#. messages: e
 msgid "Couldn't download {what}: {e}"
 msgstr "Impossible de télécharger {what} : {e}"
 
 #: crates/aae-core/src/googlebook/install.rs:457
+#. messages: e
 msgid "The download of {what} stopped: {e}. Try again to continue it."
 msgstr "AAE n'a pas pu finir de télécharger {what} : {e}. Réessayez pour reprendre le téléchargement."
 
@@ -2833,6 +2887,7 @@ msgid "The Googlebook image's init.qti.kernel.rc isn't the expected one."
 msgstr "Le fichier init.qti.kernel.rc de l'image Googlebook n'est pas celui attendu."
 
 #: crates/aae-core/src/hardware.rs:46 crates/aae-core/src/transfer.rs:63 crates/aae-core/src/transfer.rs:154
+#. messages: e
 msgid "{} can't be read: {e}"
 msgstr "Impossible de lire {} : {e}"
 
@@ -2861,6 +2916,7 @@ msgid "A foldable's screen size can't be changed. Its density, memory, cores and
 msgstr "Impossible de modifier la taille de l'écran d'un appareil pliable. Vous pouvez en revanche modifier sa densité, sa mémoire, ses cœurs et son stockage."
 
 #: crates/aae-core/src/hardware.rs:205
+#. messages: e
 msgid "{} can't be deleted: {e}"
 msgstr "Impossible de supprimer {} : {e}"
 
@@ -2868,11 +2924,11 @@ msgstr "Impossible de supprimer {} : {e}"
 msgid "{}: {} MB memory, {} cores, {} MB storage, {}x{} at {} dpi, {}, from next start."
 msgstr "{} : {} Mo de mémoire, {} cœurs, {} Mo de stockage, {}x{} à {} ppp, {}, au prochain démarrage."
 
-#: crates/aae-core/src/hardware.rs:224 crates/aae-cli/src/main.rs:2543
+#: crates/aae-core/src/hardware.rs:224 crates/aae-cli/src/main.rs:2575
 msgid "software graphics"
 msgstr "rendu logiciel"
 
-#: crates/aae-core/src/hardware.rs:226 crates/aae-cli/src/main.rs:2545
+#: crates/aae-core/src/hardware.rs:226 crates/aae-cli/src/main.rs:2577
 msgid "graphics adapter"
 msgstr "carte graphique"
 
@@ -3013,6 +3069,7 @@ msgid "hint {hint}"
 msgstr "indication {hint}"
 
 #: crates/aae-core/src/inspector.rs:224
+#. messages: error
 msgid "error {error}"
 msgstr "erreur {error}"
 
@@ -3125,6 +3182,7 @@ msgid "AAE's helper sent no screen contents."
 msgstr "L'app auxiliaire d'AAE n'a envoyé aucun contenu de l'écran."
 
 #: crates/aae-core/src/inspector.rs:491
+#. messages: e
 msgid "AAE's helper sent screen contents AAE can't read: {e}"
 msgstr "L'app auxiliaire d'AAE a envoyé un contenu de l'écran illisible : {e}"
 
@@ -3137,6 +3195,7 @@ msgstr ""
 ""
 
 #: crates/aae-core/src/inspector.rs:569
+#. messages: 0
 msgid ""
 "<li class=\"{class}\">{kind}: {}: {}{}</li>\n"
 ""
@@ -3341,6 +3400,7 @@ msgid "Installed the new build of {package} queued for {device}."
 msgstr "La nouvelle version de {package} en attente pour l'appareil {device} a été installée."
 
 #: crates/aae-core/src/lifecycle.rs:80
+#. messages: why
 msgid "The screen reader build queued for {device} couldn't be installed: {why}"
 msgstr "La version de test du lecteur d'écran en attente pour l'appareil {device} n'a pas pu être installée : {why}"
 
@@ -3369,6 +3429,7 @@ msgid "The device's log stopped. AAE is reconnecting."
 msgstr "Le journal de l'appareil s'est interrompu. AAE se reconnecte."
 
 #: crates/aae-core/src/microphone.rs:96
+#. messages: e
 msgid "couldn't watch the device's microphone: {e}"
 msgstr "impossible de surveiller le micro de l'appareil : {e}"
 
@@ -3377,6 +3438,7 @@ msgid "AAE's helper couldn't watch the device's microphone"
 msgstr "L'app auxiliaire d'AAE n'a pas pu surveiller le micro de l'appareil"
 
 #: crates/aae-core/src/microphone.rs:190
+#. messages: e
 msgid "{} can't be read as sound: {e}"
 msgstr "Impossible de lire le son de {} : {e}"
 
@@ -3389,6 +3451,7 @@ msgid "it has no sound"
 msgstr "le fichier ne contient aucun son"
 
 #: crates/aae-core/src/microphone.rs:319 crates/aae-core/src/microphone.rs:532
+#. messages: e
 msgid "the emulator wouldn't take the sound: {e}"
 msgstr "l'émulateur a refusé le son : {e}"
 
@@ -3581,6 +3644,7 @@ msgid "QEMU didn't accept a connection"
 msgstr "QEMU n'a pas accepté la connexion"
 
 #: crates/aae-core/src/qmp.rs:63 crates/aae-core/src/qmp.rs:198 crates/aae-core/src/qmp.rs:212
+#. messages: e
 msgid "QEMU's control socket: {e}"
 msgstr "Socket de contrôle de QEMU : {e}"
 
@@ -3609,6 +3673,7 @@ msgid "QEMU's control socket: closed"
 msgstr "Socket de contrôle de QEMU : fermé"
 
 #: crates/aae-core/src/qmp.rs:217
+#. messages: e
 msgid "QEMU sent something unreadable: {e}"
 msgstr "QEMU a envoyé une réponse illisible : {e}"
 
@@ -3629,6 +3694,7 @@ msgid "The emulator couldn't stop recording: {}"
 msgstr "L'émulateur n'a pas pu arrêter l'enregistrement : {}"
 
 #: crates/aae-core/src/route.rs:28
+#. messages: e
 msgid "That isn't a GPX file AAE can read: {e}"
 msgstr "Ce n'est pas un fichier GPX qu'AAE peut lire : {e}"
 
@@ -3640,11 +3706,12 @@ msgstr "Le fichier GPX ne contient aucun point : ni trace, ni itinéraire, ni p
 msgid "The route has no points."
 msgstr "L'itinéraire ne contient aucun point."
 
-#: crates/aae-core/src/screenreader.rs:89 crates/aae-core/src/screenreader.rs:132 crates/aae-cli/src/main.rs:2782
+#: crates/aae-core/src/screenreader.rs:89 crates/aae-core/src/screenreader.rs:132 crates/aae-cli/src/main.rs:2814
 msgid "Saving {}"
 msgstr "Enregistrement de {}"
 
 #: crates/aae-core/src/screenreader.rs:101
+#. messages: e
 msgid "Couldn't check Backtalk's latest build: {e}"
 msgstr "Impossible de rechercher la dernière version de Backtalk : {e}"
 
@@ -3653,6 +3720,7 @@ msgid "its release has no backtalk.apk"
 msgstr "la publication ne contient pas de fichier backtalk.apk"
 
 #: crates/aae-core/src/screenreader.rs:119
+#. messages: e
 msgid "Backtalk didn't download: {e}"
 msgstr "Le téléchargement de Backtalk a échoué : {e}"
 
@@ -3709,6 +3777,7 @@ msgid "Other"
 msgstr "Autre"
 
 #: crates/aae-core/src/sdk.rs:308
+#. messages: detail
 msgid "Android {version} {name} preview, {detail}"
 msgstr "Préversion Android {version} {name}, {detail}"
 
@@ -3785,10 +3854,12 @@ msgid "Android API {api}"
 msgstr ""
 
 #: crates/aae-core/src/setup.rs:256
+#. messages: e
 msgid "Could not reach Google's list of SDK tools: {e}"
 msgstr "Impossible d'accéder à la liste des outils SDK de Google : {e}"
 
 #: crates/aae-core/src/setup.rs:263
+#. messages: e
 msgid "Google's list of SDK tools didn't download: {e}"
 msgstr "Impossible de télécharger la liste des outils SDK de Google : {e}"
 
@@ -3845,6 +3916,7 @@ msgid "didn't open"
 msgstr "ne s'est pas ouverte"
 
 #: crates/aae-core/src/spice.rs:143 crates/aae-core/src/spice.rs:272
+#. messages: e
 msgid "The VM's sound connection: {e}"
 msgstr "Connexion audio de la machine virtuelle : {e}"
 
@@ -3857,6 +3929,7 @@ msgid "got a malformed answer"
 msgstr "a reçu une réponse mal formée"
 
 #: crates/aae-core/src/spice.rs:175
+#. messages: error
 msgid "SPICE refused the connection (error {error})"
 msgstr "SPICE a refusé la connexion (erreur {error})"
 
@@ -3873,6 +3946,7 @@ msgid "The VM's sound connection sent too much at once"
 msgstr "La connexion audio de la machine virtuelle a envoyé trop de données d'un coup"
 
 #: crates/aae-core/src/transfer.rs:116
+#. messages: e
 msgid "Exporting failed: {e}"
 msgstr "Échec de l'exportation : {e}"
 
@@ -3897,6 +3971,7 @@ msgid "{} needs {}, {}, which isn't installed here. Download it in Android Versi
 msgstr "L'appareil {} nécessite {}, {}, qui n'est pas installé sur cet ordinateur. Téléchargez-le dans Versions d'Android, puis relancez l'importation."
 
 #: crates/aae-core/src/transfer.rs:221
+#. messages: e
 msgid "Importing failed: {e}"
 msgstr "Échec de l'importation : {e}"
 
@@ -3925,6 +4000,7 @@ msgid "did not start"
 msgstr ""
 
 #: crates/aae-core/src/tts.rs:157
+#. messages: 0
 msgid "Text-to-speech doesn't work on the device, and eSpeak NG failed too: {}. The screen reader has no speech."
 msgstr "La synthèse vocale ne fonctionne pas sur l'appareil, et eSpeak NG a aussi échoué : {}. Le lecteur d'écran n'a pas de voix."
 
@@ -3941,6 +4017,7 @@ msgid "{helper} {target}"
 msgstr ""
 
 #: crates/aae-core/src/tts.rs:256
+#. messages: 0
 msgid "Speech didn't work through AAE's speech relay ({}), so it was turned off."
 msgstr "La parole ne passait pas par le relais vocal d'AAE ({}) : il a été désactivé."
 
@@ -3953,6 +4030,7 @@ msgid "AAE's helper didn't send the speech log."
 msgstr "L'app auxiliaire d'AAE n'a pas envoyé le journal de la parole."
 
 #: crates/aae-core/src/tts.rs:332
+#. messages: e
 msgid "The speech log couldn't be read: {e}"
 msgstr "Impossible de lire le journal de la parole : {e}"
 
@@ -3972,7 +4050,7 @@ msgstr "Ordinateur portable"
 msgid "New devices start with Android's own display and language settings."
 msgstr "Les nouveaux appareils démarrent avec les paramètres d'affichage et de langue d'Android."
 
-#: crates/aae-ffi/src/lib.rs:603 crates/aae-cli/src/main.rs:2469
+#: crates/aae-ffi/src/lib.rs:603 crates/aae-cli/src/main.rs:2501
 msgid "{label}: {}"
 msgstr "{label} : {}"
 
@@ -3984,7 +4062,7 @@ msgstr "Les nouveaux appareils démarrent avec ces paramètres : {}."
 msgid "\"{name}\" is not a gesture."
 msgstr "« {name} » n'est pas un geste."
 
-#: crates/aae-ffi/src/lib.rs:1077 crates/aae-cli/src/main.rs:3312
+#: crates/aae-ffi/src/lib.rs:1077 crates/aae-cli/src/main.rs:3344
 msgid "Stop these devices first, as the emulator and adb are replaced: {}."
 msgstr "Arrêtez d'abord ces appareils, car l'émulateur et adb vont être remplacés : {}."
 
@@ -4008,15 +4086,15 @@ msgstr "{}, machine virtuelle"
 msgid "Google no longer offers that Android version for this computer."
 msgstr "Google ne propose plus cette version d'Android pour cet ordinateur."
 
-#: crates/aae-ffi/src/lib.rs:1346 crates/aae-cli/src/main.rs:2873 crates/aae-cli/src/main.rs:3366
+#: crates/aae-ffi/src/lib.rs:1346 crates/aae-cli/src/main.rs:2905 crates/aae-cli/src/main.rs:3398
 msgid "Checking the download."
 msgstr "Vérification du téléchargement."
 
-#: crates/aae-ffi/src/lib.rs:1347 crates/aae-cli/src/main.rs:2874 crates/aae-cli/src/main.rs:3367
+#: crates/aae-ffi/src/lib.rs:1347 crates/aae-cli/src/main.rs:2906 crates/aae-cli/src/main.rs:3399
 msgid "Unpacking."
 msgstr "Décompression."
 
-#: crates/aae-ffi/src/lib.rs:1397 crates/aae-cli/src/main.rs:1342
+#: crates/aae-ffi/src/lib.rs:1397 crates/aae-cli/src/main.rs:1373
 msgid "A Googlebook device's memory, cores and storage are fixed."
 msgstr "La mémoire, les cœurs et le stockage d'un appareil Googlebook ne sont pas modifiables."
 
@@ -4048,7 +4126,7 @@ msgstr "Importation : {said} %."
 msgid "Installed {package} on {name}."
 msgstr "Installation de {package} terminée sur l'appareil {name}."
 
-#: crates/aae-ffi/src/lib.rs:1770 crates/aae-cli/src/main.rs:2162
+#: crates/aae-ffi/src/lib.rs:1770 crates/aae-cli/src/main.rs:2194
 msgid "{name} is stopped, so {package} will be installed when it next starts."
 msgstr "L'appareil {name} est arrêté : {package} sera installé à son prochain démarrage."
 
@@ -4072,7 +4150,7 @@ msgstr ""
 msgid "Commentary"
 msgstr ""
 
-#: crates/aae-ffi/src/lib.rs:2354 crates/aae-cli/src/main.rs:2703
+#: crates/aae-ffi/src/lib.rs:2354 crates/aae-cli/src/main.rs:2735
 msgid "{} isn't a watch, so it has no crown."
 msgstr "L'appareil {} n'est pas une montre : il n'a pas de couronne."
 
@@ -4104,7 +4182,7 @@ msgstr "{} : sortie audio par défaut du système."
 msgid "Window type: {}"
 msgstr "Type de fenêtre : {}"
 
-#: crates/aae-ffi/src/lib.rs:2605 crates/aae-cli/src/main.rs:1497
+#: crates/aae-ffi/src/lib.rs:2605 crates/aae-cli/src/main.rs:1528
 msgid "{}: the screen's accessibility"
 msgstr "{} : accessibilité de l'écran"
 
@@ -4140,7 +4218,7 @@ msgstr "Le journal de la parole est activé."
 msgid "The speech log is off."
 msgstr "Le journal de la parole est désactivé."
 
-#: crates/aae-ffi/src/lib.rs:2958 crates/aae-cli/src/main.rs:2333
+#: crates/aae-ffi/src/lib.rs:2958 crates/aae-cli/src/main.rs:2365
 msgid "Microphone off."
 msgstr "Micro désactivé."
 
@@ -4173,14 +4251,15 @@ msgid "{name} isn't a network speed AAE knows."
 msgstr "{name} n'est pas une vitesse de réseau connue d'AAE."
 
 #: crates/aae-ffi/src/lib.rs:3101 crates/aae-ffi/src/lib.rs:3121
+#. messages: e
 msgid "{path} can't be read: {e}"
 msgstr "Impossible de lire {path} : {e}"
 
-#: crates/aae-ffi/src/lib.rs:3111 crates/aae-cli/src/main.rs:2522
+#: crates/aae-ffi/src/lib.rs:3111 crates/aae-cli/src/main.rs:2554
 msgid "The route has finished."
 msgstr "L'itinéraire est terminé."
 
-#: crates/aae-ffi/src/lib.rs:3113 crates/aae-cli/src/main.rs:2524
+#: crates/aae-ffi/src/lib.rs:3113 crates/aae-cli/src/main.rs:2556
 msgid "Stopped the route."
 msgstr "Itinéraire arrêté."
 
@@ -4216,7 +4295,7 @@ msgstr "L'enregistrement s'est arrêté de lui-même au bout de trois minutes. {
 msgid "Saved {name}, {seconds} seconds."
 msgstr "Enregistré : {name}, {seconds} secondes."
 
-#: crates/aae-ffi/src/lib.rs:3290 crates/aae-cli/src/main.rs:2385
+#: crates/aae-ffi/src/lib.rs:3290 crates/aae-cli/src/main.rs:2417
 msgid "The battery's health is good, failed, dead, overvoltage or overheated."
 msgstr "L'état de la batterie doit être good, failed, dead, overvoltage ou overheated."
 
@@ -4224,7 +4303,7 @@ msgstr "L'état de la batterie doit être good, failed, dead, overvoltage ou ove
 msgid "Battery health {}."
 msgstr "État de la batterie : {}."
 
-#: crates/aae-ffi/src/lib.rs:3308 crates/aae-cli/src/main.rs:2409
+#: crates/aae-ffi/src/lib.rs:3308 crates/aae-cli/src/main.rs:2441
 msgid "Touched the fingerprint sensor with finger {finger}."
 msgstr "Capteur d'empreinte touché avec le doigt {finger}."
 
@@ -4232,7 +4311,7 @@ msgstr "Capteur d'empreinte touché avec le doigt {finger}."
 msgid "That service isn't installed any more."
 msgstr "Ce service n'est plus installé."
 
-#: crates/aae-ffi/src/lib.rs:3624 crates/aae-cli/src/main.rs:3244
+#: crates/aae-ffi/src/lib.rs:3624 crates/aae-cli/src/main.rs:3276
 msgid "No screen reader is set up."
 msgstr "Aucun lecteur d'écran n'est configuré."
 
@@ -4249,6 +4328,7 @@ msgid "Turned back on: {}."
 msgstr "Services réactivés : {}."
 
 #: crates/aae-ffi/src/lib.rs:3661
+#. messages: e
 msgid "Could not save the screenshot to {path}: {e}"
 msgstr "Impossible d'enregistrer la capture d'écran dans {path} : {e}"
 
@@ -4468,7 +4548,7 @@ msgstr "Donnez un nom à l'appareil."
 msgid "{what} takes a whole number."
 msgstr "{what} : saisissez un nombre entier."
 
-#: crates/aae-windows/src/app.rs:1359 crates/aae-cli/src/main.rs:1364
+#: crates/aae-windows/src/app.rs:1359 crates/aae-cli/src/main.rs:1395
 msgid "Created {}."
 msgstr "Appareil {} créé."
 
@@ -4564,11 +4644,11 @@ msgstr "&Nom de la copie"
 msgid "{} copy"
 msgstr "{0} (copie)"
 
-#: crates/aae-windows/src/app.rs:1828 crates/aae-cli/src/main.rs:1383
+#: crates/aae-windows/src/app.rs:1828 crates/aae-cli/src/main.rs:1414
 msgid "Copying {}."
 msgstr "Duplication de l'appareil {}."
 
-#: crates/aae-windows/src/app.rs:1837 crates/aae-cli/src/main.rs:1386
+#: crates/aae-windows/src/app.rs:1837 crates/aae-cli/src/main.rs:1417
 msgid "Created {}, a copy of {}."
 msgstr "Appareil {0} créé, copie de {1}."
 
@@ -4624,7 +4704,7 @@ msgstr "Choisissez un appareil exporté depuis AAE"
 msgid "Importing the device."
 msgstr "Importation de l'appareil."
 
-#: crates/aae-windows/src/app.rs:2379 crates/aae-cli/src/main.rs:2633
+#: crates/aae-windows/src/app.rs:2379 crates/aae-cli/src/main.rs:2665
 msgid "Imported {}."
 msgstr "Appareil {} importé."
 
@@ -4769,6 +4849,7 @@ msgid "No devices were chosen, so nothing was installed."
 msgstr "Aucun appareil n'a été choisi : rien n'a été installé."
 
 #: crates/aae-windows/src/app.rs:2900
+#. messages: e
 msgid "{file} on {name}: {e}"
 msgstr "{file} sur {name} : {e}"
 
@@ -4776,7 +4857,7 @@ msgstr "{file} sur {name} : {e}"
 msgid "Installed {package}."
 msgstr "Installation de {package} terminée."
 
-#: crates/aae-windows/src/app.rs:2920 crates/aae-cli/src/main.rs:1842
+#: crates/aae-windows/src/app.rs:2920 crates/aae-cli/src/main.rs:1873
 msgid "{} is {}, as you chose before."
 msgstr "{} : {}, comme vous l'aviez choisi."
 
@@ -4809,6 +4890,7 @@ msgid "Installing on {}."
 msgstr "Installation sur {0}."
 
 #: crates/aae-windows/src/app.rs:3070
+#. messages: message
 msgid "{}: {message}"
 msgstr "{} : {message}"
 
@@ -4825,6 +4907,7 @@ msgid "Restart {name}'s audio?"
 msgstr "Redémarrer le son de l'appareil {name} ?"
 
 #: crates/aae-windows/src/app.rs:3133
+#. messages: 0
 msgid "{} Restarting AAE's audio reconnects to the device's sound and to this computer's output. The device itself keeps running."
 msgstr "{} Redémarrer le son d'AAE rétablit la liaison avec le son de l'appareil et avec la sortie audio de cet ordinateur. L'appareil, lui, reste en marche."
 
@@ -4833,10 +4916,12 @@ msgid "&Restart Audio"
 msgstr "&Redémarrer le son"
 
 #: crates/aae-windows/src/app.rs:3150
+#. messages: 0
 msgid "Restarted the audio. {}"
 msgstr "Le son a redémarré. {}"
 
 #: crates/aae-windows/src/app.rs:3156
+#. messages: 0
 msgid "Restarted the audio, but: {} Restarting the device may help."
 msgstr "Le son a redémarré, mais : {} Redémarrer l'appareil peut résoudre le problème."
 
@@ -4861,6 +4946,7 @@ msgid "{} problems and {} warnings. {}"
 msgstr "Problèmes : {}. Avertissements : {}. {}"
 
 #: crates/aae-windows/src/app.rs:3372
+#. messages: detail
 msgid "{name}: {outcome}. {detail}"
 msgstr "{name} : {outcome}. {detail}"
 
@@ -5342,7 +5428,7 @@ msgstr "L'app {label} a déjà toutes les autorisations."
 msgid "{label}: {state}."
 msgstr "{label} : {state}."
 
-#: crates/aae-windows/src/tools/apps.rs:366 crates/aae-cli/src/main.rs:2044
+#: crates/aae-windows/src/tools/apps.rs:366 crates/aae-cli/src/main.rs:2076
 msgid "not allowed"
 msgstr "non autorisé"
 
@@ -5382,7 +5468,7 @@ msgstr "Lire ou arrêter un itinéraire GPX…"
 msgid "Set Speed"
 msgstr "Définir la vitesse"
 
-#: crates/aae-windows/src/tools/conditions.rs:375 crates/aae-cli/src/main.rs:2398
+#: crates/aae-windows/src/tools/conditions.rs:375 crates/aae-cli/src/main.rs:2430
 msgid "not charging"
 msgstr "pas en charge"
 
@@ -5423,6 +5509,7 @@ msgid "Cleared."
 msgstr "Effacé."
 
 #: crates/aae-windows/src/tools/device_log.rs:353
+#. messages: problem
 msgid "{count}. {problem}"
 msgstr ""
 
@@ -5495,6 +5582,7 @@ msgid "Level {}, {}"
 msgstr "Niveau {}, {}"
 
 #: crates/aae-windows/src/tools/inspector.rs:240
+#. messages: 0
 msgid "{kind}: {} Element: {}{id}"
 msgstr "{kind} : {} Élément : {}{id}"
 
@@ -5527,6 +5615,7 @@ msgid "JSON, with every property"
 msgstr "JSON, avec toutes les propriétés"
 
 #: crates/aae-windows/src/tools/inspector.rs:478 crates/aae-windows/src/tools/mod.rs:66
+#. messages: e
 msgid "Couldn't save: {e}"
 msgstr "Impossible d'enregistrer : {e}"
 
@@ -5563,6 +5652,7 @@ msgid "This copy of AAE doesn't include aae.exe, which serves devices. Download 
 msgstr "Cette copie d'AAE ne contient pas aae.exe, qui partage les appareils. Téléchargez à nouveau AAE."
 
 #: crates/aae-windows/src/tools/serve.rs:153
+#. messages: e
 msgid "Couldn't start serving: {e}"
 msgstr "Impossible de lancer le partage : {e}"
 
@@ -5626,7 +5716,7 @@ msgstr "Activer"
 msgid "Switching to {}."
 msgstr "Passage à {}."
 
-#: crates/aae-windows/src/tools/services.rs:187 crates/aae-cli/src/main.rs:2197
+#: crates/aae-windows/src/tools/services.rs:187 crates/aae-cli/src/main.rs:2229
 msgid "{} is now the screen reader."
 msgstr "{} est maintenant le lecteur d'écran."
 
@@ -5675,6 +5765,7 @@ msgid "Failed with exit status {}, {printed}."
 msgstr "Échec, code de sortie {}, {printed}."
 
 #: crates/aae-windows/src/tools/shell.rs:184
+#. messages: e
 msgid ""
 "$ {command}\n"
 "{e}\n"
@@ -5741,7 +5832,7 @@ msgstr "Ce qu'a dit l'appareil {}"
 msgid "{name} speech.txt"
 msgstr "Parole {name}.txt"
 
-#: crates/aae-windows/src/tools/versions.rs:47 crates/aae-cli/src/main.rs:3503
+#: crates/aae-windows/src/tools/versions.rs:47 crates/aae-cli/src/main.rs:3535
 msgid "Used by {}"
 msgstr "Utilisée par {}"
 
@@ -5765,7 +5856,7 @@ msgstr "1 version."
 msgid "{n} versions."
 msgstr "{n} versions."
 
-#: crates/aae-windows/src/tools/versions.rs:131 crates/aae-cli/src/main.rs:3284
+#: crates/aae-windows/src/tools/versions.rs:131 crates/aae-cli/src/main.rs:3316
 msgid "Managed outside AAE: {}."
 msgstr "Outils gérés en dehors d'AAE : {}."
 
@@ -5785,7 +5876,7 @@ msgstr "Impossible de supprimer {0} tant que des appareils l'utilisent : {1}. S
 msgid "This deletes its {} of files. You can download it again later."
 msgstr "Cela supprime ses fichiers ({}). Vous pourrez la télécharger à nouveau plus tard."
 
-#: crates/aae-windows/src/tools/versions.rs:205 crates/aae-cli/src/main.rs:1291
+#: crates/aae-windows/src/tools/versions.rs:205 crates/aae-cli/src/main.rs:1322
 msgid " Other emulator devices, such as Android Studio's, use it and won't start without it: {}."
 msgstr " D'autres appareils de l'émulateur, comme ceux d'Android Studio, l'utilisent et ne pourront plus démarrer sans elle : {}."
 
@@ -5881,7 +5972,7 @@ msgstr "Écran tactile Android"
 msgid "../../../macos/Support/sparkle-public-key.txt"
 msgstr ""
 
-#: macos/Sources/AAE/AAEApp.swift:11 crates/aae-windows/src/main.rs:195 crates/aae-windows/src/updates.rs:127 crates/aae-cli/src/main.rs:44
+#: macos/Sources/AAE/AAEApp.swift:11 crates/aae-windows/src/main.rs:195 crates/aae-windows/src/updates.rs:127 crates/aae-cli/src/main.rs:53
 msgid "Accessible Android Emulator"
 msgstr ""
 
@@ -6462,6 +6553,7 @@ msgid ". And {more} more errors."
 msgstr ". Et {more} autres erreurs."
 
 #: macos/Sources/AAE/AppModel.swift:957
+#. messages: error_localizedDescription
 msgid ""
 "$ {command}\n"
 "{error_localizedDescription}\n"
@@ -6518,7 +6610,7 @@ msgstr "Installation du lecteur d'écran."
 msgid "Setting up the screen reader"
 msgstr "Configuration du lecteur d'écran"
 
-#: macos/Sources/AAE/AppModel.swift:1009 crates/aae-windows/src/app.rs:1538 crates/aae-cli/src/main.rs:3069
+#: macos/Sources/AAE/AppModel.swift:1009 crates/aae-windows/src/app.rs:1538 crates/aae-cli/src/main.rs:3101
 msgid "{package} is installed and on."
 msgstr "{package} est installé et activé."
 
@@ -6671,6 +6763,7 @@ msgid "Installing {file}."
 msgstr "Installation du fichier {file}."
 
 #: macos/Sources/AAE/AppModel.swift:1588
+#. messages: error_localizedDescription
 msgid "{file} on {name}: {error_localizedDescription}"
 msgstr "{file} sur {name} : {error_localizedDescription}"
 
@@ -6703,6 +6796,7 @@ msgid "signed differently"
 msgstr ""
 
 #: macos/Sources/AAE/AppModel.swift:1661
+#. messages: message
 msgid "{name}: {message}"
 msgstr "{name} : {message}"
 
@@ -6723,6 +6817,7 @@ msgid "Replace"
 msgstr "Remplacer"
 
 #: macos/Sources/AAE/AppModel.swift:1676
+#. messages: error_localizedDescription
 msgid "{name}: {error_localizedDescription}"
 msgstr "{name} : {error_localizedDescription}"
 
@@ -6738,7 +6833,7 @@ msgstr "{service_label} est maintenant le lecteur d'écran."
 msgid "{service_label} {value}."
 msgstr "{service_label} : {value}."
 
-#: macos/Sources/AAE/AppModel.swift:1740 crates/aae-windows/src/tools/links.rs:53 crates/aae-cli/src/main.rs:1925
+#: macos/Sources/AAE/AppModel.swift:1740 crates/aae-windows/src/tools/links.rs:53 crates/aae-cli/src/main.rs:1956
 msgid "Opened {link}."
 msgstr "Ouvert : {link}."
 
@@ -6822,11 +6917,11 @@ msgstr "Surveillance de {value} activée. Chaque nouvelle version sera installé
 msgid "Stopped watching {value}."
 msgstr "Surveillance de {value} arrêtée."
 
-#: macos/Sources/AAE/AppModel.swift:1898 crates/aae-windows/src/tools/snapshots.rs:263 crates/aae-cli/src/main.rs:2249
+#: macos/Sources/AAE/AppModel.swift:1898 crates/aae-windows/src/tools/snapshots.rs:263 crates/aae-cli/src/main.rs:2281
 msgid "Saving snapshot {name}."
 msgstr "Enregistrement de l'instantané {name}."
 
-#: macos/Sources/AAE/AppModel.swift:1901 crates/aae-windows/src/tools/snapshots.rs:266 crates/aae-cli/src/main.rs:2251
+#: macos/Sources/AAE/AppModel.swift:1901 crates/aae-windows/src/tools/snapshots.rs:266 crates/aae-cli/src/main.rs:2283
 msgid "Saved snapshot {name}."
 msgstr "Instantané {name} enregistré."
 
@@ -6866,7 +6961,7 @@ msgstr "Cela libère {snapshot_size}. Cette action est irréversible."
 msgid "Deleted {snapshot_name}."
 msgstr "Instantané {snapshot_name} supprimé."
 
-#: macos/Sources/AAE/AppModel.swift:1955 crates/aae-windows/src/app.rs:2667 crates/aae-cli/src/main.rs:2755
+#: macos/Sources/AAE/AppModel.swift:1955 crates/aae-windows/src/app.rs:2667 crates/aae-cli/src/main.rs:2787
 msgid "The device's clipboard is empty."
 msgstr "Le presse-papiers de l'appareil est vide."
 
@@ -6890,7 +6985,7 @@ msgstr "Le presse-papiers du Mac ne contient pas de texte."
 msgid "Battery at {level} percent, {value}. {said}"
 msgstr "Batterie à {level} %, {value}. {said}"
 
-#: macos/Sources/AAE/AppModel.swift:2086 crates/aae-windows/src/tools/conditions.rs:245 crates/aae-cli/src/main.rs:2691
+#: macos/Sources/AAE/AppModel.swift:2086 crates/aae-windows/src/tools/conditions.rs:245 crates/aae-cli/src/main.rs:2723
 msgid "Shook the device."
 msgstr "Appareil secoué."
 
@@ -6943,6 +7038,7 @@ msgid "Restart {device_name}'s audio?"
 msgstr "Redémarrer le son de l'appareil {device_name} ?"
 
 #: macos/Sources/AAE/AppModel.swift:2177
+#. messages: result_message
 msgid "{result_message} Restarting AAE's audio reconnects to the device's sound and to the Mac's output. The device itself keeps running."
 msgstr "{result_message} Redémarrer le son d'AAE rétablit la liaison avec le son de l'appareil et avec la sortie audio du Mac. L'appareil, lui, reste en marche."
 
@@ -6955,10 +7051,12 @@ msgid "Not Now"
 msgstr "Plus tard"
 
 #: macos/Sources/AAE/AppModel.swift:2186
+#. messages: again_message
 msgid "Restarted the audio. {again_message}"
 msgstr "Le son a redémarré. {again_message}"
 
 #: macos/Sources/AAE/AppModel.swift:2188
+#. messages: again_message
 msgid "Restarted the audio, but: {again_message} Restarting the device may help."
 msgstr "Le son a redémarré, mais : {again_message} Redémarrer l'appareil peut résoudre le problème."
 
@@ -6979,6 +7077,7 @@ msgid "{name} was stopped outside this app."
 msgstr "{name} : arrêté en dehors d'AAE."
 
 #: macos/Sources/AAE/AppModel.swift:2263 crates/aae-windows/src/app.rs:3278
+#. messages: message
 msgid "{name}: {message} Choose Check Audio in the Device menu to restart it."
 msgstr "{name} : {message} Choisissez Vérifier le son dans le menu Appareil pour redémarrer le son."
 
@@ -7007,6 +7106,7 @@ msgid "All {results_count} checks passed."
 msgstr "Les {results_count} vérifications ont réussi."
 
 #: macos/Sources/AAE/AppModel.swift:2296
+#. messages: 0_detail
 msgid "{0_name}: {0_detail}"
 msgstr "{0_name} : {0_detail}"
 
@@ -7628,6 +7728,7 @@ msgid "Problems: {inspection_issues_count}"
 msgstr "Problèmes : {inspection_issues_count}"
 
 #: macos/Sources/AAE/InspectorView.swift:85
+#. messages: issue_message
 msgid "{value}: {issue_message} Element: {issue_element}{value2}"
 msgstr "{value} : {issue_message} Élément : {issue_element}{value2}"
 
@@ -7995,6 +8096,7 @@ msgid "uses {reader}"
 msgstr "utilise {reader}"
 
 #: macos/Sources/AAE/SelfTestView.swift:31
+#. messages: row_detail
 msgid "{row_label}: {row_name}. {row_detail}"
 msgstr "{row_label} : {row_name}. {row_detail}"
 
@@ -8007,6 +8109,7 @@ msgid "Run Again"
 msgstr "Relancer"
 
 #: macos/Sources/AAE/SelfTestView.swift:41
+#. messages: 0_detail
 msgid "{0_label}: {0_name}. {0_detail}"
 msgstr "{0_label} : {0_name}. {0_detail}"
 
@@ -8059,10 +8162,11 @@ msgid "Starting."
 msgstr "Démarrage."
 
 #: macos/Sources/AAE/ServeView.swift:123
+#. messages: error_localizedDescription
 msgid "Couldn't start serving: {error_localizedDescription}"
 msgstr "Impossible de lancer le partage : {error_localizedDescription}"
 
-#: macos/Sources/AAE/ServeView.swift:140 crates/aae-windows/src/tools/serve.rs:232 crates/aae-cli/src/main.rs:3652
+#: macos/Sources/AAE/ServeView.swift:140 crates/aae-windows/src/tools/serve.rs:232 crates/aae-cli/src/main.rs:3684
 msgid "Stopped serving."
 msgstr "Partage arrêté."
 
@@ -8506,7 +8610,7 @@ msgstr "OK"
 msgid "Warning"
 msgstr "Avertissement"
 
-#: translations/extract.py:INSERTED macos/Sources/AAE/SelfTestView.swift:15 crates/aae-cli/src/main.rs:1049
+#: translations/extract.py:INSERTED macos/Sources/AAE/SelfTestView.swift:15 crates/aae-cli/src/main.rs:1080
 msgid "Problem"
 msgstr "Problème"
 

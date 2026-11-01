@@ -11,7 +11,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from po2strings import entries  # noqa: E402
+from po import entries  # noqa: E402
 
 NBSP = "\u00a0\u202f"
 

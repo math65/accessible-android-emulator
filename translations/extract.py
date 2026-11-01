@@ -114,7 +114,8 @@ def slot_name(expr, names):
 
 
 def literals_rust(src):
-    """(line, text) of each string literal outside tests and log macros."""
+    """(line, text, end) of each string literal outside tests and log
+    macros; end is just after its closing quote."""
     src = without_tests(src)
     out = []
     i, n, line = 0, len(src), 1
@@ -143,7 +144,7 @@ def literals_rust(src):
             hashes = m.group(1)
             end = src.find('"' + hashes, i + len(m.group(0)))
             text = src[i + len(m.group(0)) : end]
-            out.append((line, text, in_log(src, i)))
+            out.append((line, text, in_log(src, i), end + 1 + len(hashes)))
             line += text.count("\n")
             i = end + 1 + len(hashes)
             continue
@@ -167,12 +168,107 @@ def literals_rust(src):
                 j += 1
             text = "".join(parts)
             if not byte:
-                out.append((line, text, in_log(src, i)))
+                out.append((line, text, in_log(src, i), j + 1))
             line += src[i:j].count("\n")
             i = j + 1
             continue
         i += 1
-    return [(l, t) for l, t, log in out if not log]
+    return [(l, t, end) for l, t, log, end in out if not log]
+
+
+# A part filled in holds a message of its own, translated too, when what
+# fills it is named as one: e, why, error, status.detail,
+# error.localizedDescription… Anything else, such as a device's, app's or
+# file's name, or a program's output, is kept as it is.
+MESSAGE_WORDS = {
+    "e", "err", "error", "why", "reason", "message", "msg", "detail", "details",
+    "problem", "cause", "failure", "localizedDescription",
+}
+# Calls that keep what a value is.
+CONVERSIONS = {
+    "to_string", "as_str", "as_ref", "as_deref", "trim", "clone", "to_owned",
+    "root_cause", "into", "display",
+}
+
+
+def is_message(expr):
+    words = [w for w in re.findall(r"[A-Za-z_]\w*", expr) if w not in CONVERSIONS]
+    return bool(words) and words[-1] in MESSAGE_WORDS
+
+
+def is_message_name(name):
+    """For a Swift part's name, such as error_localizedDescription."""
+    return is_message(re.sub(r"\d+$", "", name).replace("_", " "))
+
+
+def format_args(src, i):
+    """The arguments after a format string ending at i, as in
+    format!("{}: {}", name, e): (positional, {name: expression})."""
+    n = len(src)
+    while i < n and src[i] in " \t\n\r":
+        i += 1
+    if i >= n or src[i] != ",":
+        return [], {}
+    args, depth, start, i = [], 0, i + 1, i + 1
+    while i < n:
+        c = src[i]
+        if c == '"':
+            i += 1
+            while i < n and src[i] != '"':
+                i += 2 if src[i] == "\\" else 1
+        elif c == "'" and i + 2 < n and (src[i + 2] == "'" or src[i + 1] == "\\"):
+            i = src.find("'", i + 3 if src[i + 1] == "\\" else i + 2)
+        elif c in "([{":
+            depth += 1
+        elif c in ")]}":
+            if depth == 0:
+                break
+            depth -= 1
+        elif c == "," and depth == 0:
+            args.append(src[start:i].strip())
+            start = i + 1
+        i += 1
+    args.append(src[start:i].strip())
+    positional, named = [], {}
+    for arg in filter(None, args):
+        m = re.fullmatch(r"([A-Za-z_]\w*)\s*=(?!=)\s*(.*)", arg, re.S)
+        if m:
+            named[m.group(1)] = m.group(2)
+        else:
+            positional.append(arg)
+    return positional, named
+
+
+def rust_messages(text, src, end):
+    """The keys of a Rust format string's parts that hold messages, as
+    aae_core::l10n numbers them: a name, or the position of an unnamed one."""
+    positional, named = format_args(src, end)
+    keys, position, i = set(), 0, 0
+    while i < len(text):
+        if text.startswith("{{", i) or text.startswith("}}", i):
+            i += 2
+            continue
+        if text[i] == "{":
+            close = text.find("}", i)
+            if close < 0:
+                break
+            name = text[i + 1 : close].split(":")[0]
+            if re.fullmatch(r"\w*", name):
+                if not name:
+                    key, k = str(position), position
+                    position += 1
+                    expr = positional[k] if k < len(positional) else ""
+                elif name.isdigit():
+                    key = name
+                    expr = positional[int(name)] if int(name) < len(positional) else ""
+                else:
+                    key, expr = name, named.get(name, name)
+                if is_message(expr):
+                    keys.add(key)
+            i = close + 1
+            continue
+        i += 1
+    return keys
 
 
 def without_tests(src):
@@ -244,7 +340,9 @@ INSERTED = [
 
 
 def collect():
+    """{text: [where]}, and {text: keys of its parts that hold messages}."""
     found = {text: ["translations/extract.py:INSERTED"] for text in INSERTED}
+    messages = {}
     for folder in SWIFT + RUST:
         base = os.path.join(ROOT, folder)
         for dirpath, dirs, files in os.walk(base):
@@ -256,18 +354,33 @@ def collect():
                 rel = os.path.relpath(path, ROOT)
                 with open(path, encoding="utf-8") as f:
                     src = f.read()
-                items = literals_swift(src) if name.endswith(".swift") else literals_rust(src)
-                for line, text in items:
+                if name.endswith(".swift"):
+                    items = [
+                        (line, text, {k for k in re.findall(r"\{(\w+)\}", text) if is_message_name(k)})
+                        for line, text in literals_swift(src)
+                    ]
+                else:
+                    items = [(line, text, rust_messages(text, src, end)) for line, text, end in literals_rust(src)]
+                for line, text, keys in items:
                     if for_people(text):
                         found.setdefault(text, []).append(f"{rel}:{line}")
+                        messages.setdefault(text, set()).update(keys)
                 # A word with more than one meaning, translated by its use:
                 # tr("Watch", context: "…") in Swift, tr_in("…", "Watch") in Rust.
                 for m in CONTEXT.finditer(src):
                     context, text = (m.group(2), m.group(1)) if m.group(1) else (m.group(3), m.group(4))
                     line = src.count("\n", 0, m.start()) + 1
                     found.setdefault(f"{context}\x04{text}", []).append(f"{rel}:{line}")
-    return found
+                # Formats filled with names, as in say_with!("{}: {}", …):
+                # taken even with few words, for their punctuation.
+                for m in FORMAT.finditer(src):
+                    text = m.group(1).replace('\\"', '"').replace("\\n", "\n")
+                    line = src.count("\n", 0, m.start()) + 1
+                    found.setdefault(text, []).append(f"{rel}:{line}")
+    return found, messages
 
+
+FORMAT = re.compile(r'\b(?:say_with!|tr_format)\(\s*"((?:[^"\\]|\\.)*)"')
 
 CONTEXT = re.compile(
     r'\btr\("((?:[^"\\]|\\.)*)", context: "([^"]*)"\)'
@@ -287,7 +400,7 @@ def quote(text):
 def read_po(path):
     """{msgid: msgstr} and the header."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    from po2strings import entries
+    from po import entries
 
     with open(path, encoding="utf-8") as f:
         return dict(entries(f.read()))
@@ -300,7 +413,7 @@ msgstr ""
 '''
 
 
-def write(found, translations, lang, out):
+def write(found, messages, translations, lang, out):
     out.write("# English text from AAE, with its translation. Each msgid is the English\n")
     out.write("# text as the code writes it; {name} parts stay as they are.\n")
     out.write("# Follow translations/guide-fr.md for terms, tone and typography.\n")
@@ -313,6 +426,8 @@ def write(found, translations, lang, out):
         out.write("\n")
         refs = found[text]
         out.write("#: " + " ".join(refs[:4]) + (" …" if len(refs) > 4 else "") + "\n")
+        if messages.get(text):
+            out.write("#. messages: " + ", ".join(sorted(messages[text])) + "\n")
         context, _, english = text.rpartition("\x04")
         if context:
             out.write("msgctxt " + quote(context) + "\n")
@@ -325,7 +440,7 @@ def write(found, translations, lang, out):
 
 
 def main():
-    found = collect()
+    found, messages = collect()
     if len(sys.argv) > 2 and sys.argv[1] == "--update":
         path = sys.argv[2]
         translations = read_po(path) if os.path.exists(path) else {}
@@ -333,13 +448,13 @@ def main():
         lang = os.path.splitext(os.path.basename(path))[0]
         # Written whole at the end, so a failure leaves the catalog as it was.
         out = io.StringIO()
-        write(found, translations, lang, out)
+        write(found, messages, translations, lang, out)
         with open(path, "w", encoding="utf-8") as f:
             f.write(out.getvalue())
         done = sum(1 for t in found if translations.get(t))
         print(f"{len(found)} texts, {done} translated, {len(found) - done} to translate.", file=sys.stderr)
     else:
-        write(found, {}, "", sys.stdout)
+        write(found, messages, {}, "", sys.stdout)
 
 
 if __name__ == "__main__":
