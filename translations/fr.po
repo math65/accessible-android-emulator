@@ -3980,275 +3980,275 @@ msgstr "{label} : {}"
 msgid "New devices start with {}."
 msgstr "Les nouveaux appareils démarrent avec ces paramètres : {}."
 
-#: crates/aae-ffi/src/lib.rs:863
+#: crates/aae-ffi/src/lib.rs:882
 msgid "\"{name}\" is not a gesture."
 msgstr "« {name} » n'est pas un geste."
 
-#: crates/aae-ffi/src/lib.rs:1058 crates/aae-cli/src/main.rs:3312
+#: crates/aae-ffi/src/lib.rs:1077 crates/aae-cli/src/main.rs:3312
 msgid "Stop these devices first, as the emulator and adb are replaced: {}."
 msgstr "Arrêtez d'abord ces appareils, car l'émulateur et adb vont être remplacés : {}."
 
-#: crates/aae-ffi/src/lib.rs:1069
+#: crates/aae-ffi/src/lib.rs:1088
 msgid "Downloading {}."
 msgstr "Téléchargement : {}."
 
-#: crates/aae-ffi/src/lib.rs:1079
+#: crates/aae-ffi/src/lib.rs:1098
 msgid "Checking {}."
 msgstr "Vérification : {}."
 
-#: crates/aae-ffi/src/lib.rs:1082
+#: crates/aae-ffi/src/lib.rs:1101
 msgid "Unpacking {}."
 msgstr "Décompression : {}."
 
-#: crates/aae-ffi/src/lib.rs:1213 crates/aae-ffi/src/lib.rs:1538
+#: crates/aae-ffi/src/lib.rs:1232 crates/aae-ffi/src/lib.rs:1557
 msgid "{}, virtual machine"
 msgstr "{}, machine virtuelle"
 
-#: crates/aae-ffi/src/lib.rs:1314
+#: crates/aae-ffi/src/lib.rs:1333
 msgid "Google no longer offers that Android version for this computer."
 msgstr "Google ne propose plus cette version d'Android pour cet ordinateur."
 
-#: crates/aae-ffi/src/lib.rs:1327 crates/aae-cli/src/main.rs:2873 crates/aae-cli/src/main.rs:3366
+#: crates/aae-ffi/src/lib.rs:1346 crates/aae-cli/src/main.rs:2873 crates/aae-cli/src/main.rs:3366
 msgid "Checking the download."
 msgstr "Vérification du téléchargement."
 
-#: crates/aae-ffi/src/lib.rs:1328 crates/aae-cli/src/main.rs:2874 crates/aae-cli/src/main.rs:3367
+#: crates/aae-ffi/src/lib.rs:1347 crates/aae-cli/src/main.rs:2874 crates/aae-cli/src/main.rs:3367
 msgid "Unpacking."
 msgstr "Décompression."
 
-#: crates/aae-ffi/src/lib.rs:1378 crates/aae-cli/src/main.rs:1342
+#: crates/aae-ffi/src/lib.rs:1397 crates/aae-cli/src/main.rs:1342
 msgid "A Googlebook device's memory, cores and storage are fixed."
 msgstr "La mémoire, les cœurs et le stockage d'un appareil Googlebook ne sont pas modifiables."
 
-#: crates/aae-ffi/src/lib.rs:1390
+#: crates/aae-ffi/src/lib.rs:1409
 msgid "That Android version is no longer installed."
 msgstr "Cette version d'Android n'est plus installée."
 
-#: crates/aae-ffi/src/lib.rs:1443
+#: crates/aae-ffi/src/lib.rs:1462
 msgid "Restarting Android on {name}."
 msgstr "Redémarrage d'Android sur l'appareil {name}."
 
-#: crates/aae-ffi/src/lib.rs:1568
+#: crates/aae-ffi/src/lib.rs:1587
 msgid "That Android version isn't installed any more."
 msgstr "Cette version d'Android n'est plus installée."
 
-#: crates/aae-ffi/src/lib.rs:1616
+#: crates/aae-ffi/src/lib.rs:1635
 msgid "Exporting: {said} percent."
 msgstr "Exportation : {said} %."
 
-#: crates/aae-ffi/src/lib.rs:1626
+#: crates/aae-ffi/src/lib.rs:1645
 msgid "Exported {name} to {}, {:.1} gigabytes."
 msgstr "Appareil {name} exporté dans {0}, {1} Go."
 
-#: crates/aae-ffi/src/lib.rs:1654
+#: crates/aae-ffi/src/lib.rs:1673
 msgid "Importing: {said} percent."
 msgstr "Importation : {said} %."
 
-#: crates/aae-ffi/src/lib.rs:1747
+#: crates/aae-ffi/src/lib.rs:1766
 msgid "Installed {package} on {name}."
 msgstr "Installation de {package} terminée sur l'appareil {name}."
 
-#: crates/aae-ffi/src/lib.rs:1751 crates/aae-cli/src/main.rs:2162
+#: crates/aae-ffi/src/lib.rs:1770 crates/aae-cli/src/main.rs:2162
 msgid "{name} is stopped, so {package} will be installed when it next starts."
 msgstr "L'appareil {name} est arrêté : {package} sera installé à son prochain démarrage."
 
-#: crates/aae-ffi/src/lib.rs:1844
+#: crates/aae-ffi/src/lib.rs:1863
 msgid "Backtalk"
 msgstr ""
 
-#: crates/aae-ffi/src/lib.rs:1845
+#: crates/aae-ffi/src/lib.rs:1864
 msgid "TalkBack"
 msgstr ""
 
-#: crates/aae-ffi/src/lib.rs:1846
+#: crates/aae-ffi/src/lib.rs:1865
 msgid "Samsung's TalkBack"
 msgstr "TalkBack de Samsung"
 
-#: crates/aae-ffi/src/lib.rs:1847
+#: crates/aae-ffi/src/lib.rs:1866
 msgid "Jieshuo"
 msgstr ""
 
-#: crates/aae-ffi/src/lib.rs:1848
+#: crates/aae-ffi/src/lib.rs:1867
 msgid "Commentary"
 msgstr ""
 
-#: crates/aae-ffi/src/lib.rs:2293 crates/aae-cli/src/main.rs:2703
+#: crates/aae-ffi/src/lib.rs:2354 crates/aae-cli/src/main.rs:2703
 msgid "{} isn't a watch, so it has no crown."
 msgstr "L'appareil {} n'est pas une montre : il n'a pas de couronne."
 
-#: crates/aae-ffi/src/lib.rs:2311
+#: crates/aae-ffi/src/lib.rs:2372
 msgid "\"{name}\" is not a key name."
 msgstr "« {name} » n'est pas un nom de touche."
 
-#: crates/aae-ffi/src/lib.rs:2361
+#: crates/aae-ffi/src/lib.rs:2422
 msgid "AAE isn't playing this device's audio."
 msgstr "AAE ne lit pas le son de cet appareil."
 
-#: crates/aae-ffi/src/lib.rs:2377
+#: crates/aae-ffi/src/lib.rs:2438
 msgid "The device's sound is reaching AAE."
 msgstr "Le son de l'appareil parvient bien à AAE."
 
-#: crates/aae-ffi/src/lib.rs:2381
+#: crates/aae-ffi/src/lib.rs:2442
 msgid "No recent audio to check."
 msgstr "Aucun son récent à vérifier."
 
-#: crates/aae-ffi/src/lib.rs:2436
+#: crates/aae-ffi/src/lib.rs:2497
 msgid "{}: audio output {name}."
 msgstr "{0} : sortie audio {name}."
 
-#: crates/aae-ffi/src/lib.rs:2438
+#: crates/aae-ffi/src/lib.rs:2499
 msgid "{}: audio output set to the system default."
 msgstr "{} : sortie audio par défaut du système."
 
-#: crates/aae-ffi/src/lib.rs:2524
+#: crates/aae-ffi/src/lib.rs:2585
 msgid "Window type: {}"
 msgstr "Type de fenêtre : {}"
 
-#: crates/aae-ffi/src/lib.rs:2544 crates/aae-cli/src/main.rs:1497
+#: crates/aae-ffi/src/lib.rs:2605 crates/aae-cli/src/main.rs:1497
 msgid "{}: the screen's accessibility"
 msgstr "{} : accessibilité de l'écran"
 
-#: crates/aae-ffi/src/lib.rs:2562
+#: crates/aae-ffi/src/lib.rs:2623
 msgid "The speech bridge is already on."
 msgstr "La voix de l'ordinateur est déjà activée."
 
-#: crates/aae-ffi/src/lib.rs:2564
+#: crates/aae-ffi/src/lib.rs:2625
 msgid "The speech bridge is already off."
 msgstr "La voix de l'ordinateur est déjà désactivée."
 
-#: crates/aae-ffi/src/lib.rs:2572
+#: crates/aae-ffi/src/lib.rs:2633
 msgid "Speech bridge on."
 msgstr "Voix de l'ordinateur activée."
 
-#: crates/aae-ffi/src/lib.rs:2574
+#: crates/aae-ffi/src/lib.rs:2635
 msgid "Speech bridge off."
 msgstr "Voix de l'ordinateur désactivée."
 
-#: crates/aae-ffi/src/lib.rs:2618
+#: crates/aae-ffi/src/lib.rs:2679
 msgid "The speech log is already on."
 msgstr "Le journal de la parole est déjà activé."
 
-#: crates/aae-ffi/src/lib.rs:2620
+#: crates/aae-ffi/src/lib.rs:2681
 msgid "The speech log is already off."
 msgstr "Le journal de la parole est déjà désactivé."
 
-#: crates/aae-ffi/src/lib.rs:2625
+#: crates/aae-ffi/src/lib.rs:2686
 msgid "The speech log is on."
 msgstr "Le journal de la parole est activé."
 
-#: crates/aae-ffi/src/lib.rs:2627
+#: crates/aae-ffi/src/lib.rs:2688
 msgid "The speech log is off."
 msgstr "Le journal de la parole est désactivé."
 
-#: crates/aae-ffi/src/lib.rs:2897 crates/aae-cli/src/main.rs:2333
+#: crates/aae-ffi/src/lib.rs:2958 crates/aae-cli/src/main.rs:2333
 msgid "Microphone off."
 msgstr "Micro désactivé."
 
-#: crates/aae-ffi/src/lib.rs:2899
+#: crates/aae-ffi/src/lib.rs:2960
 msgid "The microphone is already off."
 msgstr "Le micro est déjà désactivé."
 
-#: crates/aae-ffi/src/lib.rs:2904
+#: crates/aae-ffi/src/lib.rs:2965
 msgid "The microphone is already on: {}."
 msgstr "Le micro est déjà activé : {}."
 
-#: crates/aae-ffi/src/lib.rs:2915
+#: crates/aae-ffi/src/lib.rs:2976
 msgid "Microphone on: {}."
 msgstr "Micro activé : {}."
 
-#: crates/aae-ffi/src/lib.rs:2942
+#: crates/aae-ffi/src/lib.rs:3003
 msgid "Finished playing {name} into the microphone."
 msgstr "Lecture de {name} dans le micro terminée."
 
-#: crates/aae-ffi/src/lib.rs:2945
+#: crates/aae-ffi/src/lib.rs:3006
 msgid "The app stopped recording {at:.1} seconds into {name}."
 msgstr "L'app a arrêté l'enregistrement après {at:.1} secondes de {name}."
 
-#: crates/aae-ffi/src/lib.rs:2948
+#: crates/aae-ffi/src/lib.rs:3009
 msgid "Stopped playing {name} into the microphone."
 msgstr "Lecture de {name} dans le micro arrêtée."
 
-#: crates/aae-ffi/src/lib.rs:3018
+#: crates/aae-ffi/src/lib.rs:3079
 msgid "{name} isn't a network speed AAE knows."
 msgstr "{name} n'est pas une vitesse de réseau connue d'AAE."
 
-#: crates/aae-ffi/src/lib.rs:3040 crates/aae-ffi/src/lib.rs:3060
+#: crates/aae-ffi/src/lib.rs:3101 crates/aae-ffi/src/lib.rs:3121
 msgid "{path} can't be read: {e}"
 msgstr "Impossible de lire {path} : {e}"
 
-#: crates/aae-ffi/src/lib.rs:3050 crates/aae-cli/src/main.rs:2522
+#: crates/aae-ffi/src/lib.rs:3111 crates/aae-cli/src/main.rs:2522
 msgid "The route has finished."
 msgstr "L'itinéraire est terminé."
 
-#: crates/aae-ffi/src/lib.rs:3052 crates/aae-cli/src/main.rs:2524
+#: crates/aae-ffi/src/lib.rs:3113 crates/aae-cli/src/main.rs:2524
 msgid "Stopped the route."
 msgstr "Itinéraire arrêté."
 
-#: crates/aae-ffi/src/lib.rs:3065
+#: crates/aae-ffi/src/lib.rs:3126
 msgid "{} minutes"
 msgstr "{} minutes"
 
-#: crates/aae-ffi/src/lib.rs:3067
+#: crates/aae-ffi/src/lib.rs:3128
 msgid "{seconds} seconds"
 msgstr "{seconds} secondes"
 
-#: crates/aae-ffi/src/lib.rs:3069
+#: crates/aae-ffi/src/lib.rs:3130
 msgid "{} points, taking {time}."
 msgstr "{} points, d'une durée de {time}."
 
-#: crates/aae-ffi/src/lib.rs:3097
+#: crates/aae-ffi/src/lib.rs:3158
 msgid "The screen is already being recorded."
 msgstr "L'écran est déjà en cours d'enregistrement."
 
-#: crates/aae-ffi/src/lib.rs:3114
+#: crates/aae-ffi/src/lib.rs:3175
 msgid "Recording to {name}, three minutes at most."
 msgstr "Enregistrement dans {name}, trois minutes au maximum."
 
-#: crates/aae-ffi/src/lib.rs:3132
+#: crates/aae-ffi/src/lib.rs:3193
 msgid "The screen isn't being recorded."
 msgstr "L'écran n'est pas en cours d'enregistrement."
 
-#: crates/aae-ffi/src/lib.rs:3142
+#: crates/aae-ffi/src/lib.rs:3203
 msgid "The recording stopped by itself at three minutes. Saved {name}."
 msgstr "L'enregistrement s'est arrêté de lui-même au bout de trois minutes. {name} enregistré."
 
-#: crates/aae-ffi/src/lib.rs:3144
+#: crates/aae-ffi/src/lib.rs:3205
 msgid "Saved {name}, {seconds} seconds."
 msgstr "Enregistré : {name}, {seconds} secondes."
 
-#: crates/aae-ffi/src/lib.rs:3229 crates/aae-cli/src/main.rs:2385
+#: crates/aae-ffi/src/lib.rs:3290 crates/aae-cli/src/main.rs:2385
 msgid "The battery's health is good, failed, dead, overvoltage or overheated."
 msgstr "L'état de la batterie doit être good, failed, dead, overvoltage ou overheated."
 
-#: crates/aae-ffi/src/lib.rs:3234
+#: crates/aae-ffi/src/lib.rs:3295
 msgid "Battery health {}."
 msgstr "État de la batterie : {}."
 
-#: crates/aae-ffi/src/lib.rs:3247 crates/aae-cli/src/main.rs:2409
+#: crates/aae-ffi/src/lib.rs:3308 crates/aae-cli/src/main.rs:2409
 msgid "Touched the fingerprint sensor with finger {finger}."
 msgstr "Capteur d'empreinte touché avec le doigt {finger}."
 
-#: crates/aae-ffi/src/lib.rs:3326
+#: crates/aae-ffi/src/lib.rs:3387
 msgid "That service isn't installed any more."
 msgstr "Ce service n'est plus installé."
 
-#: crates/aae-ffi/src/lib.rs:3563 crates/aae-cli/src/main.rs:3244
+#: crates/aae-ffi/src/lib.rs:3624 crates/aae-cli/src/main.rs:3244
 msgid "No screen reader is set up."
 msgstr "Aucun lecteur d'écran n'est configuré."
 
-#: crates/aae-ffi/src/lib.rs:3573
+#: crates/aae-ffi/src/lib.rs:3634
 msgid "{name} is on."
 msgstr "{name} est activé."
 
-#: crates/aae-ffi/src/lib.rs:3575
+#: crates/aae-ffi/src/lib.rs:3636
 msgid "{name} is off."
 msgstr "{name} est désactivé."
 
-#: crates/aae-ffi/src/lib.rs:3589
+#: crates/aae-ffi/src/lib.rs:3650
 msgid "Turned back on: {}."
 msgstr "Services réactivés : {}."
 
-#: crates/aae-ffi/src/lib.rs:3600
+#: crates/aae-ffi/src/lib.rs:3661
 msgid "Could not save the screenshot to {path}: {e}"
 msgstr "Impossible d'enregistrer la capture d'écran dans {path} : {e}"
 
@@ -4416,7 +4416,7 @@ msgstr "Lecteur d'écran : celui de l'image Android, si elle en a un. Sinon, AA
 msgid "Choose a screen reader APK, such as a Backtalk build"
 msgstr "Choisissez l'APK d'un lecteur d'écran, par exemple une version de Backtalk"
 
-#: crates/aae-windows/src/app.rs:1188 crates/aae-windows/src/app.rs:1497 crates/aae-windows/src/app.rs:2777 crates/aae-windows/src/app.rs:3001
+#: crates/aae-windows/src/app.rs:1188 crates/aae-windows/src/app.rs:1497 crates/aae-windows/src/app.rs:2779 crates/aae-windows/src/app.rs:3003
 msgid "Android apps"
 msgstr "Apps Android"
 
@@ -4436,7 +4436,7 @@ msgstr "Inclure les &préversions des prochaines versions d'Android"
 msgid "&Size"
 msgstr "&Taille"
 
-#: crates/aae-windows/src/app.rs:1245 crates/aae-windows/src/app.rs:2410
+#: crates/aae-windows/src/app.rs:1245 crates/aae-windows/src/app.rs:2412
 msgid "&Memory, in megabytes"
 msgstr "&Mémoire, en mégaoctets"
 
@@ -4576,355 +4576,355 @@ msgstr "Appareil {0} créé, copie de {1}."
 msgid "Couldn't give the keyboard to Android. Windows wouldn't let AAE watch the keyboard."
 msgstr "Impossible de passer le clavier à Android : Windows n'a pas autorisé AAE à surveiller le clavier."
 
-#: crates/aae-windows/src/app.rs:1926
+#: crates/aae-windows/src/app.rs:1927
 msgid "Gesture mode on. Arrows swipe, Space double taps, question mark lists the keys. {} returns to Windows."
 msgstr "Mode gestes activé. Flèches pour balayer, Espace pour appuyer deux fois, point d'interrogation pour la liste des touches. {} pour revenir à Windows."
 
-#: crates/aae-windows/src/app.rs:1934
+#: crates/aae-windows/src/app.rs:1935
 msgid "Android keyboard on. {} returns to Windows."
 msgstr "Clavier Android activé. {} pour revenir à Windows."
 
-#: crates/aae-windows/src/app.rs:1966
+#: crates/aae-windows/src/app.rs:1968
 msgid "Windows keyboard on."
 msgstr "Clavier Windows activé."
 
-#: crates/aae-windows/src/app.rs:2144 crates/aae-windows/src/app.rs:2183
+#: crates/aae-windows/src/app.rs:2146 crates/aae-windows/src/app.rs:2185
 msgid "Nothing. {}"
 msgstr "Rien. {}"
 
-#: crates/aae-windows/src/app.rs:2207
+#: crates/aae-windows/src/app.rs:2209
 msgid ", pixel {}, {}"
 msgstr ", pixel {}, {}"
 
-#: crates/aae-windows/src/app.rs:2269
+#: crates/aae-windows/src/app.rs:2271
 msgid "{} at {} percent."
 msgstr "Volume de l'appareil {} : {} %."
 
-#: crates/aae-windows/src/app.rs:2311
+#: crates/aae-windows/src/app.rs:2313
 msgid "Stop {} to export it."
 msgstr "Arrêtez l'appareil {} pour l'exporter."
 
-#: crates/aae-windows/src/app.rs:2319
+#: crates/aae-windows/src/app.rs:2321
 msgid "Export {}, with its apps, data and named snapshots"
 msgstr "Exporter l'appareil {}, avec ses apps, ses données et ses instantanés nommés"
 
-#: crates/aae-windows/src/app.rs:2323 crates/aae-windows/src/app.rs:2358
+#: crates/aae-windows/src/app.rs:2325 crates/aae-windows/src/app.rs:2360
 msgid "AAE devices"
 msgstr "Appareils AAE"
 
-#: crates/aae-windows/src/app.rs:2329
+#: crates/aae-windows/src/app.rs:2331
 msgid "Exporting {}."
 msgstr "Exportation de l'appareil {}."
 
-#: crates/aae-windows/src/app.rs:2357
+#: crates/aae-windows/src/app.rs:2359
 msgid "Choose a device exported from AAE"
 msgstr "Choisissez un appareil exporté depuis AAE"
 
-#: crates/aae-windows/src/app.rs:2365
+#: crates/aae-windows/src/app.rs:2367
 msgid "Importing the device."
 msgstr "Importation de l'appareil."
 
-#: crates/aae-windows/src/app.rs:2377 crates/aae-cli/src/main.rs:2633
+#: crates/aae-windows/src/app.rs:2379 crates/aae-cli/src/main.rs:2633
 msgid "Imported {}."
 msgstr "Appareil {} importé."
 
-#: crates/aae-windows/src/app.rs:2390
+#: crates/aae-windows/src/app.rs:2392
 msgid "Stop {} to change its hardware."
 msgstr "Arrêtez l'appareil {} pour modifier son matériel."
 
-#: crates/aae-windows/src/app.rs:2409
+#: crates/aae-windows/src/app.rs:2411
 msgid "Hardware of {}"
 msgstr "Matériel de l'appareil {}"
 
-#: crates/aae-windows/src/app.rs:2411
+#: crates/aae-windows/src/app.rs:2413
 msgid "Processor &cores"
 msgstr "Cœurs du pro&cesseur"
 
-#: crates/aae-windows/src/app.rs:2412
+#: crates/aae-windows/src/app.rs:2414
 msgid "&Storage, in megabytes"
 msgstr "&Stockage, en mégaoctets"
 
-#: crates/aae-windows/src/app.rs:2413
+#: crates/aae-windows/src/app.rs:2415
 msgid "Screen &width, in pixels"
 msgstr "&Largeur de l'écran, en pixels"
 
-#: crates/aae-windows/src/app.rs:2414
+#: crates/aae-windows/src/app.rs:2416
 msgid "Screen &height, in pixels"
 msgstr "&Hauteur de l'écran, en pixels"
 
-#: crates/aae-windows/src/app.rs:2415
+#: crates/aae-windows/src/app.rs:2417
 msgid "Screen &density, in dots per inch"
 msgstr "&Densité de l'écran, en points par pouce"
 
-#: crates/aae-windows/src/app.rs:2417
+#: crates/aae-windows/src/app.rs:2419
 msgid "&Graphics"
 msgstr "&Graphismes"
 
-#: crates/aae-windows/src/app.rs:2462
+#: crates/aae-windows/src/app.rs:2464
 msgid " Using NVDA."
 msgstr " Elle utilise NVDA."
 
-#: crates/aae-windows/src/app.rs:2464
+#: crates/aae-windows/src/app.rs:2466
 msgid " Using SAPI."
 msgstr " Elle utilise SAPI."
 
-#: crates/aae-windows/src/app.rs:2498
+#: crates/aae-windows/src/app.rs:2500
 msgid "Audio Output for {}"
 msgstr "Sortie audio de l'appareil {}"
 
-#: crates/aae-windows/src/app.rs:2500
+#: crates/aae-windows/src/app.rs:2502
 msgid "&Audio output"
 msgstr "&Sortie audio"
 
-#: crates/aae-windows/src/app.rs:2545
+#: crates/aae-windows/src/app.rs:2547
 msgid "Checking {}'s microphone."
 msgstr "Vérification du micro de l'appareil {}."
 
-#: crates/aae-windows/src/app.rs:2569
+#: crates/aae-windows/src/app.rs:2571
 msgid "Choose an audio file to play into {}'s microphone"
 msgstr "Choisissez un fichier audio à lire dans le micro de l'appareil {}"
 
-#: crates/aae-windows/src/app.rs:2573
+#: crates/aae-windows/src/app.rs:2575
 msgid "Sound files"
 msgstr "Fichiers audio"
 
-#: crates/aae-windows/src/app.rs:2585
+#: crates/aae-windows/src/app.rs:2587
 msgid "{file} queued for the next recording."
 msgstr "{file} sera lu au prochain enregistrement du micro."
 
-#: crates/aae-windows/src/app.rs:2621
+#: crates/aae-windows/src/app.rs:2623
 msgid "Downloading {what}: {percent}%."
 msgstr "Téléchargement : {what}, {percent} %."
 
-#: crates/aae-windows/src/app.rs:2642
+#: crates/aae-windows/src/app.rs:2644
 msgid "The keyboard is on Windows."
 msgstr "Le clavier contrôle Windows."
 
-#: crates/aae-windows/src/app.rs:2672
+#: crates/aae-windows/src/app.rs:2674
 msgid "Copied from the device: {}"
 msgstr "Copié depuis l'appareil : {}"
 
-#: crates/aae-windows/src/app.rs:2676 crates/aae-windows/src/tools/mod.rs:48
+#: crates/aae-windows/src/app.rs:2678 crates/aae-windows/src/tools/mod.rs:48
 msgid "Windows' clipboard couldn't be changed."
 msgstr "Impossible de modifier le presse-papiers de Windows."
 
-#: crates/aae-windows/src/app.rs:2688
+#: crates/aae-windows/src/app.rs:2690
 msgid "Windows' clipboard has no text."
 msgstr "Le presse-papiers de Windows ne contient pas de texte."
 
-#: crates/aae-windows/src/app.rs:2697
+#: crates/aae-windows/src/app.rs:2699
 msgid "Typed {count} characters."
 msgstr "Caractères tapés : {count}."
 
-#: crates/aae-windows/src/app.rs:2701
+#: crates/aae-windows/src/app.rs:2703
 msgid "Sent to the device's clipboard: {}"
 msgstr "Envoyé au presse-papiers de l'appareil : {}"
 
-#: crates/aae-windows/src/app.rs:2723
+#: crates/aae-windows/src/app.rs:2725
 msgid "Save Screenshot"
 msgstr "Enregistrer une capture d'écran"
 
-#: crates/aae-windows/src/app.rs:2724
+#: crates/aae-windows/src/app.rs:2726
 msgid "{} screenshot.png"
 msgstr "Capture d'écran {}.png"
 
-#: crates/aae-windows/src/app.rs:2725
+#: crates/aae-windows/src/app.rs:2727
 msgid "PNG images"
 msgstr "Images PNG"
 
-#: crates/aae-windows/src/app.rs:2736
+#: crates/aae-windows/src/app.rs:2738
 msgid "Saved the screenshot as {name}."
 msgstr "Capture d'écran enregistrée sous {name}."
 
-#: crates/aae-windows/src/app.rs:2757
+#: crates/aae-windows/src/app.rs:2759
 msgid "Record the screen and its sound, for up to three minutes"
 msgstr "Enregistrer l'écran et le son de l'appareil, pendant trois minutes au plus"
 
-#: crates/aae-windows/src/app.rs:2758
+#: crates/aae-windows/src/app.rs:2760
 msgid "{} recording.webm"
 msgstr "Enregistrement {}.webm"
 
-#: crates/aae-windows/src/app.rs:2759
+#: crates/aae-windows/src/app.rs:2761
 msgid "WebM videos"
 msgstr "Vidéos WebM"
 
-#: crates/aae-windows/src/app.rs:2776
+#: crates/aae-windows/src/app.rs:2778
 msgid "Choose apps to install"
 msgstr "Choisir les apps à installer"
 
-#: crates/aae-windows/src/app.rs:2817
+#: crates/aae-windows/src/app.rs:2819
 msgid "Install on Which Devices?"
 msgstr "Installer sur quels appareils ?"
 
-#: crates/aae-windows/src/app.rs:2818
+#: crates/aae-windows/src/app.rs:2820
 msgid "Install {} on:"
 msgstr "Installer {} sur :"
 
-#: crates/aae-windows/src/app.rs:2822
+#: crates/aae-windows/src/app.rs:2824
 msgid "{} apps"
 msgstr "{} apps"
 
-#: crates/aae-windows/src/app.rs:2847
+#: crates/aae-windows/src/app.rs:2849
 msgid "No devices were chosen, so nothing was installed."
 msgstr "Aucun appareil n'a été choisi : rien n'a été installé."
 
-#: crates/aae-windows/src/app.rs:2898
+#: crates/aae-windows/src/app.rs:2900
 msgid "{file} on {name}: {e}"
 msgstr "{file} sur {name} : {e}"
 
-#: crates/aae-windows/src/app.rs:2914
+#: crates/aae-windows/src/app.rs:2916
 msgid "Installed {package}."
 msgstr "Installation de {package} terminée."
 
-#: crates/aae-windows/src/app.rs:2918 crates/aae-cli/src/main.rs:1842
+#: crates/aae-windows/src/app.rs:2920 crates/aae-cli/src/main.rs:1842
 msgid "{} is {}, as you chose before."
 msgstr "{} : {}, comme vous l'aviez choisi."
 
-#: crates/aae-windows/src/app.rs:2959
+#: crates/aae-windows/src/app.rs:2961
 msgid "Turned on {}."
 msgstr "Activé : {}."
 
-#: crates/aae-windows/src/app.rs:2972
+#: crates/aae-windows/src/app.rs:2974
 msgid "Turn on parts of {package}?"
 msgstr "Activer des composants de {package} ?"
 
-#: crates/aae-windows/src/app.rs:3000
+#: crates/aae-windows/src/app.rs:3002
 msgid "Choose a screen reader build to install"
 msgstr "Choisir une version de test du lecteur d'écran à installer"
 
-#: crates/aae-windows/src/app.rs:3013
+#: crates/aae-windows/src/app.rs:3015
 msgid "Install {package}"
 msgstr "Installer {package}"
 
-#: crates/aae-windows/src/app.rs:3014
+#: crates/aae-windows/src/app.rs:3016
 msgid "Which devices should get this build? A new build of a device's screen reader keeps its settings. Stopped devices get it when they next start."
 msgstr "Sur quels appareils installer cette version de test ? Une nouvelle version conserve les paramètres du lecteur d'écran. Les appareils arrêtés la recevront à leur prochain démarrage."
 
-#: crates/aae-windows/src/app.rs:3041
+#: crates/aae-windows/src/app.rs:3043
 msgid "Choose &All"
 msgstr "&Tout sélectionner"
 
-#: crates/aae-windows/src/app.rs:3059
+#: crates/aae-windows/src/app.rs:3061
 msgid "Installing on {}."
 msgstr "Installation sur {0}."
 
-#: crates/aae-windows/src/app.rs:3068
+#: crates/aae-windows/src/app.rs:3070
 msgid "{}: {message}"
 msgstr "{} : {message}"
 
-#: crates/aae-windows/src/app.rs:3080
+#: crates/aae-windows/src/app.rs:3082
 msgid "&Replace"
 msgstr "&Remplacer"
 
-#: crates/aae-windows/src/app.rs:3113
+#: crates/aae-windows/src/app.rs:3115
 msgid "Checking {}'s sound."
 msgstr "Vérification du son de l'appareil {}."
 
-#: crates/aae-windows/src/app.rs:3130
+#: crates/aae-windows/src/app.rs:3132
 msgid "Restart {name}'s audio?"
 msgstr "Redémarrer le son de l'appareil {name} ?"
 
-#: crates/aae-windows/src/app.rs:3131
+#: crates/aae-windows/src/app.rs:3133
 msgid "{} Restarting AAE's audio reconnects to the device's sound and to this computer's output. The device itself keeps running."
 msgstr "{} Redémarrer le son d'AAE rétablit la liaison avec le son de l'appareil et avec la sortie audio de cet ordinateur. L'appareil, lui, reste en marche."
 
-#: crates/aae-windows/src/app.rs:3132
+#: crates/aae-windows/src/app.rs:3134
 msgid "&Restart Audio"
 msgstr "&Redémarrer le son"
 
-#: crates/aae-windows/src/app.rs:3148
+#: crates/aae-windows/src/app.rs:3150
 msgid "Restarted the audio. {}"
 msgstr "Le son a redémarré. {}"
 
-#: crates/aae-windows/src/app.rs:3154
+#: crates/aae-windows/src/app.rs:3156
 msgid "Restarted the audio, but: {} Restarting the device may help."
 msgstr "Le son a redémarré, mais : {} Redémarrer l'appareil peut résoudre le problème."
 
-#: crates/aae-windows/src/app.rs:3300
+#: crates/aae-windows/src/app.rs:3302
 msgid "AAE can watch the keyboard in device mode, so Windows' shortcuts reach Android."
 msgstr "AAE peut surveiller le clavier en mode appareil : les raccourcis Windows sont donc transmis à Android."
 
-#: crates/aae-windows/src/app.rs:3306
+#: crates/aae-windows/src/app.rs:3308
 msgid "Windows wouldn't let AAE watch the keyboard, so device mode can't work."
 msgstr "Windows n'a pas autorisé AAE à surveiller le clavier : le mode appareil ne peut donc pas fonctionner."
 
-#: crates/aae-windows/src/app.rs:3322
+#: crates/aae-windows/src/app.rs:3324
 msgid "{}: sound"
 msgstr "{} : son"
 
-#: crates/aae-windows/src/app.rs:3341
+#: crates/aae-windows/src/app.rs:3343
 msgid "All {} checks passed."
 msgstr "Les {} vérifications ont réussi."
 
-#: crates/aae-windows/src/app.rs:3349
+#: crates/aae-windows/src/app.rs:3351
 msgid "{} problems and {} warnings. {}"
 msgstr "Problèmes : {}. Avertissements : {}. {}"
 
-#: crates/aae-windows/src/app.rs:3370
+#: crates/aae-windows/src/app.rs:3372
 msgid "{name}: {outcome}. {detail}"
 msgstr "{name} : {outcome}. {detail}"
 
-#: crates/aae-windows/src/app.rs:3383
+#: crates/aae-windows/src/app.rs:3385
 msgid "Results"
 msgstr "Résultats"
 
-#: crates/aae-windows/src/app.rs:3388
+#: crates/aae-windows/src/app.rs:3390
 msgid "Close"
 msgstr "Fermer"
 
-#: crates/aae-windows/src/app.rs:3398
+#: crates/aae-windows/src/app.rs:3400
 msgid "{} ({label})"
 msgstr ""
 
-#: crates/aae-windows/src/app.rs:3405
+#: crates/aae-windows/src/app.rs:3407
 msgid "{}, build {}, Windows app"
 msgstr "{}, build {}, app Windows"
 
-#: crates/aae-windows/src/app.rs:3417 crates/aae-windows/src/app.rs:3426
+#: crates/aae-windows/src/app.rs:3419 crates/aae-windows/src/app.rs:3428
 msgid "Save Diagnostic Report"
 msgstr "Enregistrer un rapport de diagnostic"
 
-#: crates/aae-windows/src/app.rs:3418
+#: crates/aae-windows/src/app.rs:3420
 msgid "The report has AAE's log and details of this computer and your devices, with your home folder and computer name taken out. It never includes what you typed on a device. It's plain text, so you can read it before sending it."
 msgstr "Le rapport contient le journal d'AAE et des informations sur cet ordinateur et sur vos appareils, sans votre dossier personnel ni le nom de l'ordinateur. Il n'inclut jamais ce que vous avez tapé sur un appareil. C'est du texte brut : vous pouvez le lire avant de l'envoyer."
 
-#: crates/aae-windows/src/app.rs:3427
+#: crates/aae-windows/src/app.rs:3429
 msgid "AAE report {stamp}.txt"
 msgstr "Rapport AAE {stamp}.txt"
 
-#: crates/aae-windows/src/app.rs:3428 crates/aae-windows/src/tools/mod.rs:58
+#: crates/aae-windows/src/app.rs:3430 crates/aae-windows/src/tools/mod.rs:58
 msgid "Text files"
 msgstr "Fichiers texte"
 
-#: crates/aae-windows/src/app.rs:3435 crates/aae-windows/src/tools/inspector.rs:477 crates/aae-windows/src/tools/mod.rs:63
+#: crates/aae-windows/src/app.rs:3437 crates/aae-windows/src/tools/inspector.rs:477 crates/aae-windows/src/tools/mod.rs:63
 msgid "Saved {}."
 msgstr "Fichier {} enregistré."
 
-#: crates/aae-windows/src/app.rs:3445
+#: crates/aae-windows/src/app.rs:3447
 msgid "Settings"
 msgstr "Paramètres"
 
-#: crates/aae-windows/src/app.rs:3447
+#: crates/aae-windows/src/app.rs:3449
 msgid "Play a &sound before each announcement"
 msgstr "Émettre un &son avant chaque annonce"
 
-#: crates/aae-windows/src/app.rs:3451
+#: crates/aae-windows/src/app.rs:3453
 msgid "When several devices are running, play only the one you're &using"
 msgstr "Quand plusieurs appareils sont en marche, ne faire entendre que celui que vous &utilisez"
 
-#: crates/aae-windows/src/app.rs:3455
+#: crates/aae-windows/src/app.rs:3457
 msgid "&Correct the pitch of older Android versions"
 msgstr "&Corriger le ton des anciennes versions d'Android"
 
-#: crates/aae-windows/src/app.rs:3459
+#: crates/aae-windows/src/app.rs:3461
 msgid "&Return to Windows with"
 msgstr "&Revenir à Windows avec"
 
-#: crates/aae-windows/src/app.rs:3496
+#: crates/aae-windows/src/app.rs:3498
 msgid "About AAE"
 msgstr "À propos d'AAE"
 
-#: crates/aae-windows/src/app.rs:3498
+#: crates/aae-windows/src/app.rs:3500
 msgid ""
 "Accessible Android Emulator {}\n"
 "\n"
@@ -4958,15 +4958,15 @@ msgstr "Ctrl+Maj+Windows+Échap"
 msgid "Control Alt Windows Escape"
 msgstr "Ctrl+Alt+Windows+Échap"
 
-#: crates/aae-windows/src/main.rs:37
+#: crates/aae-windows/src/main.rs:39
 msgid "This is AAE's Windows app. On the Mac, use the Mac app in macos/."
 msgstr "Ceci est l'app Windows d'AAE. Sur Mac, utilisez l'app Mac du dossier macos/."
 
-#: crates/aae-windows/src/main.rs:184 crates/aae-windows/src/main.rs:192
+#: crates/aae-windows/src/main.rs:186 crates/aae-windows/src/main.rs:194
 msgid "AAEMain"
 msgstr ""
 
-#: crates/aae-windows/src/main.rs:204
+#: crates/aae-windows/src/main.rs:206
 msgid "AAE's window could not be created"
 msgstr ""
 
@@ -5869,11 +5869,19 @@ msgstr "Surveillance de {} arrêtée."
 msgid "Nothing is being watched."
 msgstr "Rien n'est surveillé."
 
+#: crates/aae-windows/src/touch.rs:192 crates/aae-windows/src/touch.rs:203
+msgid "AAETouchScreen"
+msgstr ""
+
+#: crates/aae-windows/src/touch.rs:204
+msgid "Android touch screen"
+msgstr "Écran tactile Android"
+
 #: crates/aae-windows/src/updates.rs:25
 msgid "../../../macos/Support/sparkle-public-key.txt"
 msgstr ""
 
-#: macos/Sources/AAE/AAEApp.swift:11 crates/aae-windows/src/main.rs:193 crates/aae-windows/src/updates.rs:127 crates/aae-cli/src/main.rs:44
+#: macos/Sources/AAE/AAEApp.swift:11 crates/aae-windows/src/main.rs:195 crates/aae-windows/src/updates.rs:127 crates/aae-cli/src/main.rs:44
 msgid "Accessible Android Emulator"
 msgstr ""
 
@@ -6089,7 +6097,7 @@ msgstr "Affichage et langue"
 msgid "Battery, Location, Phone and Network"
 msgstr "Batterie, position, téléphone et réseau"
 
-#: macos/Sources/AAE/AAEApp.swift:168 macos/Sources/AAE/SelfTestView.swift:26 crates/aae-windows/src/app.rs:3380
+#: macos/Sources/AAE/AAEApp.swift:168 macos/Sources/AAE/SelfTestView.swift:26 crates/aae-windows/src/app.rs:3382
 msgid "Self-Test"
 msgstr "Autodiagnostic"
 
@@ -6385,7 +6393,7 @@ msgstr "Arrêtez l'appareil {device_name} pour l'exporter."
 msgid "Export {device_name}, with its apps, data and named snapshots, to import on another computer with the same kind of processor."
 msgstr "Exportez l'appareil {device_name}, avec ses apps, ses données et ses instantanés nommés, pour l'importer sur un autre ordinateur doté du même type de processeur."
 
-#: macos/Sources/AAE/AppModel.swift:704 crates/aae-windows/src/app.rs:2332
+#: macos/Sources/AAE/AppModel.swift:704 crates/aae-windows/src/app.rs:2334
 msgid "Exporting"
 msgstr "Exportation en cours"
 
@@ -6542,19 +6550,19 @@ msgstr "Disposition du clavier Android : {label}."
 msgid "gesture action {action}"
 msgstr ""
 
-#: macos/Sources/AAE/AppModel.swift:1209 crates/aae-windows/src/app.rs:2035
+#: macos/Sources/AAE/AppModel.swift:1209 crates/aae-windows/src/app.rs:2037
 msgid "Middle of the screen."
 msgstr "Milieu de l'écran."
 
-#: macos/Sources/AAE/AppModel.swift:1236 crates/aae-windows/src/app.rs:2059
+#: macos/Sources/AAE/AppModel.swift:1236 crates/aae-windows/src/app.rs:2061
 msgid "There's nothing on the screen to touch."
 msgstr "Il n'y a rien à toucher à l'écran."
 
-#: macos/Sources/AAE/AppModel.swift:1256 crates/aae-windows/src/app.rs:2094
+#: macos/Sources/AAE/AppModel.swift:1256 crates/aae-windows/src/app.rs:2096
 msgid "End of the screen."
 msgstr "Fin de l'écran."
 
-#: macos/Sources/AAE/AppModel.swift:1256 crates/aae-windows/src/app.rs:2096
+#: macos/Sources/AAE/AppModel.swift:1256 crates/aae-windows/src/app.rs:2098
 msgid "Start of the screen."
 msgstr "Début de l'écran."
 
@@ -6562,7 +6570,7 @@ msgstr "Début de l'écran."
 msgid "Nothing. {value}"
 msgstr "Rien. {value}"
 
-#: macos/Sources/AAE/AppModel.swift:1296 crates/aae-windows/src/app.rs:2166
+#: macos/Sources/AAE/AppModel.swift:1296 crates/aae-windows/src/app.rs:2168
 msgid "Nothing."
 msgstr "Rien."
 
@@ -6570,7 +6578,7 @@ msgstr "Rien."
 msgid ", pixel {point_x}, {point_y}"
 msgstr ", pixel {point_x}, {point_y}"
 
-#: macos/Sources/AAE/AppModel.swift:1327 crates/aae-windows/src/app.rs:2211
+#: macos/Sources/AAE/AppModel.swift:1327 crates/aae-windows/src/app.rs:2213
 msgid "{across} percent across, {down} percent down{at}."
 msgstr "{across} % depuis la gauche, {down} % depuis le haut{at}."
 
@@ -6598,11 +6606,11 @@ msgstr "{url_lastPathComponent} sera lu au prochain enregistrement du micro."
 msgid "Checking {device_name}'s microphone."
 msgstr "Vérification du micro de l'appareil {device_name}."
 
-#: macos/Sources/AAE/AppModel.swift:1509 crates/aae-windows/src/app.rs:2295
+#: macos/Sources/AAE/AppModel.swift:1509 crates/aae-windows/src/app.rs:2297
 msgid "Device audio muted."
 msgstr "Son de l'appareil coupé."
 
-#: macos/Sources/AAE/AppModel.swift:1509 crates/aae-windows/src/app.rs:2297
+#: macos/Sources/AAE/AppModel.swift:1509 crates/aae-windows/src/app.rs:2299
 msgid "Device audio on."
 msgstr "Son de l'appareil activé."
 
@@ -6610,7 +6618,7 @@ msgstr "Son de l'appareil activé."
 msgid "Downloading {download_version}: {download_percent}%."
 msgstr "Téléchargement : {download_version}, {download_percent} %."
 
-#: macos/Sources/AAE/AppModel.swift:1519 crates/aae-windows/src/app.rs:2625
+#: macos/Sources/AAE/AppModel.swift:1519 crates/aae-windows/src/app.rs:2627
 msgid "No device is selected."
 msgstr "Aucun appareil sélectionné."
 
@@ -6618,11 +6626,11 @@ msgstr "Aucun appareil sélectionné."
 msgid "{device_name}, {device_android}."
 msgstr ""
 
-#: macos/Sources/AAE/AppModel.swift:1526 crates/aae-windows/src/app.rs:2633
+#: macos/Sources/AAE/AppModel.swift:1526 crates/aae-windows/src/app.rs:2635
 msgid "Running."
 msgstr "En marche."
 
-#: macos/Sources/AAE/AppModel.swift:1526 crates/aae-windows/src/app.rs:2635
+#: macos/Sources/AAE/AppModel.swift:1526 crates/aae-windows/src/app.rs:2637
 msgid "Stopped."
 msgstr "Arrêté."
 
@@ -6630,11 +6638,11 @@ msgstr "Arrêté."
 msgid "The keyboard is on the Mac."
 msgstr "Le clavier contrôle le Mac."
 
-#: macos/Sources/AAE/AppModel.swift:1528 crates/aae-windows/src/app.rs:2644
+#: macos/Sources/AAE/AppModel.swift:1528 crates/aae-windows/src/app.rs:2646
 msgid "Gesture mode is on."
 msgstr "Le mode gestes est activé."
 
-#: macos/Sources/AAE/AppModel.swift:1528 crates/aae-windows/src/app.rs:2646
+#: macos/Sources/AAE/AppModel.swift:1528 crates/aae-windows/src/app.rs:2648
 msgid "The keyboard is in Android."
 msgstr "Le clavier contrôle Android."
 
@@ -6642,11 +6650,11 @@ msgstr "Le clavier contrôle Android."
 msgid "Choose apps to install."
 msgstr "Choisissez les apps à installer."
 
-#: macos/Sources/AAE/AppModel.swift:1553 crates/aae-windows/src/app.rs:2794
+#: macos/Sources/AAE/AppModel.swift:1553 crates/aae-windows/src/app.rs:2796
 msgid "Only app packages, ending in .apk, can be installed."
 msgstr "Seuls les paquets d'app (fichiers .apk) peuvent être installés."
 
-#: macos/Sources/AAE/AppModel.swift:1559 crates/aae-windows/src/app.rs:2812
+#: macos/Sources/AAE/AppModel.swift:1559 crates/aae-windows/src/app.rs:2814
 msgid "Start a device first, to install apps on it."
 msgstr "Démarrez d'abord un appareil pour y installer des apps."
 
@@ -6654,11 +6662,11 @@ msgstr "Démarrez d'abord un appareil pour y installer des apps."
 msgid "the device"
 msgstr "l'appareil"
 
-#: macos/Sources/AAE/AppModel.swift:1582 crates/aae-windows/src/app.rs:2883
+#: macos/Sources/AAE/AppModel.swift:1582 crates/aae-windows/src/app.rs:2885
 msgid "Installing {file} on {name}."
 msgstr "Installation de {file} sur l'appareil {name}."
 
-#: macos/Sources/AAE/AppModel.swift:1582 crates/aae-windows/src/app.rs:2885
+#: macos/Sources/AAE/AppModel.swift:1582 crates/aae-windows/src/app.rs:2887
 msgid "Installing {file}."
 msgstr "Installation du fichier {file}."
 
@@ -6674,7 +6682,7 @@ msgstr "Installation de {result_package} terminée."
 msgid "{part_name} is {value}, as you chose before."
 msgstr "{part_name} : {value}, comme vous l'aviez choisi."
 
-#: macos/Sources/AAE/AppModel.swift:1621 crates/aae-windows/src/app.rs:2957
+#: macos/Sources/AAE/AppModel.swift:1621 crates/aae-windows/src/app.rs:2959
 msgid "Left them all off."
 msgstr "Tout est resté désactivé."
 
@@ -6690,7 +6698,7 @@ msgstr "Choisissez une version de test du lecteur d'écran à installer."
 msgid "Installing on {name}."
 msgstr "Installation sur {name}."
 
-#: macos/Sources/AAE/AppModel.swift:1660 crates/aae-windows/src/app.rs:3067
+#: macos/Sources/AAE/AppModel.swift:1660 crates/aae-windows/src/app.rs:3069
 msgid "signed differently"
 msgstr ""
 
@@ -6698,11 +6706,11 @@ msgstr ""
 msgid "{name}: {message}"
 msgstr "{name} : {message}"
 
-#: macos/Sources/AAE/AppModel.swift:1666 crates/aae-windows/src/app.rs:3078
+#: macos/Sources/AAE/AppModel.swift:1666 crates/aae-windows/src/app.rs:3080
 msgid "Replace the screen reader on {name}?"
 msgstr "Remplacer le lecteur d'écran sur {name} ?"
 
-#: macos/Sources/AAE/AppModel.swift:1667 crates/aae-windows/src/app.rs:3079
+#: macos/Sources/AAE/AppModel.swift:1667 crates/aae-windows/src/app.rs:3081
 msgid "This build is signed differently from the one on {name}, so it can't be installed over it. Replacing it removes the old one first, and with it the screen reader's settings."
 msgstr "Cette version de test est signée différemment de celle de {name} : elle ne peut donc pas être installée par-dessus. La remplacer supprime d'abord l'ancienne, et avec elle les paramètres du lecteur d'écran."
 
@@ -6858,7 +6866,7 @@ msgstr "Cela libère {snapshot_size}. Cette action est irréversible."
 msgid "Deleted {snapshot_name}."
 msgstr "Instantané {snapshot_name} supprimé."
 
-#: macos/Sources/AAE/AppModel.swift:1955 crates/aae-windows/src/app.rs:2665 crates/aae-cli/src/main.rs:2755
+#: macos/Sources/AAE/AppModel.swift:1955 crates/aae-windows/src/app.rs:2667 crates/aae-cli/src/main.rs:2755
 msgid "The device's clipboard is empty."
 msgstr "Le presse-papiers de l'appareil est vide."
 
@@ -6958,27 +6966,27 @@ msgstr "Le son a redémarré, mais : {again_message} Redémarrer l'appareil peu
 msgid "{0_id} {value}"
 msgstr ""
 
-#: macos/Sources/AAE/AppModel.swift:2224 macos/Sources/AAE/AppModel.swift:2262 macos/Sources/AAE/AppModel.swift:2284 crates/aae-windows/src/app.rs:3222
+#: macos/Sources/AAE/AppModel.swift:2224 macos/Sources/AAE/AppModel.swift:2262 macos/Sources/AAE/AppModel.swift:2284 crates/aae-windows/src/app.rs:3224
 msgid "A device"
 msgstr "Un appareil"
 
-#: macos/Sources/AAE/AppModel.swift:2231 crates/aae-windows/src/app.rs:3238
+#: macos/Sources/AAE/AppModel.swift:2231 crates/aae-windows/src/app.rs:3240
 msgid "{name} was restarted outside this app. Reconnected."
 msgstr "{name} : redémarré en dehors d'AAE. Reconnecté."
 
-#: macos/Sources/AAE/AppModel.swift:2234 crates/aae-windows/src/app.rs:3235
+#: macos/Sources/AAE/AppModel.swift:2234 crates/aae-windows/src/app.rs:3237
 msgid "{name} was stopped outside this app."
 msgstr "{name} : arrêté en dehors d'AAE."
 
-#: macos/Sources/AAE/AppModel.swift:2263 crates/aae-windows/src/app.rs:3276
+#: macos/Sources/AAE/AppModel.swift:2263 crates/aae-windows/src/app.rs:3278
 msgid "{name}: {message} Choose Check Audio in the Device menu to restart it."
 msgstr "{name} : {message} Choisissez Vérifier le son dans le menu Appareil pour redémarrer le son."
 
-#: macos/Sources/AAE/AppModel.swift:2272 crates/aae-windows/src/app.rs:3285
+#: macos/Sources/AAE/AppModel.swift:2272 crates/aae-windows/src/app.rs:3287
 msgid "Running the self-test."
 msgstr "Autodiagnostic en cours."
 
-#: macos/Sources/AAE/AppModel.swift:2279 macos/Sources/AAE/AppModel.swift:2280 crates/aae-windows/src/app.rs:3298 crates/aae-windows/src/app.rs:3304
+#: macos/Sources/AAE/AppModel.swift:2279 macos/Sources/AAE/AppModel.swift:2280 crates/aae-windows/src/app.rs:3300 crates/aae-windows/src/app.rs:3306
 msgid "Keyboard capture"
 msgstr "Capture du clavier"
 
@@ -7062,11 +7070,11 @@ msgstr "Activer des composants de {question_package} ?"
 msgid "{part_name}, {part_kindDescription}"
 msgstr ""
 
-#: macos/Sources/AAE/AppPartsView.swift:29 crates/aae-windows/src/app.rs:2982
+#: macos/Sources/AAE/AppPartsView.swift:29 crates/aae-windows/src/app.rs:2984
 msgid "Leave All Off"
 msgstr "Tout laisser désactivé"
 
-#: macos/Sources/AAE/AppPartsView.swift:33 macos/Sources/AAE/AppsView.swift:113 crates/aae-windows/src/app.rs:2981 crates/aae-windows/src/tools/apps.rs:376
+#: macos/Sources/AAE/AppPartsView.swift:33 macos/Sources/AAE/AppsView.swift:113 crates/aae-windows/src/app.rs:2983 crates/aae-windows/src/tools/apps.rs:376
 msgid "Done"
 msgstr "OK"
 
@@ -7363,7 +7371,7 @@ msgstr "Volume de l'appareil {device_name}"
 msgid "Audio output"
 msgstr "Sortie audio"
 
-#: macos/Sources/AAE/ContentView.swift:130 crates/aae-windows/src/app.rs:2491
+#: macos/Sources/AAE/ContentView.swift:130 crates/aae-windows/src/app.rs:2493
 msgid "System default"
 msgstr "Par défaut du système"
 
@@ -7535,27 +7543,27 @@ msgstr "Densité de l'écran, en points par pouce"
 msgid "Graphics"
 msgstr "Graphismes"
 
-#: macos/Sources/AAE/HardwareView.swift:28 crates/aae-windows/src/app.rs:2418
+#: macos/Sources/AAE/HardwareView.swift:28 crates/aae-windows/src/app.rs:2420
 msgid "Graphics adapter"
 msgstr "Carte graphique"
 
-#: macos/Sources/AAE/HardwareView.swift:29 crates/aae-windows/src/app.rs:2418
+#: macos/Sources/AAE/HardwareView.swift:29 crates/aae-windows/src/app.rs:2420
 msgid "Software"
 msgstr "Logiciel"
 
-#: macos/Sources/AAE/HardwareView.swift:32 crates/aae-windows/src/app.rs:2421
+#: macos/Sources/AAE/HardwareView.swift:32 crates/aae-windows/src/app.rs:2423
 msgid "Software graphics is slower. Use it if WebViews, such as Google sign-in, crash."
 msgstr "Le rendu logiciel est plus lent. Utilisez-le si les WebViews, comme la connexion Google, plantent."
 
-#: macos/Sources/AAE/HardwareView.swift:35 crates/aae-windows/src/app.rs:2422
+#: macos/Sources/AAE/HardwareView.swift:35 crates/aae-windows/src/app.rs:2424
 msgid "Applies at next start. Some storage changes need a wipe."
 msgstr "S'applique au prochain démarrage. Certaines modifications du stockage nécessitent une réinitialisation."
 
-#: macos/Sources/AAE/HardwareView.swift:42 macos/Sources/AAE/SnapshotsView.swift:109 crates/aae-windows/src/app.rs:2423 crates/aae-windows/src/tools/mod.rs:58 …
+#: macos/Sources/AAE/HardwareView.swift:42 macos/Sources/AAE/SnapshotsView.swift:109 crates/aae-windows/src/app.rs:2425 crates/aae-windows/src/tools/mod.rs:58 …
 msgid "Save"
 msgstr "Enregistrer"
 
-#: macos/Sources/AAE/HardwareView.swift:67 crates/aae-windows/src/app.rs:2433
+#: macos/Sources/AAE/HardwareView.swift:67 crates/aae-windows/src/app.rs:2435
 msgid "Each one takes a whole number."
 msgstr "Chaque valeur doit être un nombre entier."
 
@@ -7679,7 +7687,7 @@ msgstr "Montre"
 msgid "start watching for builds"
 msgstr ""
 
-#: macos/Sources/AAE/InstallView.swift:38 macos/Sources/AAE/ScreenReaderBuildView.swift:36 crates/aae-windows/src/app.rs:2833 crates/aae-windows/src/app.rs:3042
+#: macos/Sources/AAE/InstallView.swift:38 macos/Sources/AAE/ScreenReaderBuildView.swift:36 crates/aae-windows/src/app.rs:2835 crates/aae-windows/src/app.rs:3044
 msgid "Install"
 msgstr "Installer"
 
@@ -7978,11 +7986,11 @@ msgstr "Installer {question_package}"
 msgid "Install on which devices? Stopped devices get it at next start."
 msgstr "Sur quels appareils l'installer ? Les appareils arrêtés l'installeront au prochain démarrage."
 
-#: macos/Sources/AAE/ScreenReaderBuildView.swift:51 crates/aae-windows/src/app.rs:3020
+#: macos/Sources/AAE/ScreenReaderBuildView.swift:51 crates/aae-windows/src/app.rs:3022
 msgid "uses this screen reader"
 msgstr "utilise ce lecteur d'écran"
 
-#: macos/Sources/AAE/ScreenReaderBuildView.swift:51 crates/aae-windows/src/app.rs:3022
+#: macos/Sources/AAE/ScreenReaderBuildView.swift:51 crates/aae-windows/src/app.rs:3024
 msgid "uses {reader}"
 msgstr "utilise {reader}"
 
