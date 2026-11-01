@@ -205,9 +205,8 @@ pub struct DeviceMeta {
     /// seconds, which keeps an idle device busy. A snapshot only loads with
     /// the emulator features it was saved with, so this is turned on, for
     /// good, only when the device has no named snapshots (see
-    /// [`Device::use_uwb_off_nfc_on`]). The quick-boot snapshot from before
-    /// doesn't load, and the emulator starts Android from its disk instead,
-    /// once.
+    /// [`Device::use_uwb_off_nfc_on`]). Its quick-boot snapshot from before
+    /// is deleted then, so Android starts from its disk once.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub uwb_off_nfc_on: bool,
     /// Accessibility services AAE turns back on after every boot and install,
@@ -302,14 +301,22 @@ impl Device {
     /// Turns on [`DeviceMeta::uwb_off_nfc_on`] if the device has no named
     /// snapshots, which would no longer load with it. Kept on from then.
     pub fn use_uwb_off_nfc_on(&mut self) -> Result<()> {
+        // Another copy of the device may have turned it on already.
+        self.reload_meta();
         if self.meta.uwb_off_nfc_on
             || self.meta.kind == DeviceKind::Googlebook
             || self.has_named_snapshots()
         {
             return Ok(());
         }
-        self.meta.uwb_off_nfc_on = true;
-        self.save_meta()
+        // The quick-boot snapshot holds the emulator's old features.
+        let quick_boot = self.dir.join("snapshots").join("default_boot");
+        if quick_boot.exists() {
+            std::fs::remove_dir_all(&quick_boot).map_err(|e| {
+                Error::Message(format!("{} can't be deleted: {e}", quick_boot.display()))
+            })?;
+        }
+        self.update_meta(|meta| meta.uwb_off_nfc_on = true)
     }
 
     /// Whether the device has snapshots besides the quick-boot one.
@@ -868,18 +875,34 @@ mod tests {
         let mut quick_boot_only = store
             .create("Quick boot", &image(), Profile::Phone)
             .unwrap();
-        quick_boot_only.meta.uwb_off_nfc_on = false;
-        std::fs::create_dir_all(quick_boot_only.dir.join("snapshots/default_boot")).unwrap();
+        quick_boot_only
+            .update_meta(|meta| meta.uwb_off_nfc_on = false)
+            .unwrap();
+        let quick_boot = quick_boot_only.dir.join("snapshots/default_boot");
+        std::fs::create_dir_all(&quick_boot).unwrap();
+        // Another copy, as the app, aae serve and aae each hold one, changes
+        // the device meanwhile; that change is kept.
+        let mut other = store.get("Quick boot").unwrap();
+        other.update_meta(|meta| meta.speech_bridge = true).unwrap();
         quick_boot_only.use_uwb_off_nfc_on().unwrap();
-        assert!(store.get("Quick boot").unwrap().meta.uwb_off_nfc_on);
+        let reread = store.get("Quick boot").unwrap();
+        assert!(reread.meta.uwb_off_nfc_on);
+        assert!(reread.meta.speech_bridge);
+        // Its snapshot, saved without the features, is gone.
+        assert!(!quick_boot.exists());
 
         // One with a named snapshot keeps the emulator's defaults while it has it.
         let mut named = store.create("Named", &image(), Profile::Phone).unwrap();
-        named.meta.uwb_off_nfc_on = false;
+        named
+            .update_meta(|meta| meta.uwb_off_nfc_on = false)
+            .unwrap();
         let snapshot = named.dir.join("snapshots/signed-in");
         std::fs::create_dir_all(&snapshot).unwrap();
+        std::fs::create_dir_all(named.dir.join("snapshots/default_boot")).unwrap();
         named.use_uwb_off_nfc_on().unwrap();
         assert!(!named.meta.uwb_off_nfc_on);
+        // Its snapshots still load, the quick-boot one included.
+        assert!(named.dir.join("snapshots/default_boot").exists());
         std::fs::remove_dir_all(&snapshot).unwrap();
         named.use_uwb_off_nfc_on().unwrap();
         assert!(store.get("Named").unwrap().meta.uwb_off_nfc_on);
