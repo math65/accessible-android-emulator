@@ -60,7 +60,7 @@ enum Role {
 }
 
 /// Keys named by the character they type, with their scan code on a US
-/// keyboard, for layouts that don't type it without AltGr.
+/// keyboard, used when no key types it.
 const NAMED_KEYS: [(&str, u16, Role); 10] = [
     ("t", 0x14, Role::Tap("tap")),
     ("r", 0x13, Role::Tap("triple-tap")),
@@ -155,17 +155,25 @@ impl KeyMap {
         map.crown_help = if types(up, "[") {
             "On a watch, left bracket turns the crown up and right bracket turns it down. ".into()
         } else {
-            // Named by what they type, such as circumflex and dollar on a French keyboard.
-            let name = |key, otherwise: &str| {
-                typing
-                    .and_then(|t| t(key, false))
-                    .map(|typed| key_name(&typed))
-                    .unwrap_or_else(|| otherwise.into())
+            // Named by what they type, such as circumflex and dollar on a
+            // French keyboard, or else by where they are.
+            let name = |key, us_key, position: &str| {
+                let typed = typing.and_then(|t| t(key, false));
+                match typed {
+                    Some(typed) => key_name(&typed).unwrap_or_else(|| {
+                        if key == us_key {
+                            position.into()
+                        } else {
+                            format!("the {typed} key")
+                        }
+                    }),
+                    None => position.into(),
+                }
             };
             format!(
                 "On a watch, {} turns the crown up and {} turns it down. ",
-                name(up, "the first key after P"),
-                name(down, "the second key after P")
+                name(up, 0x1A, "the first key after P"),
+                name(down, 0x1B, "the second key after P")
             )
         };
         map
@@ -196,8 +204,11 @@ impl KeyMap {
     }
 }
 
-/// A key's name as it's said, such as "the circumflex key".
-fn key_name(typed: &str) -> String {
+/// A key's name as it's said, such as "the circumflex key" or "the semicolon
+/// key", in words, as screen readers may not read punctuation at their usual
+/// level. None for a character with no name here, which is then named by
+/// where the key is.
+fn key_name(typed: &str) -> Option<String> {
     let name = match typed {
         "^" => "circumflex",
         "$" => "dollar",
@@ -211,9 +222,40 @@ fn key_name(typed: &str) -> String {
         "ç" => "c cedilla",
         "à" => "a grave",
         "é" => "e acute",
-        other => other,
+        "º" => "ordinal",
+        "¡" => "inverted exclamation mark",
+        "[" => "left bracket",
+        "]" => "right bracket",
+        ";" => "semicolon",
+        ":" => "colon",
+        "," => "comma",
+        "." => "period",
+        "/" => "slash",
+        "\\" => "backslash",
+        "-" => "minus",
+        "=" => "equals",
+        "'" => "apostrophe",
+        "\"" => "quotation mark",
+        "§" => "section",
+        "<" => "less than",
+        ">" => "greater than",
+        "#" => "number sign",
+        "@" => "at sign",
+        "&" => "ampersand",
+        "%" => "percent",
+        "!" => "exclamation mark",
+        "~" => "tilde",
+        "|" => "vertical bar",
+        "°" => "degree",
+        "£" => "pound",
+        "€" => "euro",
+        "_" => "underscore",
+        "(" => "left parenthesis",
+        ")" => "right parenthesis",
+        other if !other.is_empty() && other.chars().all(char::is_alphanumeric) => other,
+        _ => return None,
     };
-    format!("the {name} key")
+    Some(format!("the {name} key"))
 }
 
 fn arrow(key: u16) -> Option<(&'static str, i32, i32)> {

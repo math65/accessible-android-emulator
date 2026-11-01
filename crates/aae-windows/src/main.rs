@@ -428,6 +428,34 @@ mod tests {
     }
 
     #[test]
+    fn crown_keys_are_named_in_words_or_by_position() {
+        // As on a layout where the US bracket keys type ü and ;.
+        let layout = |scan: u16, shift: bool| -> Option<String> {
+            match (scan, shift) {
+                (0x1A, false) => Some("ü".into()),
+                (0x1B, false) => Some(";".into()),
+                _ => None,
+            }
+        };
+        let help = KeyMap::new(Some(&layout)).help("Control Windows Escape");
+        assert!(help.contains(
+            "the u umlaut key turns the crown up and the semicolon key turns it down"
+        ));
+        // A character with no name here: the key by where it is.
+        let layout = |scan: u16, shift: bool| -> Option<String> {
+            match (scan, shift) {
+                (0x1A, false) => Some("ö".into()),
+                (0x1B, false) => Some("¤".into()),
+                _ => None,
+            }
+        };
+        let help = KeyMap::new(Some(&layout)).help("Control Windows Escape");
+        assert!(help.contains(
+            "the ö key turns the crown up and the second key after P turns it down"
+        ));
+    }
+
+    #[test]
     fn holds_last_until_released() {
         let mut keys = GestureKeys::default();
         assert_eq!(

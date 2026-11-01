@@ -92,7 +92,7 @@ final class GestureKeys {
     }
 
     /// Keys named by the character they type, with where that key is on a
-    /// US keyboard, for layouts that don't type it without Option.
+    /// US keyboard, used when no key types it.
     private static let namedKeys: [(character: String, usKey: UInt16, role: Role)] = [
         ("t", 0x11, .tap("tap")),
         ("r", 0x0F, .tap("triple-tap")),
@@ -106,10 +106,15 @@ final class GestureKeys {
         ("]", 0x1E, .action(.crown(-1))),
     ]
 
+    /// Key codes only JIS keyboards have: yen, underscore, keypad comma,
+    /// eisu and kana.
+    private static let jisOnly: Set<UInt16> = [0x5D, 0x5E, 0x5F, 0x66, 0x68]
+
     /// Finds the gesture keys on a keyboard layout: `typing` says what a
     /// key types, with Shift or without (see `MacKeyboard.typing`). Without
-    /// a layout, every key is where it is on a US keyboard.
-    func useLayout(_ typing: ((UInt16, Bool) -> String?)?) {
+    /// a layout, every key is where it is on a US keyboard. JIS-only keys
+    /// count only on a JIS keyboard, as other keyboards don't have them.
+    func useLayout(_ typing: ((UInt16, Bool) -> String?)?, jis: Bool = MacKeyboard.isJIS) {
         var taken = Set(Self.arrows.keys).union(Self.fingerKeys.keys).union(Self.modifiers)
             .union(Self.fixedTaps.keys).union([Self.tab])
         var found: [Int: UInt16] = [:]
@@ -117,7 +122,7 @@ final class GestureKeys {
         // types t, not one that types T only with Shift.
         if let typing {
             for shifted in [false, true] {
-                for code in UInt16(0)..<0x80 where !taken.contains(code) {
+                for code in UInt16(0)..<0x80 where !taken.contains(code) && (jis || !Self.jisOnly.contains(code)) {
                     guard let typed = typing(code, shifted)?.lowercased(),
                           let index = Self.namedKeys.firstIndex(where: { $0.character == typed }),
                           found[index] == nil
@@ -150,19 +155,43 @@ final class GestureKeys {
         if typing?(up, false) == "[" || typing?(up, true) == "[" || typing == nil {
             crownHelp = "On a watch, left bracket turns the crown up and right bracket turns it down. "
         } else {
-            // Named by what they type, such as circumflex and dollar on a French keyboard.
-            let first = typing?(up, false).map(Self.keyName) ?? "the first key after P"
-            let second = typing?(down, false).map(Self.keyName) ?? "the second key after P"
+            // Named by what they type, such as circumflex and dollar on a
+            // French keyboard, or else by where they are.
+            func name(_ code: UInt16, usKey: UInt16, position: String) -> String {
+                let typed = typing?(code, false)
+                if let typed, let name = Self.keyName(typed) {
+                    return name
+                }
+                if code == usKey || typed == nil {
+                    return position
+                }
+                return "the \(typed!) key"
+            }
+            let first = name(up, usKey: 0x21, position: "the first key after P")
+            let second = name(down, usKey: 0x1E, position: "the second key after P")
             crownHelp = "On a watch, \(first) turns the crown up and \(second) turns it down. "
         }
     }
 
-    /// A key's name as it's said, such as "the circumflex key".
-    private static func keyName(_ typed: String) -> String {
+    /// A key's name as it's said, such as "the circumflex key" or "the
+    /// semicolon key", in words, as screen readers may not read punctuation
+    /// at their usual level. Nil for a character with no name here, which
+    /// is then named by where the key is.
+    private static func keyName(_ typed: String) -> String? {
         let names = ["^": "circumflex", "$": "dollar", "¨": "diaeresis", "*": "asterisk", "+": "plus",
                      "´": "acute accent", "`": "grave accent", "ü": "u umlaut", "è": "e grave", "ç": "c cedilla",
-                     "à": "a grave", "é": "e acute", "º": "ordinal", "¡": "inverted exclamation mark"]
-        return "the \(names[typed] ?? typed) key"
+                     "à": "a grave", "é": "e acute", "º": "ordinal", "¡": "inverted exclamation mark",
+                     "[": "left bracket", "]": "right bracket", ";": "semicolon", ":": "colon",
+                     ",": "comma", ".": "period", "/": "slash", "\\": "backslash", "-": "minus", "=": "equals",
+                     "'": "apostrophe", "\"": "quotation mark", "§": "section", "<": "less than",
+                     ">": "greater than", "#": "number sign", "@": "at sign", "&": "ampersand", "%": "percent",
+                     "!": "exclamation mark", "~": "tilde", "|": "vertical bar", "°": "degree", "£": "pound",
+                     "€": "euro", "_": "underscore", "(": "left parenthesis", ")": "right parenthesis"]
+        if let name = names[typed] {
+            return "the \(name) key"
+        }
+        guard !typed.isEmpty, typed.allSatisfy({ $0.isLetter || $0.isNumber }) else { return nil }
+        return "the \(typed) key"
     }
 
     /// Handles a key going down or up.

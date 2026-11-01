@@ -38,6 +38,12 @@ enum MacKeyboard {
         }
     }
 
+    /// Whether the keyboard is a JIS one, which has keys ANSI and ISO
+    /// keyboards don't.
+    static var isJIS: Bool {
+        KBGetLayoutType(Int16(LMGetKbdType())) == PhysicalKeyboardLayoutType(kKeyboardJIS)
+    }
+
     /// Calls `changed` whenever the user switches input source.
     static func observe(_ changed: @escaping @MainActor () -> Void) -> NSObjectProtocol {
         DistributedNotificationCenter.default().addObserver(
